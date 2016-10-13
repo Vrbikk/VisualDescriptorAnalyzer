@@ -1,0 +1,25 @@
+#config
+
+#logging_file
+logging_file:log.log
+
+#data_config
+data_path:/home/vrbik/Apps/ufi-cropped/
+train_folder:train/
+test_folder:test/
+
+#preprocessing config
+equalize_hist:0
+gaussian_blur:0
+
+#choose method_type 0 = __LBP; 1 = __LBPsuper
+method_type:0
+
+#LBP params lbp_uniform: O-off, 1-on
+lbp_grid_size:7
+lbp_uniform:1
+
+#classification params 0 = EUCLIDEAN ;1 = Intersection
+classification_threads:4
+comparison_method:1
+horatio_caine_mode:0
