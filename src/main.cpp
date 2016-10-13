@@ -3,6 +3,11 @@
 #include "include/classification.h"
 #include "include/preprocessing.h"
 
+void cleanup(void){
+    LOGGER->destroyInstance();
+    CONFIG->destroyInstance();
+}
+
 int main(int argc, char *argv[]) {
 
     if(argc == 2 && CONFIG->setUp(argv[1])){
@@ -27,5 +32,8 @@ int main(int argc, char *argv[]) {
     }
 
     LOGGER->Info("Application ended correctly...");
+
+    atexit(cleanup);
+
     return 0;
 }

@@ -179,3 +179,8 @@ void Configuration::setIntegerValue(string a, int &target, string target_name) {
 _preprocessing_config Configuration::getPreprocessingConfig() {
     return preprocessing_config;
 }
+
+void Configuration::destroyInstance() {
+    delete configuration_instance;
+    configuration_instance = NULL;
+}

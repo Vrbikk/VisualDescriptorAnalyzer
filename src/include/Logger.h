@@ -15,13 +15,14 @@ using namespace std;
 class Logger {
 private:
     static Logger *logger_instance;
+    Logger();
+    Logger(const Logger&); //protects copying
     static ofstream log_stream;
     void Log(string log_message);
     string logging_file;
-    Logger();
-    Logger(const Logger&){};
 
 public:
+    void destroyInstance();
     void setUp(string path);
     void Info(string message);
     void Error(string message);

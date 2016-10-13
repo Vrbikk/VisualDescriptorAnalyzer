@@ -5,8 +5,8 @@ logging_file:log.log
 
 #data_config
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train/
-test_folder:test/
+train_folder:train-50/
+test_folder:test-50/
 
 #preprocessing config
 equalize_hist:0

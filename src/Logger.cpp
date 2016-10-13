@@ -8,11 +8,9 @@ Logger *Logger::logger_instance = NULL;
 ofstream Logger::log_stream;
 
 Logger::Logger() {
-
-    //default config
+    //default logger config
 
     logging_file = "log.log";
-
 }
 
 string Logger::get_current_date_time() {
@@ -52,6 +50,11 @@ void Logger::Info(string message) {
 
 void Logger::Error(string message) {
     Log("ERROR - " + message);
+}
+
+void Logger::destroyInstance() {
+    delete logger_instance;
+    logger_instance = NULL;
 }
 
 

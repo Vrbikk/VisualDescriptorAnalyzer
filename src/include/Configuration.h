@@ -35,10 +35,9 @@ struct _preprocessing_config{
 
 class Configuration {
 private:
-
     static Configuration *configuration_instance;
-
     Configuration();
+    Configuration(const Configuration&); //protects copying
 
     string DELIMETER = ":";
     string logging_file;
@@ -58,6 +57,7 @@ private:
     void setIntegerValue(string a, int &target,  string target_name);
 
 public:
+    void destroyInstance();
     static Configuration *getConfiguration();
     bool setUp(const string path);
     _data_config getDataConfig();
