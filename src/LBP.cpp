@@ -54,6 +54,7 @@ void LBP::extractLBP(Mat src, Mat &dst) {
     int dst_x, dst_y;
     for(int x = BORDER_OFFSET; x < src.size().height - BORDER_OFFSET; x++){
         for(int y = BORDER_OFFSET; y < src.size().width - BORDER_OFFSET; y++){
+
             dst_x = x - BORDER_OFFSET;
             dst_y = y - BORDER_OFFSET;
             byte LBP_code = 0;

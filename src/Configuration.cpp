@@ -3,6 +3,7 @@
 //
 
 #include "include/Configuration.h"
+#include "include/LBPa.h"
 
 Configuration *Configuration::configuration_instance = NULL;
 
@@ -17,6 +18,9 @@ Configuration::Configuration() {
     extraction_method = __LBP;
     LBP_config.grid_size = 10;
     LBP_config.uniform = true;
+    LBPa_config.grid_size = 10;
+    LBPa_config.uniform = true;
+    LBPa_config.comparison = true;
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
     horatio_caine_mode = false;
@@ -41,7 +45,7 @@ void Configuration::setExtractionMethod(string a){
                 break;
             }
             case 1: {
-                extraction_method = __LBPsuper;
+                extraction_method = __LBPa;
                 break;
             }
             default: {
@@ -88,17 +92,20 @@ bool Configuration::setUp(const string path) {
                 setTypeAndValue(line, type, value);
                         // c++ does not support switching for string so... :(
                 if(!type.compare("data_path")){data_config.data_path = value;}
-                if(!type.compare("train_folder")){data_config.train_folder = value;}
-                if(!type.compare("test_folder")){data_config.test_folder = value;}
-                if(!type.compare("logging_file")){logging_file = value;}
-                if(!type.compare("extraction_method")){ setExtractionMethod(value);}
-                if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.grid_size, "lbp_grid_size");}
-                if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.uniform, "lbp_uniform");}
-                if(!type.compare("comparison_method")){setComparisonMethod(value);}
-                if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
-                if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
-                if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
-                if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
+                else if(!type.compare("train_folder")){data_config.train_folder = value;}
+                else if(!type.compare("test_folder")){data_config.test_folder = value;}
+                else if(!type.compare("logging_file")){logging_file = value;}
+                else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
+                else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.grid_size, "lbp_grid_size");}
+                else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.uniform, "lbp_uniform");}
+                else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.grid_size, "lbpa_grid_size");}
+                else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.uniform, "lbpa_uniform");}
+                else if(!type.compare("lbpa_comparison")){ setBoolValue(value, LBPa_config.comparison, "lbpa_comparison");}
+                else if(!type.compare("comparison_method")){setComparisonMethod(value);}
+                else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
+                else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
+                else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
+                else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
             }
         }
         return true;
@@ -126,15 +133,15 @@ Method *Configuration::getExtractionMethod() {
             SelectedMethod->setUp(&LBP_config);
             break;
         }
-        case __LBPsuper:{
-            SelectedMethod = NULL;
+        case __LBPa:{
+            SelectedMethod = new LBPa();
+            SelectedMethod->setUp(&LBPa_config);
             break;
         }
         default:{
             SelectedMethod = NULL;
             break;
         }
-
     }
 
     return SelectedMethod;

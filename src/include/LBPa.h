@@ -1,9 +1,9 @@
 //
-// Created by vrbik on 27.9.16.
+// Created by vrbik on 20.10.16.
 //
 
-#ifndef PLAYGROUND_LBP_H
-#define PLAYGROUND_LBP_H
+#ifndef PLAYGROUND_LBPA_H
+#define PLAYGROUND_LBPA_H
 
 #include "Method.h"
 #include "GUI.h"
@@ -11,20 +11,21 @@
 
 typedef unsigned char byte;
 
-class LBP: public Method{
+class LBPa : public Method{
 private:
-    int BORDER_OFFSET = 1;
-    _LBP_config config;
-    void extractLBP(Mat src, Mat &dst);
+    int BORDER_OFFSET = 2;
+    _LBPa_config config;
+    int BASE_SIZE = 2;
+
+    void extractLBPa(Mat src, Mat &dst);
     void localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram);
     vector<vector<int>> globalHistogram(Mat &src);
-public:
-    LBP();
-    ~LBP();
+    byte average_maximum_value(int x_, int y_, Mat src);
 
+public:
     virtual void setUp(void *_param) override;
     virtual void Process(_image &img) override;
 };
 
 
-#endif //PLAYGROUND_LBP_H
+#endif //PLAYGROUND_LBPA_H

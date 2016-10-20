@@ -28,7 +28,6 @@ int main(int argc, char *argv[]) {
 
         extract(train, test);
         classificate(train, test);
-
     }
 
     LOGGER->Info("Application ended correctly...");

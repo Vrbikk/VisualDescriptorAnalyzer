@@ -15,7 +15,7 @@
 #include "LBP.h"
 
 enum __extraction_method{
-    __LBP, __LBPsuper
+    __LBP, __LBPa
 };
 
 enum __comparison_method{
@@ -45,6 +45,7 @@ private:
     _preprocessing_config preprocessing_config;
     __extraction_method extraction_method;
     _LBP_config LBP_config;
+    _LBPa_config LBPa_config;
     __comparison_method comparison_method;
     int classification_threads;
     bool horatio_caine_mode;

@@ -27,4 +27,10 @@ struct _LBP_config{
     bool uniform;
 };
 
+struct _LBPa_config{
+    int grid_size;
+    bool uniform;
+    bool comparison;  // true - max, false - avg
+};
+
 #endif //PLAYGROUND_STRUCTS_H
