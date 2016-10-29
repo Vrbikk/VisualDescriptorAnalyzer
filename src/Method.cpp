@@ -84,3 +84,27 @@ vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool unifor
     }
     return global_histogram;
 }
+
+byte Method::average_maximum_value(int x_, int y_, Mat &src, bool comparison, int size) {
+    if(comparison) {
+        byte maximum = 0;
+        for (int x = x_; x < x_ + size; x++) {
+            for (int y = y_; y < y_ + size; y++) {
+                if (src.at<byte>(x, y) > maximum) {
+                    maximum = src.at<byte>(x, y);
+                }
+            }
+        }
+        return maximum;
+    }else{
+        int sum = 0;
+
+        for(int x = x_; x < x_ + size; x++){
+            for(int y = y_; y < y_ + size; y++){
+                sum += src.at<byte>(x, y);
+            }
+        }
+        byte average = (byte)(sum / (size * size));
+        return average;
+    }
+}

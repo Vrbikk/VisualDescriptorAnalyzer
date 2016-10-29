@@ -9,18 +9,17 @@
 #include "GUI.h"
 #include "stdim.h"
 
-typedef unsigned char byte;
-
 class LBPa : public Method{
 private:
     int BORDER_OFFSET = 2;
     _LBPa_config config;
     int BASE_SIZE = 2;
 
-    void extractLBPa(Mat &src, Mat &dst);
-    byte average_maximum_value(int x_, int y_, Mat &src);
-
 public:
+    LBPa();
+    ~LBPa();
+
+    virtual void extract(Mat &src, Mat &dst) override;
     virtual void setUp(void *_param) override;
     virtual void Process(_image &img) override;
 };

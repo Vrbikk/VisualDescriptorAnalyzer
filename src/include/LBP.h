@@ -13,12 +13,12 @@ class LBP: public Method{
 private:
     int BORDER_OFFSET = 1;
     _LBP_config config;
-    void extractLBP(Mat &src, Mat &dst);
 
 public:
     LBP();
     ~LBP();
 
+    virtual void extract(Mat &src, Mat &dst) override;
     virtual void setUp(void *_param) override;
     virtual void Process(_image &img) override;
 };

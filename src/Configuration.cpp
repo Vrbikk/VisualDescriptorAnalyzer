@@ -21,6 +21,7 @@ Configuration::Configuration() {
     LBPa_config.grid_size = 10;
     LBPa_config.uniform = true;
     LBPa_config.comparison = true;
+    LBPa_config.center_size = 2;
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
     horatio_caine_mode = false;
@@ -101,6 +102,7 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.grid_size, "lbpa_grid_size");}
                 else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.uniform, "lbpa_uniform");}
                 else if(!type.compare("lbpa_comparison")){ setBoolValue(value, LBPa_config.comparison, "lbpa_comparison");}
+                else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.center_size, "lbpa_center_size");}
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
                 else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}

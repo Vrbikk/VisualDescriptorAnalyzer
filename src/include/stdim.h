@@ -29,6 +29,7 @@ struct _LBP_config{
 
 struct _LBPa_config{
     int grid_size;
+    int center_size;
     bool uniform;
     bool comparison;  // true - max, false - avg
 };
