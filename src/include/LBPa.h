@@ -17,10 +17,8 @@ private:
     _LBPa_config config;
     int BASE_SIZE = 2;
 
-    void extractLBPa(Mat src, Mat &dst);
-    void localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram);
-    vector<vector<int>> globalHistogram(Mat &src);
-    byte average_maximum_value(int x_, int y_, Mat src);
+    void extractLBPa(Mat &src, Mat &dst);
+    byte average_maximum_value(int x_, int y_, Mat &src);
 
 public:
     virtual void setUp(void *_param) override;

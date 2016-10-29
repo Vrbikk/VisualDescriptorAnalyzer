@@ -15,10 +15,10 @@ void LBPa::Process(_image &img) {
     croppedImage(img.working_img, cropped, BORDER_OFFSET);
     Mat lbpa = Mat(img.working_img.cols, img.working_img.rows, CV_8U);
     extractLBPa(cropped, lbpa);
-    img.exctracted_vector = globalHistogram(lbpa);
+    img.exctracted_vector = globalHistogram(lbpa, config.grid_size, config.uniform);
 }
 
-void LBPa::extractLBPa(Mat src, Mat &dst) {
+void LBPa::extractLBPa(Mat &src, Mat &dst) {
     int dst_x, dst_y;
     for(int x = BORDER_OFFSET; x < src.size().height - BORDER_OFFSET; x += BASE_SIZE){
         for(int y = BORDER_OFFSET; y < src.size().width - BORDER_OFFSET; y += BASE_SIZE){
@@ -49,7 +49,7 @@ void LBPa::extractLBPa(Mat src, Mat &dst) {
     }
 }
 
-byte LBPa::average_maximum_value(int x_, int y_, Mat src) {
+byte LBPa::average_maximum_value(int x_, int y_, Mat &src) {
     if(config.comparison) {
         byte maximum = 0;
         for (int x = x_; x < x_ + BASE_SIZE; x++) {
@@ -71,42 +71,4 @@ byte LBPa::average_maximum_value(int x_, int y_, Mat src) {
         byte average = (byte)(sum / (BASE_SIZE * BASE_SIZE));
         return average;
     }
-}
-
-void LBPa::localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram) {
-    if(config.uniform){
-        local_histogram.assign(59, 0);
-        for(int local_x = x; local_x < x + xsize; local_x++){
-            for(int local_y = y; local_y < y + ysize; local_y++) {
-                local_histogram[uniform_table[src.at<byte>(local_x, local_y)]] += 1;
-            }
-        }
-
-    }else{
-        local_histogram.assign(256, 0);
-        for(int local_x = x; local_x < x + xsize; local_x++){
-            for(int local_y = y; local_y < y + ysize; local_y++) {
-                local_histogram[src.at<byte>(local_x, local_y)] += 1;
-            }
-        }
-    }
-}
-
-vector<vector<int>> LBPa::globalHistogram(Mat &src) {
-
-    vector<vector<int>> global_histogram;
-
-    int frame_width = src.size().width / config.grid_size;
-    int frame_height = src.size().height / config.grid_size;
-    int x_offset = (src.size().width % config.grid_size) / 2;
-    int y_offset = (src.size().height % config.grid_size) / 2;
-
-    for(int x = x_offset; x < config.grid_size * frame_width; x += frame_width){
-        for(int y = y_offset; y < config.grid_size * frame_height; y += frame_height){
-            vector<int> local_histogram;
-            localHistogram(x, y, frame_width, frame_height, src, local_histogram);
-            global_histogram.push_back(local_histogram);
-        }
-    }
-    return global_histogram;
 }

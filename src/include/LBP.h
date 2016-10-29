@@ -9,15 +9,12 @@
 #include "GUI.h"
 #include "stdim.h"
 
-typedef unsigned char byte;
-
 class LBP: public Method{
 private:
     int BORDER_OFFSET = 1;
     _LBP_config config;
-    void extractLBP(Mat src, Mat &dst);
-    void localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram);
-    vector<vector<int>> globalHistogram(Mat &src);
+    void extractLBP(Mat &src, Mat &dst);
+
 public:
     LBP();
     ~LBP();

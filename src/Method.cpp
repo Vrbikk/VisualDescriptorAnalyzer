@@ -46,3 +46,41 @@ bool Method::bitAtPosition(unsigned int num, unsigned int pos) {
 void Method::croppedImage(Mat src, Mat &dst, int crop_size) {
     copyMakeBorder(src, dst, crop_size, crop_size, crop_size, crop_size, BORDER_DEFAULT);
 }
+
+void Method::localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram, bool uniform) {
+    if(uniform){
+        local_histogram.assign(59, 0);
+        for(int local_x = x; local_x < x + xsize; local_x++){
+            for(int local_y = y; local_y < y + ysize; local_y++) {
+                local_histogram[uniform_table[src.at<byte>(local_x, local_y)]] += 1;
+            }
+        }
+
+    }else{
+        local_histogram.assign(256, 0);
+        for(int local_x = x; local_x < x + xsize; local_x++){
+            for(int local_y = y; local_y < y + ysize; local_y++) {
+                local_histogram[src.at<byte>(local_x, local_y)] += 1;
+            }
+        }
+    }
+}
+
+vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool uniform) {
+
+    vector<vector<int>> global_histogram;
+
+    int frame_width = src.size().width / grid_size;
+    int frame_height = src.size().height / grid_size;
+    int x_offset = (src.size().width % grid_size) / 2;
+    int y_offset = (src.size().height % grid_size) / 2;
+
+    for(int x = x_offset; x < grid_size * frame_width; x += frame_width){
+        for(int y = y_offset; y < grid_size * frame_height; y += frame_height){
+            vector<int> local_histogram;
+            localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
+            global_histogram.push_back(local_histogram);
+        }
+    }
+    return global_histogram;
+}
