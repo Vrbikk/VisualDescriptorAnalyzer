@@ -16,8 +16,12 @@ void iterate_extract(vector<_image> &images, string name_of_set) {
 }
 
 void extract(vector<_image> &train, vector<_image> &test) {
-    LOGGER->Info("Extracting vectors");
+    if(!CONFIG->getJobMode()) {
+        LOGGER->Info("Extracting vectors");
+    }
+
     iterate_extract(train, "Training data extraction");
     iterate_extract(test, "Testing data extraction");
 }
+
 

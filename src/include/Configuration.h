@@ -26,11 +26,25 @@ struct _data_config{
     string data_path;
     string test_folder;
     string train_folder;
+
+    string print(){
+        return string("data_config:[test_folder:" + test_folder +", train_folder:" + train_folder + "]");
+    }
 };
 
 struct _preprocessing_config{
     bool equalize_hist;
     bool gaussian_blur;
+
+    string print(){
+        return string("preprocessing_config:[equalize_hist:" + to_string(equalize_hist) + ", gaussina_blur:" + to_string(gaussian_blur) + "]");
+    }
+};
+
+struct _job{
+    __extraction_method method;
+    _LBP_config lbp_conf;
+    _LBPa_config lbpa_conf;
 };
 
 class Configuration {
@@ -44,11 +58,13 @@ private:
     _data_config data_config;
     _preprocessing_config preprocessing_config;
     __extraction_method extraction_method;
-    _LBP_config LBP_config;
-    _LBPa_config LBPa_config;
     __comparison_method comparison_method;
     int classification_threads;
     bool horatio_caine_mode;
+    vector<_job> jobs;
+    bool job_mode;
+    _LBP_config LBP_config;
+    _LBPa_config LBPa_config;
 
     void setExtractionMethod(string a);
     void setComparisonMethod(string a);
@@ -56,6 +72,7 @@ private:
     void setTypeAndValue(string line, string &type, string &value);
     void setBoolValue(string a, bool &target, string target_name);
     void setIntegerValue(string a, int &target,  string target_name);
+    void addJob(string line_job);
 
 public:
     void destroyInstance();
@@ -68,6 +85,10 @@ public:
     int getClassificationThreads();
     bool getHoratioCaineMode();
     _preprocessing_config getPreprocessingConfig();
+    vector<_job> getJobs();
+    bool getJobMode();
+    void setActualJob(_job job);
+    string configurationDump();
 
 };
 

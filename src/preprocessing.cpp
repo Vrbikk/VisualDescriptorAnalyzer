@@ -25,7 +25,10 @@ void iterate_preprocess(vector<_image> &images, string name_of_set) {
 }
 
 void preprocess(vector<_image> &train, vector<_image> &test) {
-    LOGGER->Info("Preprocessing images");
+    if(!CONFIG->getJobMode()){
+        LOGGER->Info("Preprocessing images");
+    }
+
     iterate_preprocess(train, "Training data preprocessing");
     iterate_preprocess(test, "Testing data preprocessing");
 }

@@ -18,20 +18,29 @@ struct _image{
     string path;
     Mat original_img;
     Mat working_img;
-
     vector<vector<int>> exctracted_vector;
 };
 
 struct _LBP_config{
     int grid_size;
     bool uniform;
+
+    string print(){
+        return string("LBP config - grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform));
+    }
 };
 
 struct _LBPa_config{
     int grid_size;
-    int center_size;
     bool uniform;
+    int center_size;
     bool comparison;  // true - max, false - avg
+
+    string print(){
+        return string("LBPa config - grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform) + " center_size:" +
+        to_string(center_size) + " comparison:" + to_string(comparison));
+    }
+
 };
 
 #endif //PLAYGROUND_STRUCTS_H

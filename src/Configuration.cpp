@@ -10,7 +10,6 @@ Configuration *Configuration::configuration_instance = NULL;
 Configuration::Configuration() {
 
         //default configuration
-
     logging_file = "log.log";
     data_config.data_path = "ufi-cropped";
     data_config.train_folder = "train";
@@ -27,6 +26,7 @@ Configuration::Configuration() {
     horatio_caine_mode = false;
     preprocessing_config.equalize_hist = false;
     preprocessing_config.gaussian_blur = false;
+    job_mode = false;
 }
 
 bool Configuration::isCommentOrEmpty(string line) {
@@ -108,6 +108,8 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
                 else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
                 else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
+                else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
+                else if(!type.compare("job")){addJob(value);}
             }
         }
         return true;
@@ -178,7 +180,7 @@ void Configuration::setBoolValue(string a, bool &target, string target_name) {
 }
 
 void Configuration::setIntegerValue(string a, int &target, string target_name) {
-    if(is_number(a) && stoi(a) > 0) {
+    if(is_number(a) && stoi(a) >= 0) { //TODO why > 0
         target = stoi(a);
     }else{
         LOGGER->Error("configuration file corrupted - " + target_name);
@@ -192,4 +194,80 @@ _preprocessing_config Configuration::getPreprocessingConfig() {
 void Configuration::destroyInstance() {
     delete configuration_instance;
     configuration_instance = NULL;
+}
+
+void Configuration::addJob(string line_job) {
+    vector<string> items = split(line_job, "-");
+    int method;
+    setIntegerValue(items[0], method, "job_method");
+    vector<string> params = split(items[1], ",");
+
+    switch(method){
+        case __LBP:{
+            _LBP_config conf;
+            setIntegerValue(params[0], conf.grid_size, "job_lbp_grid_size");
+            setBoolValue(params[1], conf.uniform, "job_lbp_uniform");
+
+            _job job;
+            job.method = __LBP;
+            job.lbp_conf = conf;
+            jobs.push_back(job);
+            break;
+        }
+        case __LBPa:{
+            _LBPa_config conf;
+            setIntegerValue(params[0], conf.grid_size, "job_lbpa_grid_size");
+            setBoolValue(params[1], conf.uniform, "job_lbpa_uniform");
+            setIntegerValue(params[2], conf.center_size, "job_lbpa_center_size");
+            setBoolValue(params[3], conf.comparison, "job_lbpa_comparison");
+
+            _job job;
+            job.method = __LBPa;
+            job.lbpa_conf = conf;
+            jobs.push_back(job);
+            break;
+        }
+        default:{
+            LOGGER->Error("Job config error");
+            break;
+        }
+    }
+
+}
+
+vector<_job> Configuration::getJobs() {
+    return jobs;
+}
+
+bool Configuration::getJobMode() {
+    return job_mode;
+}
+
+void Configuration::setActualJob(_job job) {
+    switch (job.method){
+        case __LBP:{
+            extraction_method = __LBP;
+            LBP_config = job.lbp_conf;
+            LOGGER->Info(LBP_config.print());
+            break;
+        }
+        case __LBPa:{
+            extraction_method = __LBPa;
+            LBPa_config = job.lbpa_conf;
+            LOGGER->Info(LBPa_config.print());
+            break;
+        }
+        default:{
+            LOGGER->Error("setActualJob default switch branch");
+            break;
+        }
+    }
+}
+
+string Configuration::configurationDump() {
+
+    string space = "\n\t\t\t\t";
+
+    return string(space + "------ JOB config ------" + space + data_config.print() + space + preprocessing_config.print() + space +
+                          "classification_threads:" + to_string(classification_threads) + space + "------ JOB config ------");
 }

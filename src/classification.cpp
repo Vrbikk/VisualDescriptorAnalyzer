@@ -106,12 +106,13 @@ void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
     }
 
     double accuracy = hits/(test.size() * 1.0);
-    LOGGER->Info("Accuracy: <" + to_string(accuracy) + ">");
+    LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑");
 }
 
 void classificate(vector<_image> &train, vector<_image> &test) {
-
-    LOGGER->Info("Classification started");
+    if(!CONFIG->getJobMode()) {
+        LOGGER->Info("Classification started");
+    }
 
     test_size = (int)test.size();
     progress = 0;
@@ -145,5 +146,4 @@ void classificate(vector<_image> &train, vector<_image> &test) {
 
     result_calculation(test, candidates);
 }
-
 

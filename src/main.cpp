@@ -13,21 +13,28 @@ int main(int argc, char *argv[]) {
     if(argc == 2 && CONFIG->setUp(argv[1])){
 
         LOGGER->setUp(CONFIG->getLoggingFile());
-        LOGGER->Info("Application started...");
-
         vector<_image> train = vector<_image>();
         vector<_image> test = vector<_image>();
 
         load_images(train, test);
-        preprocess(train, test);
-/*
-        for(int i = 0; i < test.size(); i++){
-            show_two_images(test[i].original_img, test[i].working_img);
-            waitKey(0);
-        }*/
 
-        extract(train, test);
-        classificate(train, test);
+        if(CONFIG->getJobMode()) {
+            LOGGER->Info("Application started in [JOB MODE]");
+            LOGGER->Info(CONFIG->configurationDump());
+            for(auto job : CONFIG->getJobs()){
+                CONFIG->setActualJob(job);
+                preprocess(train, test);
+                extract(train, test);
+                classificate(train, test);
+            }
+
+        }else{
+            LOGGER->Info("Application started in [NORMAL MODE]");
+            LOGGER->Info(CONFIG->configurationDump());
+            preprocess(train, test);
+            extract(train, test);
+            classificate(train, test);
+        }
     }
 
     LOGGER->Info("Application ended correctly...");

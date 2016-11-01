@@ -29,7 +29,7 @@ void file_miner(string path, vector<_image> &images){
 
         for(int j = 0; j < files.size(); j++){
             _image loaded_image;
-            loaded_image.id = stoi(folder_paths[i].substr(1, folder_paths[i].size()));
+            loaded_image.id = stoi(folder_paths[i].substr(1, folder_paths[i].size())); //substr because of "s301"
             loaded_image.file_name = files[j];
             loaded_image.path = files_path + "/" + files[j];
 

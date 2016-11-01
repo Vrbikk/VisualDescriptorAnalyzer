@@ -5,27 +5,116 @@ logging_file:log.log
 
 #data_config
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train/
-test_folder:test/
+train_folder:train-100/
+test_folder:test-100/
 
 #preprocessing config
 equalize_hist:0
 gaussian_blur:0
 
 #choose method_type 0 = LBP; 1 = LBPa
-extraction_method:1
+extraction_method:0
 
 #0-LBP - lbp_uniform: O-off, 1-on
-lbp_grid_size:12
-lbp_uniform:0
+lbp_grid_size:2
+lbp_uniform:1
 
 #1-LBPa - lbpa_center_size: n - n^2 (1-2), lbpa_comparison: 0-avg, 1-max
-lbpa_grid_size:12
-lbpa_uniform:0
-lbpa_center_size:1
+lbpa_grid_size:3
+lbpa_uniform:1
+lbpa_center_size:2
 lbpa_comparison:0
 
 #classification params 0 = EUCLIDEAN ;1 = Intersection
-classification_threads:2
+classification_threads:4
 comparison_method:1
 horatio_caine_mode:0
+
+#run in job mode
+job_mode:1
+
+#job:extraction_method-param,param,param...
+
+#LBP jobs uniform
+job:0-5,1
+job:0-6,1
+job:0-7,1
+job:0-8,1
+job:0-9,1
+job:0-10,1
+job:0-11,1
+job:0-12,1
+job:0-13,1
+job:0-14,1
+job:0-15,1
+job:0-16,1
+
+#LBP jobs non-uniform
+job:0-5,0
+job:0-6,0
+job:0-7,0
+job:0-8,0
+job:0-9,0
+job:0-10,0
+job:0-11,0
+job:0-12,0
+job:0-13,0
+job:0-14,0
+job:0-15,0
+job:0-16,0
+
+#LBPa (4x4) jobs uniform
+job:1-5,1,2,0
+job:1-6,1,2,0
+job:1-7,1,2,0
+job:1-8,1,2,0
+job:1-9,1,2,0
+job:1-10,1,2,0
+job:1-11,1,2,0
+job:1-12,1,2,0
+job:1-13,1,2,0
+job:1-14,1,2,0
+job:1-15,1,2,0
+job:1-16,1,2,0
+
+#LBPa (4x4) jobs non-uniform
+job:1-5,0,2,0
+job:1-6,0,2,0
+job:1-7,0,2,0
+job:1-8,0,2,0
+job:1-9,0,2,0
+job:1-10,0,2,0
+job:1-11,0,2,0
+job:1-12,0,2,0
+job:1-13,0,2,0
+job:1-14,0,2,0
+job:1-15,0,2,0
+job:1-16,0,2,0
+
+#LBPa (1x4) jobs uniform
+job:1-5,1,1,0
+job:1-6,1,1,0
+job:1-7,1,1,0
+job:1-8,1,1,0
+job:1-9,1,1,0
+job:1-10,1,1,0
+job:1-11,1,1,0
+job:1-12,1,1,0
+job:1-13,1,1,0
+job:1-14,1,1,0
+job:1-15,1,1,0
+job:1-16,1,1,0
+
+#LBPa (1x4) jobs non-uniform
+job:1-5,0,1,0
+job:1-6,0,1,0
+job:1-7,0,1,0
+job:1-8,0,1,0
+job:1-9,0,1,0
+job:1-10,0,1,0
+job:1-11,0,1,0
+job:1-12,0,1,0
+job:1-13,0,1,0
+job:1-14,0,1,0
+job:1-15,0,1,0
+job:1-16,0,1,0
