@@ -1,14 +1,15 @@
 # VisualDescriptorAnalyzer
 experimental school project for testing various visual descriptors and their modifications
 
+<pre>
 results:
 https://docs.google.com/spreadsheets/d/1cPP9JLb5lNUe4mZr0nRmQLUyEiAX7u9K9Wk-CiyTfmI/edit?usp=sharing
 
 application run:
 
 -install openCV
-> cmake CMakeLists.txt
-> make
+cmake CMakeLists.txt
+make
 setup config.txt (paths etc..)
 chmod u+x run.sh
 ./run.sh
@@ -37,3 +38,4 @@ Testing data extraction status: 50/50
 Classification status: 50/50
 02-11-2016 12:49:32:  INFO - ↑ accuracy: <0.340000> ↑
 02-11-2016 12:49:32:  INFO - Application ended correctly...
+</pre>
