@@ -22,10 +22,10 @@ console output if job_mode:0 -> normal mode
 02-11-2016 12:49:31:  INFO - Application started in [NORMAL MODE]
 02-11-2016 12:49:31:  INFO - ------ config ------
 
-				data_config:[test_folder:test-50/, train_folder:train-50/]
-				preprocessing_config:[equalize_hist:0, gaussina_blur:0]
-				classification_threads:3
-				comparison_method:1
+data_config:[test_folder:test-50/, train_folder:train-50/]
+preprocessing_config:[equalize_hist:0, gaussina_blur:0]
+classification_threads:3
+comparison_method:1
 
 02-11-2016 12:49:31:  INFO - Preprocessing images
 Training data preprocessing status: 375/375
