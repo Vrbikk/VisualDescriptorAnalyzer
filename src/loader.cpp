@@ -41,8 +41,11 @@ void file_miner(string path, vector<_image> &images){
     }
 }
 
-int load_images(vector<_image> &train, vector<_image> &test){
-    LOGGER->Info("Collecting images");
+bool load_images(vector<_image> &train, vector<_image> &test){
+
+    if(!CONFIG->getJobMode()){
+        LOGGER->Info("Collecting images");
+    }
 
     _data_config config = CONFIG->getDataConfig();
 
@@ -54,15 +57,14 @@ int load_images(vector<_image> &train, vector<_image> &test){
         file_miner(train_path, train);
         file_miner(test_path, test);
 
-        LOGGER->Info("Collected training data: " + to_string(train.size()));
-        LOGGER->Info("Collected testing data: " + to_string(test.size()));
+        if(!CONFIG->getJobMode()) {
+            LOGGER->Info("Collected training data: " + to_string(train.size()));
+            LOGGER->Info("Collected testing data: " + to_string(test.size()));
+        }
 
-        return 0;
+        return true;
     }else{
         LOGGER->Error("load_images failed, some folders in #data_config section were not found");
-        return 1;
+        return false;
     }
-
-
-
 }

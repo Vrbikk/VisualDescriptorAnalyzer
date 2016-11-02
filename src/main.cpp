@@ -10,17 +10,14 @@ void cleanup(void){
 
 int main(int argc, char *argv[]) {
 
-    if(argc == 2 && CONFIG->setUp(argv[1])){
+    vector<_image> train = vector<_image>();
+    vector<_image> test = vector<_image>();
 
-        LOGGER->setUp(CONFIG->getLoggingFile());
-        vector<_image> train = vector<_image>();
-        vector<_image> test = vector<_image>();
-
-        load_images(train, test);
-
+    if(argc == 2 && CONFIG->setUp(argv[1]) && load_images(train, test)){
         if(CONFIG->getJobMode()) {
             LOGGER->Info("Application started in [JOB MODE]");
             LOGGER->Info(CONFIG->configurationDump());
+
             for(auto job : CONFIG->getJobs()){
                 CONFIG->setActualJob(job);
                 preprocess(train, test);

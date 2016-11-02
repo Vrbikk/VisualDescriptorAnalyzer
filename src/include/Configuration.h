@@ -54,7 +54,6 @@ private:
     Configuration(const Configuration&); //protects copying
 
     string DELIMETER = ":";
-    string logging_file;
     _data_config data_config;
     _preprocessing_config preprocessing_config;
     __extraction_method extraction_method;
@@ -79,7 +78,6 @@ public:
     static Configuration *getConfiguration();
     bool setUp(const string path);
     _data_config getDataConfig();
-    string getLoggingFile();
     Method *getExtractionMethod();
     __comparison_method getComparisonMethod();
     int getClassificationThreads();

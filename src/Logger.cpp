@@ -8,7 +8,6 @@ Logger *Logger::logger_instance = NULL;
 ofstream Logger::log_stream;
 
 Logger::Logger() {
-    //default logger config
     logging_file = "log.log";
 }
 

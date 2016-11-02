@@ -10,7 +10,6 @@ Configuration *Configuration::configuration_instance = NULL;
 Configuration::Configuration() {
 
         //default configuration
-    logging_file = "log.log";
     data_config.data_path = "ufi-cropped";
     data_config.train_folder = "train";
     data_config.test_folder = "test";
@@ -95,7 +94,6 @@ bool Configuration::setUp(const string path) {
                 if(!type.compare("data_path")){data_config.data_path = value;}
                 else if(!type.compare("train_folder")){data_config.train_folder = value;}
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
-                else if(!type.compare("logging_file")){logging_file = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
                 else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.grid_size, "lbp_grid_size");}
                 else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.uniform, "lbp_uniform");}
@@ -121,10 +119,6 @@ bool Configuration::setUp(const string path) {
 
 _data_config Configuration::getDataConfig() {
     return data_config;
-}
-
-string Configuration::getLoggingFile() {
-    return logging_file;
 }
 
 Method *Configuration::getExtractionMethod() {
@@ -267,7 +261,6 @@ void Configuration::setActualJob(_job job) {
 string Configuration::configurationDump() {
 
     string space = "\n\t\t\t\t";
-
-    return string(space + "------ JOB config ------" + space + data_config.print() + space + preprocessing_config.print() + space +
-                          "classification_threads:" + to_string(classification_threads) + space + "------ JOB config ------");
+    return string(space + "------ config ------" + space + data_config.print() + space + preprocessing_config.print() + space +
+                          "classification_threads:" + to_string(classification_threads));
 }

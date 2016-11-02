@@ -17,7 +17,7 @@ using namespace std;
 using namespace cv;
 
 int get_files(string path, vector<string> &files);
-int load_images(vector<_image> &train, vector<_image> &test);
+bool load_images(vector<_image> &train, vector<_image> &test);
 void file_miner(string path, vector<_image> &images);
 
 
