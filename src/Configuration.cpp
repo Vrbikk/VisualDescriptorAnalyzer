@@ -261,6 +261,10 @@ void Configuration::setActualJob(_job job) {
 string Configuration::configurationDump() {
 
     string space = "\n\t\t\t\t";
-    return string(space + "------ config ------" + space + data_config.print() + space + preprocessing_config.print() + space +
-                          "classification_threads:" + to_string(classification_threads));
+    return string(        "------ config ------\n" + space +
+                          data_config.print() + space +
+                          preprocessing_config.print() + space +
+                          "classification_threads:" + to_string(classification_threads) + space +
+                          "comparison_method:" + to_string(comparison_method) + "\n"
+    );
 }
