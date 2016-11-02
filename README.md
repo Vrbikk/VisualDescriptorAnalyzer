@@ -1,10 +1,10 @@
 # VisualDescriptorAnalyzer
 experimental school project for testing various visual descriptors and their modifications
 
-<pre>
 results:
 https://docs.google.com/spreadsheets/d/1cPP9JLb5lNUe4mZr0nRmQLUyEiAX7u9K9Wk-CiyTfmI/edit?usp=sharing
 
+<pre>
 application run:
 
 -install openCV
