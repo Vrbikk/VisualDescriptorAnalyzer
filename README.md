@@ -28,12 +28,12 @@ console output if job_mode:0 -> normal mode
 				comparison_method:1
 
 02-11-2016 12:49:31:  INFO - Preprocessing images
->>> Training data preprocessing status: 375/375
->>> Testing data preprocessing status: 50/50
+Training data preprocessing status: 375/375
+Testing data preprocessing status: 50/50
 02-11-2016 12:49:31:  INFO - Extracting vectors
->>> Training data extraction status: 375/375
->>> Testing data extraction status: 50/50
+Training data extraction status: 375/375
+Testing data extraction status: 50/50
 02-11-2016 12:49:32:  INFO - Classification started
->>> Classification status: 50/50
+Classification status: 50/50
 02-11-2016 12:49:32:  INFO - ↑ accuracy: <0.340000> ↑
 02-11-2016 12:49:32:  INFO - Application ended correctly...
