@@ -178,10 +178,6 @@ void classificate(vector<_image> &train, vector<_image> &test) {
 
     for_each(threads.begin(), threads.end(), [](thread &t){t.join();});
 
-
-    cout << "candidates size :" << candidates.size() << endl;
-    cout << "test size:" << test.size() << endl;
-
     result_calculation(test, candidates);
 }
 
