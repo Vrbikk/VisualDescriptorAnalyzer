@@ -21,26 +21,51 @@ struct _image{
     vector<vector<int>> exctracted_vector;
 };
 
-struct _LBP_config{
+struct _hist{
     int grid_size;
     bool uniform;
 
     string print(){
-        return string("LBP config - grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform));
+        return string("grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform));
+    }
+};
+
+struct _LBP_params{
+    int range;
+    int neighbours;
+
+    string print(){
+        return string("range:" + to_string(range) + " neighbours:" + to_string(neighbours));
+    }
+};
+
+struct _LBPa_params{
+    int BORDER_OFFSET = 2;
+    int BASE_SIZE = 2;
+    int center_size;
+    bool comparison;
+    string print(){
+        return string("center_size:" + to_string(center_size) + " comparison:" + to_string(comparison));
+    }
+
+};
+
+struct _LBP_config{
+    _LBP_params lbp_params;
+    _hist hist;
+
+    string print(){
+        return string("LBP config - " + lbp_params.print() + " " + hist.print());
     }
 };
 
 struct _LBPa_config{
-    int grid_size;
-    bool uniform;
-    int center_size;
-    bool comparison;  // true - max, false - avg
+    _LBPa_params lbpa_params;
+    _hist hist;
 
     string print(){
-        return string("LBPa config - grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform) + " center_size:" +
-        to_string(center_size) + " comparison:" + to_string(comparison));
+        return string("LBPa config - " + lbpa_params.print() + " " + hist.print());
     }
-
 };
 
 #endif //PLAYGROUND_STRUCTS_H

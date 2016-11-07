@@ -21,14 +21,29 @@ void show_image(_image im_a){
 }
 
 void show_two_images(Mat a, Mat b){
+    double Max, Min;
+    minMaxLoc(a, &Min, &Max);
+
+    Mat view_a;
+    a.convertTo(view_a,CV_8U,255.0/(Max-Min),-255.0*Min/(Max-Min));
+
+    Mat view_b;
+    minMaxLoc(b, &Min, &Max);
+    b.convertTo(view_b,CV_8U,255.0/(Max-Min),-255.0*Min/(Max-Min));
+
     Mat dst;
-    hconcat(a, b, dst);
+    hconcat(view_a, view_b, dst);
     namedWindow("Two Images", WINDOW_NORMAL);
     resizeWindow("Two Images", 2 * dst.size().width, 2 * dst.size().height);
     imshow("Two Images", dst);
+
+    waitKey(0);
+
 }
 
 void show_two_images(_image im_a, _image im_b){
+
+
     Mat a = create_img_with_text(im_a);
     Mat b = create_img_with_text(im_b);
     Mat dst;

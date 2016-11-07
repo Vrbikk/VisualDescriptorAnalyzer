@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
     vector<_image> train = vector<_image>();
     vector<_image> test = vector<_image>();
 
-    if(argc == 2 && CONFIG->setUp(argv[1]) && load_images(train, test)){
+    if(argc == 3 && LOGGER->setUp(argv[1]) && CONFIG->setUp(argv[2]) && load_images(train, test)){
         if(CONFIG->getJobMode()) {
             LOGGER->Info("Application started in [JOB MODE]");
             LOGGER->Info(CONFIG->configurationDump());
@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
         }else{
             LOGGER->Info("Application started in [NORMAL MODE]");
             LOGGER->Info(CONFIG->configurationDump());
+
             preprocess(train, test);
             extract(train, test);
             classificate(train, test);

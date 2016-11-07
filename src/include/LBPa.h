@@ -11,15 +11,11 @@
 
 class LBPa : public Method{
 private:
-    int BORDER_OFFSET = 2;
     _LBPa_config config;
-    int BASE_SIZE = 2;
 
 public:
     LBPa();
     ~LBPa();
-
-    virtual void extract(Mat &src, Mat &dst) override;
     virtual void setUp(void *_param) override;
     virtual void Process(_image &img) override;
 };

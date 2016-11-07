@@ -1,66 +1,149 @@
-#config
+#version 1.1
 
-#data_config
+#config file...
+
+#data_config - must have "/"
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-50/
-test_folder:test-50/
+train_folder:train-100/
+test_folder:test-100/
 
 #preprocessing config
 equalize_hist:0
 gaussian_blur:0
 
 #run in JOB MODE (1) / NORMAL MODE (0)
-job_mode:0
+job_mode:1
 
 #[NORMAL MODE]choose method_type 0 = LBP; 1 = LBPa
-extraction_method:0
+extraction_method:1
 
 #[NORMAL MODE] LBP - lbp_grid_size: 1-16, lbp_uniform: O-off, 1-on
-lbp_grid_size:2
+lbp_grid_size:16
 lbp_uniform:1
+lbp_range:3
+lbp_neighbours:16
 
 #[NORMAL MODE] LBPa - lbpa_grid_size: 1-16, lbpa_uniform: O-off, 1-on, lbpa_center_size: 1|2, lbpa_comparison: 0-avg, 1-max
-lbpa_grid_size:3
+lbpa_grid_size:5
 lbpa_uniform:1
 lbpa_center_size:2
-lbpa_comparison:0
+lbpa_comparison:1
 
-#Classification params - comparison_method:(0 - Euclidean, 1 - Intersection), classification_threads: based on cpu cores
+#Classification params - comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya), classification_threads: based on cpu cores
 comparison_method:1
-classification_threads:3
+classification_threads:4
 horatio_caine_mode:0
 
 #[JOB MODE] if job mode is enabled, application will proceed this tasks:
-#notation is job:[number of method see [NORMAL MODE] options]-param, param, param...
+#notation... job:[number of method see [NORMAL MODE] options]-param, param, param...
+
 
 #LBP jobs uniform
-job:0-5,1
-##job:0-6,1
-job:0-7,1
-##job:0-8,1
-job:0-9,1
-##job:0-10,1
-job:0-11,1
-##job:0-12,1
-job:0-13,1
-##job:0-14,1
-job:0-15,1
-##job:0-16,1
+job:0-5,1,1,8
+##job:0-6,1,1,8
+job:0-7,1,1,8
+##job:0-8,1,1,8
+job:0-9,1,1,8
+##job:0-10,1,1,8
+job:0-11,1,1,8
+##job:0-12,1,1,8
+job:0-13,1,1,8
+##job:0-14,1,1,8
+job:0-15,1,1,8
+##job:0-16,1,1,8
+
+job:0-5,1,2,8
+##job:0-6,1,2,8
+job:0-7,1,2,8
+##job:0-8,1,2,8
+job:0-9,1,2,8
+##job:0-10,1,2,8
+job:0-11,1,2,8
+##job:0-12,1,2,8
+job:0-13,1,2,8
+##job:0-14,1,2,8
+job:0-15,1,2,8
+##job:0-16,1,2,8
+
+job:0-5,1,2,12
+##job:0-6,1,2,12
+job:0-7,1,2,12
+##job:0-8,1,2,12
+job:0-9,1,2,12
+##job:0-10,1,2,12
+job:0-11,1,2,12
+##job:0-12,1,2,12
+job:0-13,1,2,12
+##job:0-14,1,2,12
+job:0-15,1,2,12
+##job:0-16,1,2,12
+
+job:0-5,1,2,16
+##job:0-6,1,2,16
+job:0-7,1,2,16
+##job:0-8,1,2,16
+job:0-9,1,2,16
+##job:0-10,1,2,16
+job:0-11,1,2,16
+##job:0-12,1,2,16
+job:0-13,1,2,16
+##job:0-14,1,2,16
+job:0-15,1,2,16
+##job:0-16,1,2,16
 
 #LBP jobs non-uniform
 
-job:0-5,0
-##job:0-6,0
-job:0-7,0
-##job:0-8,0
-job:0-9,0
-##job:0-10,0
-job:0-11,0
-##job:0-12,0
-job:0-13,0
-##job:0-14,0
-job:0-15,0
-##job:0-16,0
+job:0-5,0,1,8
+##job:0-6,0,1,8
+job:0-7,0,1,8
+##job:0-8,0,1,8
+job:0-9,0,1,8
+##job:0-10,0,1,8
+job:0-11,0,1,8
+##job:0-12,0,1,8
+job:0-13,0,1,8
+##job:0-14,0,1,8
+job:0-15,0,1,8
+##job:0-16,0,1,8
+
+job:0-5,0,2,8
+##job:0-6,0,2,8
+job:0-7,0,2,8
+##job:0-8,0,2,8
+job:0-9,0,2,8
+##job:0-10,0,2,8
+job:0-11,0,2,8
+##job:0-12,0,2,8
+job:0-13,0,2,8
+##job:0-14,0,2,8
+job:0-15,0,2,8
+##job:0-16,0,2,8
+
+job:0-5,0,2,10
+##job:0-6,0,2,10
+job:0-7,0,2,10
+##job:0-8,0,2,10
+job:0-9,0,2,10
+##job:0-10,0,2,10
+job:0-11,0,2,10
+##job:0-12,0,2,10
+job:0-13,0,2,10
+##job:0-14,0,2,10
+job:0-15,0,2,10
+##job:0-16,0,2,10
+
+job:0-5,0,2,12
+##job:0-6,0,2,12
+job:0-7,0,2,12
+##job:0-8,0,2,12
+job:0-9,0,2,12
+##job:0-10,0,2,12
+job:0-11,0,2,12
+##job:0-12,0,2,12
+job:0-13,0,2,12
+##job:0-14,0,2,12
+job:0-15,0,2,12
+##job:0-16,0,2,12
 
 #LBPa (4x4) jobs uniform
 job:1-5,1,2,0

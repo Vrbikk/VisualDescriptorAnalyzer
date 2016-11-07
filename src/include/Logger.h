@@ -23,7 +23,7 @@ private:
 
 public:
     void destroyInstance();
-    void setUp(string path);
+    bool setUp(string path);
     void Info(string message);
     void Error(string message);
     static Logger *getLogger();

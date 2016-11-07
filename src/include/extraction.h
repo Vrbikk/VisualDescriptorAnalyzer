@@ -8,7 +8,7 @@
 #include "stdim.h"
 #include "Configuration.h"
 
-void iterate_extract(vector<_image> &images, string name_of_set);
+void iterate_extract(Method &selectedMethod, vector<_image> &images, string name_of_set);
 void extract(vector<_image> &train, vector<_image> &test);
 
 #endif //PLAYGROUND_EXTRACTION_H

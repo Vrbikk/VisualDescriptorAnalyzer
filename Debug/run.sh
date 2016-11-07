@@ -1,2 +1,2 @@
 #!/bin/bash
-./playground config.txt
+./playground log.log config.txt

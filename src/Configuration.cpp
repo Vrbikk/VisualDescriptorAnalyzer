@@ -14,12 +14,12 @@ Configuration::Configuration() {
     data_config.train_folder = "train";
     data_config.test_folder = "test";
     extraction_method = __LBP;
-    LBP_config.grid_size = 10;
-    LBP_config.uniform = true;
-    LBPa_config.grid_size = 10;
-    LBPa_config.uniform = true;
-    LBPa_config.comparison = true;
-    LBPa_config.center_size = 2;
+    LBP_config.hist.grid_size = 10;
+    LBP_config.hist.uniform = true;
+    LBPa_config.hist.grid_size = 10;
+    LBPa_config.hist.uniform = true;
+    LBPa_config.lbpa_params.comparison = true;
+    LBPa_config.lbpa_params.center_size = 2;
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
     horatio_caine_mode = false;
@@ -69,6 +69,10 @@ void Configuration::setComparisonMethod(string a) {
                 comparison_method = __INTERSECTION;
                 break;
             }
+            case 2: {
+                comparison_method = __BHATTACHARYYA;
+                break;
+            }
             default: {
                 LOGGER->Error("configuration file corrupted - comparison_method");
                 break;
@@ -95,12 +99,14 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("train_folder")){data_config.train_folder = value;}
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
-                else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.grid_size, "lbp_grid_size");}
-                else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.uniform, "lbp_uniform");}
-                else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.grid_size, "lbpa_grid_size");}
-                else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.uniform, "lbpa_uniform");}
-                else if(!type.compare("lbpa_comparison")){ setBoolValue(value, LBPa_config.comparison, "lbpa_comparison");}
-                else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.center_size, "lbpa_center_size");}
+                else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
+                else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
+                else if(!type.compare("lbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
+                else if(!type.compare("lbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
+                else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
+                else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
+                else if(!type.compare("lbpa_comparison")){ setBoolValue(value, LBPa_config.lbpa_params.comparison, "lbpa_comparison");}
+                else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
                 else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
@@ -174,7 +180,7 @@ void Configuration::setBoolValue(string a, bool &target, string target_name) {
 }
 
 void Configuration::setIntegerValue(string a, int &target, string target_name) {
-    if(is_number(a) && stoi(a) >= 0) { //TODO why > 0
+    if(is_number(a) && stoi(a) >= 0) {
         target = stoi(a);
     }else{
         LOGGER->Error("configuration file corrupted - " + target_name);
@@ -199,8 +205,10 @@ void Configuration::addJob(string line_job) {
     switch(method){
         case __LBP:{
             _LBP_config conf;
-            setIntegerValue(params[0], conf.grid_size, "job_lbp_grid_size");
-            setBoolValue(params[1], conf.uniform, "job_lbp_uniform");
+            setIntegerValue(params[0], conf.hist.grid_size, "job_lbp_grid_size");
+            setBoolValue(params[1], conf.hist.uniform, "job_lbp_uniform");
+            setIntegerValue(params[2], conf.lbp_params.range, "job_lbp_range");
+            setIntegerValue(params[3], conf.lbp_params.neighbours, "job_lbp_neighbours");
 
             _job job;
             job.method = __LBP;
@@ -210,10 +218,10 @@ void Configuration::addJob(string line_job) {
         }
         case __LBPa:{
             _LBPa_config conf;
-            setIntegerValue(params[0], conf.grid_size, "job_lbpa_grid_size");
-            setBoolValue(params[1], conf.uniform, "job_lbpa_uniform");
-            setIntegerValue(params[2], conf.center_size, "job_lbpa_center_size");
-            setBoolValue(params[3], conf.comparison, "job_lbpa_comparison");
+            setIntegerValue(params[0], conf.hist.grid_size, "job_lbpa_grid_size");
+            setBoolValue(params[1], conf.hist.uniform, "job_lbpa_uniform");
+            setIntegerValue(params[2], conf.lbpa_params.center_size, "job_lbpa_center_size");
+            setBoolValue(params[3], conf.lbpa_params.comparison, "job_lbpa_comparison");
 
             _job job;
             job.method = __LBPa;
@@ -265,6 +273,6 @@ string Configuration::configurationDump() {
                           data_config.print() + space +
                           preprocessing_config.print() + space +
                           "classification_threads:" + to_string(classification_threads) + space +
-                          "comparison_method:" + to_string(comparison_method) + "\n"
+                          "comparison_method:" + comparidon_method_string[comparison_method] + "\n"
     );
 }

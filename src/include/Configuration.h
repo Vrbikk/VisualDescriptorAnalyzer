@@ -19,7 +19,7 @@ enum __extraction_method{
 };
 
 enum __comparison_method{
-    __EUCLIDEAN, __INTERSECTION
+    __EUCLIDEAN, __INTERSECTION, __BHATTACHARYYA
 };
 
 struct _data_config{
@@ -49,6 +49,8 @@ struct _job{
 
 class Configuration {
 private:
+    string comparidon_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
+
     static Configuration *configuration_instance;
     Configuration();
     Configuration(const Configuration&); //protects copying
