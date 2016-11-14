@@ -4,6 +4,7 @@
 
 #include "include/Configuration.h"
 #include "include/LBPa.h"
+#include "include/stdim.h"
 
 Configuration *Configuration::configuration_instance = NULL;
 
@@ -14,12 +15,21 @@ Configuration::Configuration() {
     data_config.train_folder = "train";
     data_config.test_folder = "test";
     extraction_method = __LBP;
+
     LBP_config.hist.grid_size = 10;
     LBP_config.hist.uniform = true;
+    LBP_config.lbp_params.range = 1;
+    LBP_config.lbp_params.neighbours = 8;
+    LBP_config.lbp_params.shape = 1;
+    LBP_config.lbp_params.shape_evaluation = 1;
+
     LBPa_config.hist.grid_size = 10;
     LBPa_config.hist.uniform = true;
-    LBPa_config.lbpa_params.comparison = true;
+    LBPa_config.lbpa_params.shape_evaluation = 1;
     LBPa_config.lbpa_params.center_size = 2;
+    LBPa_config.lbpa_params.neighbour_shape = 2;
+    LBPa_config.lbpa_params.range = 2;
+
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
     horatio_caine_mode = false;
@@ -94,19 +104,28 @@ bool Configuration::setUp(const string path) {
             if(!isCommentOrEmpty(line)){
                 string type, value;
                 setTypeAndValue(line, type, value);
-                        // c++ does not support switching for string so... :(
+
                 if(!type.compare("data_path")){data_config.data_path = value;}
                 else if(!type.compare("train_folder")){data_config.train_folder = value;}
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
+
+                    //LBP
                 else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
                 else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
                 else if(!type.compare("lbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
                 else if(!type.compare("lbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
+                else if(!type.compare("lbp_shape")){ setIntegerValue(value, LBP_config.lbp_params.shape, "lbp_shape");}
+                else if(!type.compare("lbp_shape_evaluation")){ setIntegerValue(value, LBP_config.lbp_params.shape_evaluation, "lbp_shape_evaluation");}
+
+                    //LBPa
                 else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
                 else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
-                else if(!type.compare("lbpa_comparison")){ setBoolValue(value, LBPa_config.lbpa_params.comparison, "lbpa_comparison");}
                 else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
+                else if(!type.compare("lbpa_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
+                else if(!type.compare("lbpa_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
+                else if(!type.compare("lbpa_shape_evaluation")){ setIntegerValue(value, LBPa_config.lbpa_params.shape_evaluation, "lbpa_shape_evaluation");}
+
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
                 else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
@@ -209,6 +228,8 @@ void Configuration::addJob(string line_job) {
             setBoolValue(params[1], conf.hist.uniform, "job_lbp_uniform");
             setIntegerValue(params[2], conf.lbp_params.range, "job_lbp_range");
             setIntegerValue(params[3], conf.lbp_params.neighbours, "job_lbp_neighbours");
+            setIntegerValue(params[4], conf.lbp_params.shape, "job_lbp_shape");
+            setIntegerValue(params[5], conf.lbp_params.shape_evaluation, "job_lbp_shape_evaluation");
 
             _job job;
             job.method = __LBP;
@@ -221,7 +242,9 @@ void Configuration::addJob(string line_job) {
             setIntegerValue(params[0], conf.hist.grid_size, "job_lbpa_grid_size");
             setBoolValue(params[1], conf.hist.uniform, "job_lbpa_uniform");
             setIntegerValue(params[2], conf.lbpa_params.center_size, "job_lbpa_center_size");
-            setBoolValue(params[3], conf.lbpa_params.comparison, "job_lbpa_comparison");
+            setIntegerValue(params[3], conf.lbpa_params.neighbour_shape, "job_lbpa_neighbour_shape");
+            setIntegerValue(params[4], conf.lbpa_params.range, "job_lbpa_range");
+            setIntegerValue(params[5], conf.lbpa_params.shape_evaluation, "job_lbpa_shape_evaluation");
 
             _job job;
             job.method = __LBPa;
@@ -250,13 +273,11 @@ void Configuration::setActualJob(_job job) {
         case __LBP:{
             extraction_method = __LBP;
             LBP_config = job.lbp_conf;
-            LOGGER->Info(LBP_config.print());
             break;
         }
         case __LBPa:{
             extraction_method = __LBPa;
             LBPa_config = job.lbpa_conf;
-            LOGGER->Info(LBPa_config.print());
             break;
         }
         default:{

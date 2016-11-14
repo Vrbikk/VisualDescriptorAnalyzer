@@ -18,12 +18,14 @@ protected:
 
     vector<vector<double>> optimized_LBP;
 
+
+    byte getShapeValue(Mat &src, int x, int y, int type, int shape_evaluation);
+
     bool bitAtPosition(unsigned num, unsigned pos);
     void initUniformTable(int neighbours);
     void croppedImage(Mat src, Mat &dst, int crop_size);
     void localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector<int> &local_histogram, bool uniform);
-    vector<vector<int>> globalHistogram(std::vector<Mat*> src, int grid_size, bool uniform);
-    byte average_maximum_value(int x_, int y_, Mat &src, bool comparison, int size);
+    vector<vector<int>> globalHistogram(Mat &src, int grid_size, bool uniform);
     void extractLBPa(Mat &src, Mat &dst, _LBPa_config config);
     void extractLBP(Mat &src, Mat &dst, _LBP_config config);
 

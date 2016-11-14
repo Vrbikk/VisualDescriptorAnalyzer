@@ -3,6 +3,7 @@
 //
 
 #include "include/Method.h"
+#include "include/GUI.h"
 
 Method::Method() {
 
@@ -38,6 +39,9 @@ void Method::initUniformTable(int neighbours) {
             uniform_table[i] = number_of_uniform_patterns;
         }
     }
+
+    //LOGGER->Info("number of all patterns:" + to_string(number_of_all_patterns));
+    //LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
 }
 
 //false on 0, true on 1
@@ -68,93 +72,66 @@ void Method::localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector
     }
 }
 
-vector<vector<int>> Method::globalHistogram(std::vector<Mat*> src, int grid_size, bool uniform) {
+vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool uniform) {
 
     vector<vector<int>> global_histogram;
 
-    int frame_width = src.at(0)->size().width / grid_size;
-    int frame_height = src.at(0)->size().height / grid_size;
-    int x_offset = (src.at(0)->size().width % grid_size) / 2;
-    int y_offset = (src.at(0)->size().height % grid_size) / 2;
-
+    int frame_width = src.size().width / grid_size;
+    int frame_height = src.size().height / grid_size;
+    int x_offset = (src.size().width % grid_size) / 2;
+    int y_offset = (src.size().height % grid_size) / 2;
 
 
     for(int x = x_offset; x < grid_size * frame_width; x += frame_width){
         for(int y = y_offset; y < grid_size * frame_height; y += frame_height){
 
-            vector<int> full_local_histogram;
-
-            for(int i = 0; i < src.size(); i++){
-                vector<int> local_histogram;
-                localHistogram(x, y, frame_width, frame_height, *src.at(i), local_histogram, uniform);
-                full_local_histogram.insert(full_local_histogram.end(), local_histogram.begin(), local_histogram.end());
-            }
-
-
-            global_histogram.push_back(full_local_histogram);
+            vector<int> local_histogram;
+            localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
+            global_histogram.push_back(local_histogram);
         }
     }
     return global_histogram;
 }
 
-byte Method::average_maximum_value(int x_, int y_, Mat &src, bool comparison, int size) {
-    if(comparison) {
-        byte maximum = 0;
-        for (int x = x_; x < x_ + size; x++) {
-            for (int y = y_; y < y_ + size; y++) {
-                if (src.at<byte>(x, y) > maximum) {
-                    maximum = src.at<byte>(x, y);
-                }
-            }
-        }
-        return maximum;
-    }else{
-        int sum = 0;
-
-        for(int x = x_; x < x_ + size; x++){
-            for(int y = y_; y < y_ + size; y++){
-                sum += src.at<byte>(x, y);
-            }
-        }
-        byte average = (byte)(sum / (size * size));
-        return average;
-    }
-}
-
 void Method::extractLBPa(Mat &src, Mat &dst, _LBPa_config config) {
-    int dst_x, dst_y;
-    for(int x = config.lbpa_params.BORDER_OFFSET; x < src.size().height - config.lbpa_params.BORDER_OFFSET; x += config.lbpa_params.center_size){
-        for(int y = config.lbpa_params.BORDER_OFFSET; y < src.size().width - config.lbpa_params.BORDER_OFFSET; y += config.lbpa_params.center_size){
 
-            dst_x = x - config.lbpa_params.BORDER_OFFSET;
-            dst_y = y - config.lbpa_params.BORDER_OFFSET;
+    int offset = config.lbpa_params.range + config.lbpa_params.shape_safe_offset;
+
+    int dst_x, dst_y;
+    for(int x = offset; x < src.rows - offset; x += config.lbpa_params.center_size){
+        for(int y = offset; y < src.cols - offset; y += config.lbpa_params.center_size){
+
+            dst_x = x - offset;
+            dst_y = y - offset;
 
             byte LBP_code = 0;
             byte center;
 
-            if(config.lbpa_params.center_size == 2){
-                center = average_maximum_value(x, y, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE);
-            }else{
+            if(config.lbpa_params.center_size == 1){
                 center = src.at<byte>(x, y);
+            }else{
+                center = getShapeValue(src, x, y, config.lbpa_params.center_size, config.lbpa_params.shape_evaluation);
             }
 
-            LBP_code |= (average_maximum_value(x-2, y-2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 7;
-            LBP_code |= (average_maximum_value(x-2, y  , src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 6;
-            LBP_code |= (average_maximum_value(x-2, y+2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 5;
-            LBP_code |= (average_maximum_value(x  , y+2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 4;
-            LBP_code |= (average_maximum_value(x+2, y+2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 3;
-            LBP_code |= (average_maximum_value(x+2, y  , src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 2;
-            LBP_code |= (average_maximum_value(x+2, y-2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 1;
-            LBP_code |= (average_maximum_value(x  , y-2, src, config.lbpa_params.comparison, config.lbpa_params.BASE_SIZE) > center) << 0;
+            byte k = config.lbpa_params.range;
 
-            if(config.lbpa_params.center_size == 2){
-                for (int x_pos = dst_x; x_pos < (dst_x + config.lbpa_params.BASE_SIZE); x_pos++) {
-                    for (int y_pos = dst_y; y_pos < (dst_y + config.lbpa_params.BASE_SIZE); y_pos++) {
+            LBP_code |= (getShapeValue(src, x-k, y-k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 7;
+            LBP_code |= (getShapeValue(src, x-k, y  , config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 6;
+            LBP_code |= (getShapeValue(src, x-k, y+k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 5;
+            LBP_code |= (getShapeValue(src, x  , y+k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 4;
+            LBP_code |= (getShapeValue(src, x+k, y+k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 3;
+            LBP_code |= (getShapeValue(src, x+k, y  , config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 2;
+            LBP_code |= (getShapeValue(src, x+k, y-k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 1;
+            LBP_code |= (getShapeValue(src, x  , y-k, config.lbpa_params.neighbour_shape, config.lbpa_params.shape_evaluation) > center) << 0;
+
+            if(config.lbpa_params.center_size == 1){
+                dst.at<int>(dst_x, dst_y) = LBP_code;
+            }else{
+                for (int x_pos = dst_x; x_pos < (dst_x + config.lbpa_params.center_size) && x_pos < dst.rows; x_pos++) {
+                    for (int y_pos = dst_y; y_pos < (dst_y + config.lbpa_params.center_size) && y_pos < dst.cols; y_pos++) {
                         dst.at<int>(x_pos, y_pos) = LBP_code;
                     }
                 }
-            }else{
-                dst.at<int>(dst_x, dst_y) = LBP_code;
             }
         }
     }
@@ -162,29 +139,37 @@ void Method::extractLBPa(Mat &src, Mat &dst, _LBPa_config config) {
 
 void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
 
-    int dst_x, dst_y;
-    for(int x = config.lbp_params.range; x < src.size().height - config.lbp_params.range; x++){
-        for(int y = config.lbp_params.range; y < src.size().width - config.lbp_params.range; y++){
+    int offset = config.lbp_params.range + config.lbp_params.shape_safe_offset;
 
-            dst_x = x - config.lbp_params.range;
-            dst_y = y - config.lbp_params.range;
+    int dst_x, dst_y;
+
+    for(int x = offset; x < src.rows - offset; x++){
+        for(int y = offset; y < src.cols - offset; y++){
+            dst_x = x - offset;
+            dst_y = y - offset;
 
             int LBP_code = 0;
+            byte center = src.at<byte>(x, y); //selecting center point
 
-            byte center = src.at<byte>(x, y);
+            for(int i = 0; i < config.lbp_params.neighbours ; i++){  // iterating circle neighbours
 
-            for(int i = 0; i < config.lbp_params.neighbours ; i++){
-                double x_circle = x + optimized_LBP[i][0];
-                double y_circle = y + optimized_LBP[i][1];
-                LBP_code |= (src.at<byte>((int)round(x_circle), (int)round(y_circle)) > center) << i;
+                int x_circle = (int) round(x + optimized_LBP[i][0]);
+                int y_circle = (int) round(y + optimized_LBP[i][1]);
+
+                byte neighbour_value = getShapeValue(src, x_circle, y_circle, config.lbp_params.shape, config.lbp_params.shape_evaluation);
+
+                LBP_code |= (neighbour_value > center) << i; // shifting LBP buffer
             }
 
-            dst.at<int>(dst_x, dst_y) = LBP_code;
+            dst.at<int>(dst_x, dst_y) = LBP_code; // writting LBP value to LBP Mat
         }
     }
 }
 
 void Method::optimize_LBP_pls(_LBP_config config) {
+
+    // precalculating circular positions
+
     double angle = 0;
     double step = (M_PI * 2) / config.lbp_params.neighbours;
     optimized_LBP.resize(config.lbp_params.neighbours);
@@ -193,6 +178,150 @@ void Method::optimize_LBP_pls(_LBP_config config) {
         optimized_LBP[i][0] = config.lbp_params.range * cos(angle);
         optimized_LBP[i][1] =  config.lbp_params.range * sin(angle);
         angle += step;
+    }
+}
+
+/*
+ * shape_evaluation 0 = Min, 1 = Avg, 2 = Max
+ */
+
+byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluation) {
+
+    byte arr[10];
+    byte count;
+
+    switch(type){
+
+        // X
+        case 1: {
+
+            /*(src.at<byte>(x,y)) = 0;
+             show_image(src);*/
+
+             return src.at<byte>(x, y);
+        }
+
+        // XO
+        // OO
+        case 2:{
+            count = 4;
+
+            arr[0] = (src.at<byte>(x,y));
+            arr[1] = (src.at<byte>(x,y + 1));
+            arr[2] = (src.at<byte>(x + 1,y + 1));
+            arr[3] = (src.at<byte>(x + 1,y));
+
+            /*src.at<byte>(x,y) = 0;
+            src.at<byte>(x,y + 1) = 0;
+            src.at<byte>(x + 1,y + 1) = 0;
+            src.at<byte>(x + 1,y) = 0;
+
+            show__image(src);*/
+            break;
+        }
+
+        // XOO
+        // OOO
+        // OOO
+        case 3:{
+            count = 9;
+            byte index = 0;
+
+            for(int x_ = x; x_ < x + 3; x_++){
+                for(int y_ = y; y_ < y + 3; y_++){
+                    arr[index++] = src.at<byte>(x_, y_);
+                    //src.at<byte>(x_, y_) = 0;
+                }
+            }
+
+            //show_image(src);
+            break;
+        }
+
+        // OXO
+        case 4:{
+            count = 3;
+
+            arr[0] = (src.at<byte>(x,y));
+            arr[1] = (src.at<byte>(x,y + 1));
+            arr[2] = (src.at<byte>(x,y - 1));
+
+            /*(src.at<byte>(x,y)) = 0;
+            (src.at<byte>(x,y + 1)) = 0;
+            (src.at<byte>(x,y - 1)) = 0;
+            show_image(src);*/
+
+            break;
+        }
+
+            //  O
+            // OXO
+            //  O
+        case 5: {
+
+            count = 5;
+
+            arr[0] = (src.at<byte>(x, y));
+            arr[1] = (src.at<byte>(x - 1, y));
+            arr[2] = (src.at<byte>(x + 1, y));
+            arr[3] = (src.at<byte>(x, y - 1));
+            arr[4] = (src.at<byte>(x, y + 1));
+
+            /*(src.at<byte>(x,y)) = 0;
+            (src.at<byte>(x - 1,y)) = 0;
+            (src.at<byte>(x + 1,y)) = 0;
+            (src.at<byte>(x,y - 1)) = 0;
+            (src.at<byte>(x,y + 1)) = 0;
+             show_two_images(src, src);*/
+            break;
+        }
+
+
+        default:{
+            LOGGER->Error("default switch branch in getShapeValue - should not happend");
+            break;
+        }
+    }
+
+    switch(shape_evaluation){
+        case 0:{
+            byte min = 255;
+
+            for(int i = 0; i < count; i++){
+                if(arr[i] < min){
+                    min = arr[i];
+                }
+            }
+
+            return min;
+        }
+
+        case 1:{
+            int average = 0;
+
+            for(int i = 0; i < count; i++){
+                average += arr[i];
+            }
+
+            return (byte)(average / count);
+        }
+
+        case 2:{
+            byte max = 0;
+
+            for(int i = 0; i < count; i++){
+                if(arr[i] > max){
+                    max = arr[i];
+                }
+            }
+
+            return max;
+        }
+
+        default:{
+            LOGGER->Error("Default switch branch in minAvgmax - should not happend");
+            break;
+        }
     }
 }
 

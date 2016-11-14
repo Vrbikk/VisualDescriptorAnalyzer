@@ -26,28 +26,33 @@ struct _hist{
     bool uniform;
 
     string print(){
-        return string("grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform));
+        return string("HIST config - grid_size:" + to_string(grid_size) + " uniform:" + to_string(uniform));
     }
 };
 
 struct _LBP_params{
     int range;
     int neighbours;
+    int shape;
+    int shape_evaluation;
+    int shape_safe_offset = 2;
 
     string print(){
-        return string("range:" + to_string(range) + " neighbours:" + to_string(neighbours));
+        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " shape:" + to_string(shape)
+                      + " shape_evaluation:" + to_string(shape_evaluation));
     }
 };
 
 struct _LBPa_params{
-    int BORDER_OFFSET = 2;
-    int BASE_SIZE = 2;
     int center_size;
-    bool comparison;
+    int neighbour_shape;
+    int range;
+    int shape_evaluation;
+    int shape_safe_offset = 2;
     string print(){
-        return string("center_size:" + to_string(center_size) + " comparison:" + to_string(comparison));
+        return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" + to_string(neighbour_shape) + " range:" +
+                              to_string(range) + " shape_evaluation:" + to_string(shape_evaluation));
     }
-
 };
 
 struct _LBP_config{
@@ -55,7 +60,7 @@ struct _LBP_config{
     _hist hist;
 
     string print(){
-        return string("LBP config - " + lbp_params.print() + " " + hist.print());
+        return string(lbp_params.print() + " " + hist.print());
     }
 };
 

@@ -8,6 +8,7 @@
 #include "stdim.h"
 
 Mat create_img_with_text(_image img);
+void show_image(Mat a);
 void show_image(_image im_a);
 void show_two_images(_image im_a, _image im_b);
 void show_two_images(Mat a, Mat b);

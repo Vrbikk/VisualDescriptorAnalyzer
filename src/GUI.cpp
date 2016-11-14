@@ -13,6 +13,18 @@ Mat create_img_with_text(_image img){
     return img_with_text;
 }
 
+void show_image(Mat a){
+    double Max, Min;
+    minMaxLoc(a, &Min, &Max);
+    Mat view_a;
+    a.convertTo(view_a,CV_8U,255.0/(Max-Min),-255.0*Min/(Max-Min));
+    namedWindow("Display image", WINDOW_NORMAL);
+    resizeWindow("Display image", 3 * a.size().width, 3 * a.size().height);
+    imshow("Display image", view_a);
+
+    waitKey(0);
+}
+
 void show_image(_image im_a){
     Mat a = create_img_with_text(im_a);
     namedWindow("Display _image", WINDOW_NORMAL);
@@ -33,6 +45,7 @@ void show_two_images(Mat a, Mat b){
 
     Mat dst;
     hconcat(view_a, view_b, dst);
+
     namedWindow("Two Images", WINDOW_NORMAL);
     resizeWindow("Two Images", 2 * dst.size().width, 2 * dst.size().height);
     imshow("Two Images", dst);
