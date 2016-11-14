@@ -4,15 +4,15 @@
 
 #data_config - must have "/"
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train/
-test_folder:test/
+train_folder:train-50/
+test_folder:test-50/
 
 #preprocessing config
 equalize_hist:0
 gaussian_blur:0
 
 #run in JOB MODE (1) / NORMAL MODE (0)
-job_mode:0
+job_mode:1
 
 #[NORMAL MODE]choose method_type 0 = LBP; 1 = LBPa
 extraction_method:0
@@ -42,20 +42,20 @@ horatio_caine_mode:0
 #notation... job:[number of method see [NORMAL MODE] options]-param, param, param...
 
 #LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -     9,           1,         3,           8,           2,             1
-job:0 -    10,           1,         3,           8,           2,             1
-job:0 -    11,           1,         3,           8,           2,             1
-job:0 -    12,           1,         3,           8,           2,             1
-job:0 -    13,           1,         3,           8,           2,             1
-job:0 -    14,           1,         3,           8,           2,             1
+job:0 -     9,           1,         3,           8,           1,             1
+job:0 -    10,           1,         3,           8,           1,             1
+job:0 -    11,           1,         3,           8,           1,             1
+job:0 -    12,           1,         3,           8,           1,             1
+job:0 -    13,           1,         3,           8,           1,             1
+job:0 -    14,           1,         3,           8,           1,             1
 
 #LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -     9,           1,         3,          10,           2,             1
-job:0 -    10,           1,         3,          10,           2,             1
-job:0 -    11,           1,         3,          10,           2,             1
-job:0 -    12,           1,         3,          10,           2,             1
-job:0 -    13,           1,         3,          10,           2,             1
-job:0 -    14,           1,         3,          10,           2,             1
+job:0 -     9,           1,         3,          10,           1,             1
+job:0 -    10,           1,         3,          10,           1,             1
+job:0 -    11,           1,         3,          10,           1,             1
+job:0 -    12,           1,         3,          10,           1,             1
+job:0 -    13,           1,         3,          10,           1,             1
+job:0 -    14,           1,         3,          10,           1,             1
 
 #LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
 job:0 -    11,           1,         3,           8,           1,             1
@@ -77,6 +77,27 @@ job:0 -    11,           1,         3,          12,           2,             1
 job:0 -    11,           1,         3,          12,           3,             1
 job:0 -    11,           1,         3,          12,           4,             1
 job:0 -    11,           1,         3,          12,           5,             1
+
+#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
+job:0 -    10,           0,         3,           8,           1,             1
+job:0 -    10,           0,         3,           8,           2,             1
+job:0 -    10,           0,         3,           8,           3,             1
+job:0 -    10,           0,         3,           8,           4,             1
+job:0 -    10,           0,         3,           8,           5,             1
+
+#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
+job:0 -    10,           0,         3,          10,           1,             1
+job:0 -    10,           0,         3,          10,           2,             1
+job:0 -    10,           0,         3,          10,           3,             1
+job:0 -    10,           0,         3,          10,           4,             1
+job:0 -    10,           0,         3,          10,           5,             1
+
+#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
+job:0 -    10,           0,         3,          12,           1,             1
+job:0 -    10,           0,         3,          12,           2,             1
+job:0 -    10,           0,         3,          12,           3,             1
+job:0 -    10,           0,         3,          12,           4,             1
+job:0 -    10,           0,         3,          12,           5,             1
 
 
 #####################################################################################################
