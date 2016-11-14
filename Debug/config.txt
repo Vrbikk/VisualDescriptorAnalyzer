@@ -4,8 +4,8 @@
 
 #data_config - must have "/"
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-50/
-test_folder:test-50/
+train_folder:train-100/
+test_folder:test-100/
 
 #preprocessing config
 equalize_hist:0

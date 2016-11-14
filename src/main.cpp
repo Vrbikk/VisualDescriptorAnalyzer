@@ -35,6 +35,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    system("eject");
+
     LOGGER->Info("Application ended correctly...");
 
     atexit(cleanup);
