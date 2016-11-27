@@ -140,7 +140,7 @@ void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
     }
 
     double accuracy = hits/(test.size() * 1.0);
-    LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑");
+    LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑\n");
 }
 
 void classificate(vector<_image> &train, vector<_image> &test) {

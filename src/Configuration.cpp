@@ -4,7 +4,6 @@
 
 #include "include/Configuration.h"
 #include "include/LBPa.h"
-#include "include/stdim.h"
 
 Configuration *Configuration::configuration_instance = NULL;
 
@@ -20,12 +19,10 @@ Configuration::Configuration() {
     LBP_config.hist.uniform = true;
     LBP_config.lbp_params.range = 1;
     LBP_config.lbp_params.neighbours = 8;
-    LBP_config.lbp_params.shape = 1;
-    LBP_config.lbp_params.shape_evaluation = 1;
+    LBP_config.lbp_params.neighbour_shape = 1;
 
     LBPa_config.hist.grid_size = 10;
     LBPa_config.hist.uniform = true;
-    LBPa_config.lbpa_params.shape_evaluation = 1;
     LBPa_config.lbpa_params.center_size = 2;
     LBPa_config.lbpa_params.neighbour_shape = 2;
     LBPa_config.lbpa_params.range = 2;
@@ -115,16 +112,13 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
                 else if(!type.compare("lbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
                 else if(!type.compare("lbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
-                else if(!type.compare("lbp_shape")){ setIntegerValue(value, LBP_config.lbp_params.shape, "lbp_shape");}
-                else if(!type.compare("lbp_shape_evaluation")){ setIntegerValue(value, LBP_config.lbp_params.shape_evaluation, "lbp_shape_evaluation");}
-
+                else if(!type.compare("lbp_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
                     //LBPa
                 else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
                 else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
                 else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
                 else if(!type.compare("lbpa_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
                 else if(!type.compare("lbpa_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
-                else if(!type.compare("lbpa_shape_evaluation")){ setIntegerValue(value, LBPa_config.lbpa_params.shape_evaluation, "lbpa_shape_evaluation");}
 
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
@@ -228,8 +222,7 @@ void Configuration::addJob(string line_job) {
             setBoolValue(params[1], conf.hist.uniform, "job_lbp_uniform");
             setIntegerValue(params[2], conf.lbp_params.range, "job_lbp_range");
             setIntegerValue(params[3], conf.lbp_params.neighbours, "job_lbp_neighbours");
-            setIntegerValue(params[4], conf.lbp_params.shape, "job_lbp_shape");
-            setIntegerValue(params[5], conf.lbp_params.shape_evaluation, "job_lbp_shape_evaluation");
+            setIntegerValue(params[4], conf.lbp_params.neighbour_shape, "job_lbp_neighbour_shape");
 
             _job job;
             job.method = __LBP;
@@ -244,7 +237,6 @@ void Configuration::addJob(string line_job) {
             setIntegerValue(params[2], conf.lbpa_params.center_size, "job_lbpa_center_size");
             setIntegerValue(params[3], conf.lbpa_params.neighbour_shape, "job_lbpa_neighbour_shape");
             setIntegerValue(params[4], conf.lbpa_params.range, "job_lbpa_range");
-            setIntegerValue(params[5], conf.lbpa_params.shape_evaluation, "job_lbpa_shape_evaluation");
 
             _job job;
             job.method = __LBPa;

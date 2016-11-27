@@ -2,145 +2,149 @@
 
 #config file...
 
-#data_config - must have "/"
+#### data_config - must have "/"
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-100/
-test_folder:test-100/
+train_folder:train-50/
+test_folder:test-50/
 
-#preprocessing config
+#### preprocessing config
 equalize_hist:0
 gaussian_blur:0
 
-#run in JOB MODE (1) / NORMAL MODE (0)
-job_mode:1
-
-#[NORMAL MODE]choose method_type 0 = LBP; 1 = LBPa
-extraction_method:0
-
-#[NORMAL MODE] LBP - lbp_grid_size: 1-16, lbp_uniform: O-off, 1-on
-lbp_grid_size:11
-lbp_uniform:1
-lbp_range:3
-lbp_neighbours:10
-lbp_shape:5
-lbp_shape_evaluation:1
-
-#[NORMAL MODE] LBPa - lbpa_grid_size: 1-16, lbpa_uniform: O-off, 1-on, lbpa_center_size: 1|2, lbpa_comparison: 0-min, 1-avg, 2-max
-lbpa_grid_size:13
-lbpa_uniform:1
-lbpa_center_size:2
-lbpa_neighbour_shape:2
-lbpa_range:2
-lbpa_shape_evaluation:1
-
-#[NORMAL MODE | JOB MODE ] Classification params - comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya), classification_threads: based on cpu cores
+#### global config
+#### comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya)
+#### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
 horatio_caine_mode:0
 
-#[JOB MODE] if job mode is enabled, application will proceed this tasks:
-#notation... job:[number of method see [NORMAL MODE] options]-param, param, param...
+##### run in JOB MODE (1) / NORMAL MODE (0)
+#### NORMAL MODE... is for testing actual parameters below, runs only once
+#### JOB MODE... runs every job in section JOB
+job_mode:1
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -     9,           1,         3,           8,           1,             1
-job:0 -    10,           1,         3,           8,           1,             1
-job:0 -    11,           1,         3,           8,           1,             1
-job:0 -    12,           1,         3,           8,           1,             1
-job:0 -    13,           1,         3,           8,           1,             1
-job:0 -    14,           1,         3,           8,           1,             1
+####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
+extraction_method:0
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -     9,           1,         3,          10,           1,             1
-job:0 -    10,           1,         3,          10,           1,             1
-job:0 -    11,           1,         3,          10,           1,             1
-job:0 -    12,           1,         3,          10,           1,             1
-job:0 -    13,           1,         3,          10,           1,             1
-job:0 -    14,           1,         3,          10,           1,             1
+###### LBP params ######
+#lbp_grid_size... n * n subhistograms [1-16]
+#lbp_uniform... uniform or not uniform patterns [1|0]
+#lbp_range... distance between center point and circle interpolated neighbours [1-3]
+            # setting range to 1 means standard LBP
+#lbp_neighbours... number of neighbours, for uniform patterns [8-16]
+            # !!! for not uniform patterns should be lower than 12 (histograms are too big) !!!
+#lbp_neighbour_shape... shape of neighbour pixel group see "shapes.txt" [1-5]
+            # set 1 for default one pixel version
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -    11,           1,         3,           8,           1,             1
-job:0 -    11,           1,         3,           8,           2,             1
-job:0 -    11,           1,         3,           8,           3,             1
-job:0 -    11,           1,         3,           8,           4,             1
-job:0 -    11,           1,         3,           8,           5,             1
+###### LBPa params ######
+#lbpa_center_size... defines n*n size of center [1-3]
+#lbpa_neighbour_shape... same as in LBP but there should be values [2|3] but works with any other shape
+#lbpa_range... range between center and shapes
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -    11,           1,         3,          10,           1,             1
-job:0 -    11,           1,         3,          10,           2,             1
-job:0 -    11,           1,         3,          10,           3,             1
-job:0 -    11,           1,         3,          10,           4,             1
-job:0 -    11,           1,         3,          10,           5,             1
+#LBP [NORMAL MODE]
+lbp_grid_size:11
+lbp_uniform:0
+lbp_range:3
+lbp_neighbours:9
+lbp_neighbour_shape:2
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -    11,           1,         3,          12,           1,             1
-job:0 -    11,           1,         3,          12,           2,             1
-job:0 -    11,           1,         3,          12,           3,             1
-job:0 -    11,           1,         3,          12,           4,             1
-job:0 -    11,           1,         3,          12,           5,             1
+#LBPa [NORMAL MODE]
+lbpa_grid_size:13
+lbpa_uniform:1
+lbpa_center_size:3
+lbpa_neighbour_shape:3
+lbpa_range:3
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -    10,           0,         3,           8,           1,             1
-job:0 -    10,           0,         3,           8,           2,             1
-job:0 -    10,           0,         3,           8,           3,             1
-job:0 -    10,           0,         3,           8,           4,             1
-job:0 -    10,           0,         3,           8,           5,             1
+#[JOB MODE] if job mode is enabled, application will proceed this jobs:
+#notation... job:method_number-params...
 
-#LBP    grid_size     uniform     range     neighbours     shape     shape_evaluation
-job:0 -    10,           0,         3,          10,           1,             1
-job:0 -    10,           0,         3,          10,           2,             1
-job:0 -    10,           0,         3,          10,           3,             1
-job:0 -    10,           0,         3,          10,           4,             1
-job:0 -    10,           0,         3,          10,           5,             1
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
 
+job:0 -    12,           1,         1,           8,           1
+job:0 -    12,           1,         1,           8,           2
+job:0 -    12,           1,         1,           8,           3
+job:0 -    12,           1,         1,           8,           4
+job:0 -    12,           1,         1,           8,           5
+job:0 -    12,           1,         1,           8,           6
 
+job:0 -    12,           1,         2,           8,           1
+job:0 -    12,           1,         2,           8,           2
+job:0 -    12,           1,         2,           8,           3
+job:0 -    12,           1,         2,           8,           4
+job:0 -    12,           1,         2,           8,           5
+job:0 -    12,           1,         2,           8,           6
+
+job:0 -    12,           1,         3,           8,           1
+job:0 -    12,           1,         3,           8,           2
+job:0 -    12,           1,         3,           8,           3
+job:0 -    12,           1,         3,           8,           4
+job:0 -    12,           1,         3,           8,           5
+job:0 -    12,           1,         3,           8,           6
+
+#9 neighbours
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    12,           1,         1,           9,           1
+job:0 -    12,           1,         1,           9,           2
+job:0 -    12,           1,         1,           9,           3
+job:0 -    12,           1,         1,           9,           4
+job:0 -    12,           1,         1,           9,           5
+job:0 -    12,           1,         1,           9,           6
+
+job:0 -    12,           1,         2,           9,           1
+job:0 -    12,           1,         2,           9,           2
+job:0 -    12,           1,         2,           9,           3
+job:0 -    12,           1,         2,           9,           4
+job:0 -    12,           1,         2,           9,           5
+job:0 -    12,           1,         2,           9,           6
+
+job:0 -    12,           1,         3,           9,           1
+job:0 -    12,           1,         3,           9,           2
+job:0 -    12,           1,         3,           9,           3
+job:0 -    12,           1,         3,           9,           4
+job:0 -    12,           1,         3,           9,           5
+job:0 -    12,           1,         3,           9,           6
+
+#10 neighbours
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    12,           1,         1,          10,           1
+job:0 -    12,           1,         1,          10,           2
+job:0 -    12,           1,         1,          10,           3
+job:0 -    12,           1,         1,          10,           4
+job:0 -    12,           1,         1,          10,           5
+job:0 -    12,           1,         1,          10,           6
+
+job:0 -    12,           1,         2,          10,           1
+job:0 -    12,           1,         2,          10,           2
+job:0 -    12,           1,         2,          10,           3
+job:0 -    12,           1,         2,          10,           4
+job:0 -    12,           1,         2,          10,           5
+job:0 -    12,           1,         2,          10,           6
+
+job:0 -    12,           1,         3,          10,           1
+job:0 -    12,           1,         3,          10,           2
+job:0 -    12,           1,         3,          10,           3
+job:0 -    12,           1,         3,          10,           4
+job:0 -    12,           1,         3,          10,           5
+job:0 -    12,           1,         3,          10,           6
 
 #####################################################################################################
 
 
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            1,                2,             2,             1
-job:1 -    10,           1,            1,                2,             2,             1
-job:1 -    11,           1,            1,                2,             2,             1
-job:1 -    12,           1,            1,                2,             2,             1
-job:1 -    13,           1,            1,                2,             2,             1
-job:1 -    14,           1,            1,                2,             2,             1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    13,           1,            1,                2,             2
+job:1 -    13,           1,            1,                3,             2
+job:1 -    13,           1,            1,                2,             3
+job:1 -    13,           1,            1,                3,             3
+job:1 -    13,           1,            2,                2,             2
+job:1 -    13,           1,            2,                3,             2
+job:1 -    13,           1,            2,                2,             3
+job:1 -    13,           1,            2,                3,             3
 
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            2,                2,             2,             1
-job:1 -    10,           1,            2,                2,             2,             1
-job:1 -    11,           1,            2,                2,             2,             1
-job:1 -    12,           1,            2,                2,             2,             1
-job:1 -    13,           1,            2,                2,             2,             1
-job:1 -    14,           1,            2,                2,             2,             1
-
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            1,                2,             2,             0
-job:1 -    10,           1,            1,                2,             2,             0
-job:1 -    11,           1,            1,                2,             2,             0
-job:1 -    12,           1,            1,                2,             2,             0
-job:1 -    13,           1,            1,                2,             2,             0
-job:1 -    14,           1,            1,                2,             2,             0
-
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            2,                2,             2,             0
-job:1 -    10,           1,            2,                2,             2,             0
-job:1 -    11,           1,            2,                2,             2,             0
-job:1 -    12,           1,            2,                2,             2,             0
-job:1 -    13,           1,            2,                2,             2,             0
-job:1 -    14,           1,            2,                2,             2,             0
-
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            1,                2,             2,             2
-job:1 -    10,           1,            1,                2,             2,             2
-job:1 -    11,           1,            1,                2,             2,             2
-job:1 -    12,           1,            1,                2,             2,             2
-job:1 -    13,           1,            1,                2,             2,             2
-job:1 -    14,           1,            1,                2,             2,             2
-
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range     shape_evaluation
-job:1 -     9,           1,            2,                2,             2,             2
-job:1 -    10,           1,            2,                2,             2,             2
-job:1 -    11,           1,            2,                2,             2,             2
-job:1 -    12,           1,            2,                2,             2,             2
-job:1 -    13,           1,            2,                2,             2,             2
-job:1 -    14,           1,            2,                2,             2,             2
+job:1 -    13,           0,            1,                2,             2
+job:1 -    13,           0,            1,                3,             2
+job:1 -    13,           0,            1,                2,             3
+job:1 -    13,           0,            1,                3,             3
+job:1 -    13,           0,            2,                2,             2
+job:1 -    13,           0,            2,                3,             2
+job:1 -    13,           0,            2,                2,             3
+job:1 -    13,           0,            2,                3,             3

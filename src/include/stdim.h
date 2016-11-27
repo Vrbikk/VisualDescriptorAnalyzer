@@ -33,12 +33,12 @@ struct _hist{
 struct _LBP_params{
     int range;
     int neighbours;
-    int shape;
-    int shape_evaluation;
+    int neighbour_shape;
+    int shape_evaluation = 1;
     int shape_safe_offset = 2;
 
     string print(){
-        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " shape:" + to_string(shape)
+        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" + to_string(neighbour_shape)
                       + " shape_evaluation:" + to_string(shape_evaluation));
     }
 };
@@ -47,7 +47,7 @@ struct _LBPa_params{
     int center_size;
     int neighbour_shape;
     int range;
-    int shape_evaluation;
+    int shape_evaluation = 1;
     int shape_safe_offset = 2;
     string print(){
         return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" + to_string(neighbour_shape) + " range:" +

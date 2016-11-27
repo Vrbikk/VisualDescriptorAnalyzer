@@ -81,13 +81,21 @@ vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool unifor
     int x_offset = (src.size().width % grid_size) / 2;
     int y_offset = (src.size().height % grid_size) / 2;
 
-
     for(int x = x_offset; x < grid_size * frame_width; x += frame_width){
         for(int y = y_offset; y < grid_size * frame_height; y += frame_height){
 
-            vector<int> local_histogram;
-            localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
-            global_histogram.push_back(local_histogram);
+            //int value = (int)round((-((x * x) / 26) + (4.9 * x) -37));
+
+            //if((y - frame_height / 2) < value) {
+                vector<int> local_histogram;
+                localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
+                global_histogram.push_back(local_histogram);
+
+            /*    rectangle(src, Point(x, y), Point(x + frame_width, y + frame_height), Scalar(255),
+                          2, 8, 0);
+                show_image(src);
+            }*/
+
         }
     }
     return global_histogram;
@@ -156,7 +164,7 @@ void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
                 int x_circle = (int) round(x + optimized_LBP[i][0]);
                 int y_circle = (int) round(y + optimized_LBP[i][1]);
 
-                byte neighbour_value = getShapeValue(src, x_circle, y_circle, config.lbp_params.shape, config.lbp_params.shape_evaluation);
+                byte neighbour_value = getShapeValue(src, x_circle, y_circle, config.lbp_params.neighbour_shape, config.lbp_params.shape_evaluation);
 
                 LBP_code |= (neighbour_value > center) << i; // shifting LBP buffer
             }
@@ -273,6 +281,23 @@ byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluatio
             (src.at<byte>(x,y - 1)) = 0;
             (src.at<byte>(x,y + 1)) = 0;
              show_two_images(src, src);*/
+            break;
+        }
+
+        // OOO
+        // OXO
+        // OOO
+        case 6: {
+            count = 9;
+            byte index = 0;
+
+            for(int x_ = x - 1; x_ < x + 2; x_++){
+                for(int y_ = (y - 1); y_ < y + 2; y_++){
+                    arr[index++] = src.at<byte>(x_, y_);
+                    //src.at<byte>(x_, y_) = 0;
+                }
+            }
+            //show_image(src);
             break;
         }
 

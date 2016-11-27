@@ -13,3 +13,6 @@ O4O
 O5O
  O
 
+OOO
+O6O
+OOO

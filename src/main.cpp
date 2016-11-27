@@ -29,13 +29,15 @@ int main(int argc, char *argv[]) {
             LOGGER->Info("Application started in [NORMAL MODE]");
             LOGGER->Info(CONFIG->configurationDump());
 
+            /*for(auto a : test){
+                Gabor_editor(a.original_img);
+            }*/
+
             preprocess(train, test);
             extract(train, test);
             classificate(train, test);
         }
     }
-
-    system("eject");
 
     LOGGER->Info("Application ended correctly...");
 

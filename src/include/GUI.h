@@ -8,6 +8,9 @@
 #include "stdim.h"
 
 Mat create_img_with_text(_image img);
+void convert_CV32F_to_CV8U(Mat &src, Mat &dst);
+void convert_CV32SC1_to_CV8U(Mat &src, Mat &dst);
+void Gabor_editor(Mat &src);
 void show_image(Mat a);
 void show_image(_image im_a);
 void show_two_images(_image im_a, _image im_b);
