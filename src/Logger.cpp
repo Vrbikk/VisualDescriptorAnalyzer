@@ -8,7 +8,6 @@ Logger *Logger::logger_instance = NULL;
 ofstream Logger::log_stream;
 
 Logger::Logger() {
-    setUp(std::__cxx11::string());
 }
 
 string Logger::get_current_date_time() {
@@ -37,7 +36,7 @@ Logger *Logger::getLogger() {
     return logger_instance;
 }
 
-bool Logger::setUp(std::string path) {
+bool Logger::setUp(string path) {
     logging_file = path;
     log_stream.open(logging_file.c_str(), ios::out | ios::app);
 
