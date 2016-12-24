@@ -37,7 +37,7 @@ Logger *Logger::getLogger() {
     return logger_instance;
 }
 
-bool Logger::setUp(string path) {
+bool Logger::setUp(std::string path) {
     logging_file = path;
     log_stream.open(logging_file.c_str(), ios::out | ios::app);
 
