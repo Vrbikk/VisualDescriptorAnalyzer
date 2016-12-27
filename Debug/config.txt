@@ -21,7 +21,7 @@ horatio_caine_mode:0
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:1
+job_mode:0
 
 ####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
 extraction_method:0
@@ -44,9 +44,9 @@ extraction_method:0
 #LBP [NORMAL MODE]
 lbp_grid_size:11
 lbp_uniform:0
-lbp_range:3
-lbp_neighbours:9
-lbp_neighbour_shape:2
+lbp_range:2
+lbp_neighbours:8
+lbp_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
 lbpa_grid_size:13

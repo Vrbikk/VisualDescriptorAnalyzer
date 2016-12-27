@@ -40,8 +40,8 @@ void Method::initUniformTable(int neighbours) {
         }
     }
 
-    //LOGGER->Info("number of all patterns:" + to_string(number_of_all_patterns));
-    //LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
+    LOGGER->Info("number of all patterns:" + to_string(number_of_all_patterns));
+    LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
 }
 
 //false on 0, true on 1
