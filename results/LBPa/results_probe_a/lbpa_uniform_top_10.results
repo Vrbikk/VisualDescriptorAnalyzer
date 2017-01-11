@@ -1,0 +1,44 @@
+data_config:[test_folder:test/, train_folder:train/]
+preprocessing_config:[equalize_hist:0, gaussina_blur:0]
+classification_threads:8
+comparison_method:INTERSECTION
+
+25-12-2016 19:14:29:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:3 shape_evaluation:1
+25-12-2016 19:14:29:  INFO - HIST config - grid_size:12 uniform:1
+25-12-2016 19:16:55:  INFO - ↑ accuracy: <0.646281> ↑
+
+25-12-2016 19:38:50:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:3 shape_evaluation:1
+25-12-2016 19:38:50:  INFO - HIST config - grid_size:13 uniform:1
+25-12-2016 19:41:42:  INFO - ↑ accuracy: <0.642975> ↑
+
+25-12-2016 20:38:36:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:3 shape_evaluation:1
+25-12-2016 20:38:36:  INFO - HIST config - grid_size:15 uniform:1
+25-12-2016 20:42:26:  INFO - ↑ accuracy: <0.641322> ↑
+
+25-12-2016 18:51:46:  INFO - LBPa config - center_size:2 neighbour_shape:2 range:3 shape_evaluation:1
+25-12-2016 18:51:46:  INFO - HIST config - grid_size:11 uniform:1
+25-12-2016 18:53:48:  INFO - ↑ accuracy: <0.639669> ↑
+
+25-12-2016 18:36:00:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:3 shape_evaluation:1
+25-12-2016 18:36:00:  INFO - HIST config - grid_size:10 uniform:1
+25-12-2016 18:37:44:  INFO - ↑ accuracy: <0.638017> ↑
+
+25-12-2016 19:12:08:  INFO - LBPa config - center_size:2 neighbour_shape:2 range:3 shape_evaluation:1
+25-12-2016 19:12:08:  INFO - HIST config - grid_size:12 uniform:1
+25-12-2016 19:14:29:  INFO - ↑ accuracy: <0.636364> ↑
+
+25-12-2016 19:35:57:  INFO - LBPa config - center_size:2 neighbour_shape:2 range:3 shape_evaluation:1
+25-12-2016 19:35:57:  INFO - HIST config - grid_size:13 uniform:1
+25-12-2016 19:38:50:  INFO - ↑ accuracy: <0.634711> ↑
+
+25-12-2016 20:00:13:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:2 shape_evaluation:1
+25-12-2016 20:00:13:  INFO - HIST config - grid_size:14 uniform:1
+25-12-2016 20:03:38:  INFO - ↑ accuracy: <0.633058> ↑
+
+25-12-2016 20:03:38:  INFO - LBPa config - center_size:2 neighbour_shape:2 range:3 shape_evaluation:1
+25-12-2016 20:03:38:  INFO - HIST config - grid_size:14 uniform:1
+25-12-2016 20:06:54:  INFO - ↑ accuracy: <0.633058> ↑
+
+25-12-2016 18:53:48:  INFO - LBPa config - center_size:2 neighbour_shape:3 range:3 shape_evaluation:1
+25-12-2016 18:53:48:  INFO - HIST config - grid_size:11 uniform:1
+25-12-2016 18:55:51:  INFO - ↑ accuracy: <0.633058> ↑
