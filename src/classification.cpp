@@ -11,38 +11,50 @@ double get_euclidean_distance(vector<vector<int>> a, vector<vector<int>> b) {
     int inner_size = a[0].size();
 
     for(int i = 0; i < outer_size; i++){
+        double pom = 0;
         for(int j = 0; j < inner_size; j++){
-            distance += (a[i][j] - b[i][j]) * (a[i][j] - b[i][j]);
+            pom += (a[i][j] - b[i][j]) * (a[i][j] - b[i][j]);
         }
+        distance += sqrt(pom);
     }
-
-    return sqrt(distance);
+    return distance;
 }
 
 double get_intersection_distance(vector<vector<int>> a, vector<vector<int>> b) {
 
     double distance = 0;
-    double distance_a = 0;
 
     int outer_size = a.size();
     int inner_size = a[0].size();
 
     for(int i = 0; i < outer_size; i++){
-        for(int j = 0; j < inner_size; j++){
-            distance_a += a[i][j];
 
-            if(a[i][j] < b[i][j]){
+        double sum = 0;
+        double sub_distance = 0;
+
+        for(int j = 0; j < inner_size; j++){
+            /*distance_a += a[i][j];
+            if(a[i][j] < b[i][j]){  //min
                 distance += a[i][j];
             }else{
                 distance += b[i][j];
+            }*/
+            sum += a[i][j];
+            if(a[i][j] < b[i][j]){  //min
+                sub_distance += a[i][j];
+            }else{
+                sub_distance += b[i][j];
             }
         }
+        distance += (sum - sub_distance);
     }
-
-    return distance_a - distance;
+    //return distance_a - distance;
+    return distance;
 }
 
 double get_histogram_distance(vector<vector<int>> a, vector<vector<int>> b, __comparison_method comparison_method) {
+
+
     switch(comparison_method){
 
         case __EUCLIDEAN:{
