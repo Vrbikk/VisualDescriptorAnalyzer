@@ -9,7 +9,7 @@ void LBPa::Process(_image &img) {
 
     Mat cropped;
     croppedImage(img.working_img, cropped, config.lbpa_params.shape_safe_offset + config.lbpa_params.range);
-    Mat lbpa = Mat(img.working_img.cols, img.working_img.rows, CV_32SC1);
+    Mat lbpa = Mat(img.working_img.rows, img.working_img.cols, CV_32SC1);
     extractLBPa(cropped, lbpa, config);
 
     //show_image(lbpa);

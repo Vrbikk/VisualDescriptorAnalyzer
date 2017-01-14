@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
     vector<_image> test = vector<_image>();
 
     if(argc == 3 && LOGGER->setUp(argv[1]) && CONFIG->setUp(argv[2]) && load_images(train, test)){
+
         if(CONFIG->getJobMode()) {
             LOGGER->Info("Application started in [JOB MODE]");
             LOGGER->Info(CONFIG->configurationDump());

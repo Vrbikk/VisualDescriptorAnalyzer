@@ -9,7 +9,6 @@ Mat create_img_with_text(_image img){
     putText(img_with_text, "ID: " + to_string(img.id) + " (" + img.file_name + ")",
             cvPoint(15,img.original_img.size().height - 5),
             CV_FONT_NORMAL, 0.37, cvScalar(255,10,0), 1, CV_AA);
-
     return img_with_text;
 }
 
@@ -27,6 +26,7 @@ void show_image(_image im_a){
     namedWindow("Display _image", WINDOW_NORMAL);
     resizeWindow("Display _image", 2 * a.size().width, 2 * a.size().height);
     imshow("Display _image", a);
+    waitKey(0);
 }
 
 void show_two_images(Mat a, Mat b){

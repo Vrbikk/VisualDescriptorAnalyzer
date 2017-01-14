@@ -40,8 +40,8 @@ void Method::initUniformTable(int neighbours) {
         }
     }
 
-    LOGGER->Info("number of all patterns:" + to_string(number_of_all_patterns));
-    LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
+    //LOGGER->Info("number of all patterns:" + to_string(number_of_all_patterns));
+    //LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
 }
 
 //false on 0, true on 1
@@ -91,11 +91,9 @@ vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool unifor
                 localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
                 global_histogram.push_back(local_histogram);
 
-            /*    rectangle(src, Point(x, y), Point(x + frame_width, y + frame_height), Scalar(255),
+                /*rectangle(src, Point(x, y), Point(x + frame_width, y + frame_height), Scalar(255),
                           2, 8, 0);
-                show_image(src);
-            }*/
-
+                show_image(src);*/
         }
     }
     return global_histogram;
@@ -153,6 +151,7 @@ void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
 
     for(int x = offset; x < src.rows - offset; x++){
         for(int y = offset; y < src.cols - offset; y++){
+
             dst_x = x - offset;
             dst_y = y - offset;
 
@@ -168,7 +167,6 @@ void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
 
                 LBP_code |= (neighbour_value > center) << i; // shifting LBP buffer
             }
-
             dst.at<int>(dst_x, dst_y) = LBP_code; // writting LBP value to LBP Mat
         }
     }

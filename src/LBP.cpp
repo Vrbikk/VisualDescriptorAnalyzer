@@ -17,7 +17,7 @@ void LBP::Process(_image &img) {
    //Extraction phase
    Mat cropped;
    croppedImage(img.working_img, cropped, config.lbp_params.range + config.lbp_params.shape_safe_offset);
-   Mat lbp = Mat::zeros(img.working_img.cols, img.working_img.rows, CV_32SC1);
+   Mat lbp = Mat::zeros(img.working_img.rows, img.working_img.cols, CV_32SC1);
    extractLBP(cropped, lbp, config);
 
    //show_image(lbp);

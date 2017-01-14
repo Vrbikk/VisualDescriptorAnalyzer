@@ -3,9 +3,9 @@
 #config file...
 
 #### data_config - must have "/"
-data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train/
-test_folder:test/
+data_path:/home/vrbik/Apps/gray_feret/
+train_folder:gallery/
+test_folder:fb/
 
 #### preprocessing config
 equalize_hist:0
@@ -21,10 +21,10 @@ horatio_caine_mode:0
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:1
+job_mode:0
 
 ####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
-extraction_method:0
+extraction_method:1
 
 ###### LBP params ######
 #lbp_grid_size... n * n subhistograms [1-16]
@@ -42,18 +42,18 @@ extraction_method:0
 #lbpa_range... range between center and shapes
 
 #LBP [NORMAL MODE]
-lbp_grid_size:12
+lbp_grid_size:8
 lbp_uniform:1
-lbp_range:4
-lbp_neighbours:16
-lbp_neighbour_shape:5
+lbp_range:1
+lbp_neighbours:8
+lbp_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
-lbpa_grid_size:13
+lbpa_grid_size:12
 lbpa_uniform:1
-lbpa_center_size:3
-lbpa_neighbour_shape:3
-lbpa_range:3
+lbpa_center_size:2
+lbpa_neighbour_shape:2
+lbpa_range:4
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
