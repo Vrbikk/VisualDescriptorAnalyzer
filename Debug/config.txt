@@ -16,7 +16,7 @@ gaussian_blur:0
 #### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
-horatio_caine_mode:0
+horatio_caine_mode:1
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
