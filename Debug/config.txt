@@ -3,9 +3,16 @@
 #config file...
 
 #### data_config - must have "/"
-data_path:/home/vrbik/Apps/gray_feret/
-train_folder:gallery/
-test_folder:fb/
+
+#FERET:
+#data_path:/home/vrbik/Apps/gray_feret/
+#train_folder:gallery/
+#test_folder:fb/
+
+#UFI:
+data_path:/home/vrbik/Apps/ufi-cropped/
+train_folder:train-50/
+test_folder:test-50/
 
 #### preprocessing config
 equalize_hist:0
@@ -16,12 +23,12 @@ gaussian_blur:0
 #### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
-horatio_caine_mode:1
+horatio_caine_mode:0
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:0
+job_mode:1
 
 ####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
 extraction_method:1
@@ -49,26 +56,55 @@ lbp_neighbours:8
 lbp_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
-lbpa_grid_size:12
-lbpa_uniform:1
+lbpa_grid_size:10
+lbpa_uniform:0
 lbpa_center_size:2
 lbpa_neighbour_shape:2
-lbpa_range:4
+lbpa_range:3
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
 
 
-################################## LBP ###############################
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+#now for determine the optimal range
 
-#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:1 -    15,           0,            2,                2,             2
+job:1 -    15,           0,            2,                2,             3
+job:1 -    15,           0,            2,                2,             4
+job:1 -    15,           0,            2,                2,             5
+job:1 -    15,           0,            2,                2,             6
+job:1 -    15,           0,            2,                2,             7
+job:1 -    15,           0,            2,                2,             8
+job:1 -    15,           0,            2,                2,             9
+job:1 -    15,           0,            2,                2,             10
 
-#8 neighbours
-job:0 -    9,           0,         4,           9,           5
-job:0 -    9,           0,         4,           10,          6
+job:1 -    15,           0,            2,                3,             2
+job:1 -    15,           0,            2,                3,             3
+job:1 -    15,           0,            2,                3,             4
+job:1 -    15,           0,            2,                3,             5
+job:1 -    15,           0,            2,                3,             6
+job:1 -    15,           0,            2,                3,             7
+job:1 -    15,           0,            2,                3,             8
+job:1 -    15,           0,            2,                3,             9
+job:1 -    15,           0,            2,                3,             10
 
-job:0 -    10,           0,         4,           9,           5
-job:0 -    10,           0,         4,           10,          6
+job:1 -    15,           0,            3,                2,             2
+job:1 -    15,           0,            3,                2,             3
+job:1 -    15,           0,            3,                2,             4
+job:1 -    15,           0,            3,                2,             5
+job:1 -    15,           0,            3,                2,             6
+job:1 -    15,           0,            3,                2,             7
+job:1 -    15,           0,            3,                2,             8
+job:1 -    15,           0,            3,                2,             9
+job:1 -    15,           0,            3,                2,             10
 
-job:0 -    11,           0,         4,           9,           5
-job:0 -    11,           0,         4,           10,          6
+job:1 -    15,           0,            3,                3,             2
+job:1 -    15,           0,            3,                3,             3
+job:1 -    15,           0,            3,                3,             4
+job:1 -    15,           0,            3,                3,             5
+job:1 -    15,           0,            3,                3,             6
+job:1 -    15,           0,            3,                3,             7
+job:1 -    15,           0,            3,                3,             8
+job:1 -    15,           0,            3,                3,             9
+job:1 -    15,           0,            3,                3,             10
