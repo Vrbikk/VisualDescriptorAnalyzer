@@ -11,11 +11,11 @@
 
 #UFI:
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-50/
-test_folder:test-50/
+train_folder:train/
+test_folder:test/
 
 #### preprocessing config
-equalize_hist:0
+equalize_hist:1
 gaussian_blur:0
 
 #### global config
@@ -56,11 +56,11 @@ lbp_neighbours:8
 lbp_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
-lbpa_grid_size:10
-lbpa_uniform:1
-lbpa_center_size:4
+lbpa_grid_size:8
+lbpa_uniform:0
+lbpa_center_size:2
 lbpa_neighbour_shape:3
-lbpa_range:10
+lbpa_range:5
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...

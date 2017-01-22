@@ -30,11 +30,18 @@ int main(int argc, char *argv[]) {
             LOGGER->Info("Application started in [NORMAL MODE]");
             LOGGER->Info(CONFIG->configurationDump());
 
-            /*for(auto a : test){
-                Gabor_editor(a.original_img);
-            }*/
-
             preprocess(train, test);
+            std::multimap<unsigned int, unsigned int> kek;
+
+            int i = 0;
+            for(auto a : train){
+                kek.insert(make_pair(a.id, i++));
+            }
+
+            for(auto const &x : kek){
+                Gabor_editor(train[x.second].working_img);
+            }
+
             extract(train, test);
             classificate(train, test);
         }

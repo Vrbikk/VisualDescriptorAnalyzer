@@ -99,13 +99,13 @@ void convert_CV32SC1_to_CV8U(Mat &src, Mat &dst) {
 }
 
 string gabor_editor = "Gabor filter editor";
-int kernel_size=10;
+int kernel_size=13;
 int pos_sigma= 5;
-int pos_lambda = 50;
+int pos_lambda = 44;
 int pos_theta = 20;
 int pos_gamma= 0;
-int pos_psi = 90;
-int min_black_value = 10;
+int pos_psi = 104;
+int min_black_value = 350;
 
 Mat gabor_src;
 Mat dest;
@@ -127,19 +127,51 @@ void Process(int , void *)
     filter2D(gabor_src, dest, CV_8U, kernel);
 
     Mat black(gabor_src.size(), CV_8U);
+    black = Scalar(0);
 
-    for(int x = 0; x < black.cols; x++){
-        for(int y = 0; y < black.rows; y++){
+    int counter = 0;
 
-            unsigned char val = dest.at<unsigned char>(x, y);
 
-            if(val < min_black_value){
-                black.at<unsigned char>(x, y) = 0;
-            }else{
-                black.at<unsigned char>(x, y) = 255;
+    std::map<unsigned int, Point> points;
+
+    for(int x = 20; x < black.cols - 23; x+=3){
+        for(int y = 20; y < black.rows - 23; y+=3) {
+
+            unsigned int sum = 0;
+            for (int i = x; i < x + 3; i++) {
+                for (int j = y; j < y + 3; j++) {
+                    sum += dest.at <unsigned char> (i, j);
+                }
             }
+
+            if(sum > 50){
+                points[sum] = Point(x+1, y+1);
+            }
+
+            /*if (sum > min_black_value) {
+                counter++;
+                black.at < unsigned char > (x + 1, y + 1) = 255;
+            }*/
+
         }
     }
+
+    std::map<unsigned int, Point>::reverse_iterator rit;
+
+    int i = 0;
+
+    for (rit=points.rbegin(); rit!=points.rend() && i++ < 64; ++rit){
+        //std::cout << rit->first << "\n";
+        black.at < unsigned char > (rit->second.x,rit->second.y) = 255;
+    }
+
+    if(points.size() < 64){
+        cout << points.size() << "!!\n";
+    }else{
+        cout << points.size() << "\n";
+    }
+
+
 
     vector<Mat> matrices = {
             gabor_src,
@@ -168,7 +200,7 @@ void Gabor_editor(Mat &src) {
     cv::createTrackbar("Theta", gabor_editor, &pos_theta, 180, Process);
     cv::createTrackbar("Psi", gabor_editor, &pos_psi, 360, Process);
     cv::createTrackbar("Gamma", gabor_editor, &pos_gamma, 100, Process);
-    cv::createTrackbar("Min Black Value", gabor_editor, &min_black_value, 255, Process);
+    cv::createTrackbar("Min Black Value", gabor_editor, &min_black_value, 9*255, Process);
 
     Process(0,0);
     waitKey(0);
