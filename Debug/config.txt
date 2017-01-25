@@ -15,7 +15,7 @@ train_folder:train/
 test_folder:test/
 
 #### preprocessing config
-equalize_hist:1
+equalize_hist:0
 gaussian_blur:0
 
 #### global config
@@ -23,7 +23,7 @@ gaussian_blur:0
 #### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
-horatio_caine_mode:0
+horatio_caine_mode:1
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
@@ -56,7 +56,7 @@ lbp_neighbours:8
 lbp_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
-lbpa_grid_size:8
+lbpa_grid_size:10
 lbpa_uniform:0
 lbpa_center_size:2
 lbpa_neighbour_shape:3

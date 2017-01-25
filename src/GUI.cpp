@@ -6,8 +6,8 @@
 Mat create_img_with_text(_image img){
     Mat img_with_text;
     cvtColor(img.original_img, img_with_text, CV_GRAY2BGR);
-    putText(img_with_text, "ID: " + to_string(img.id) + " (" + img.file_name + ")",
-            cvPoint(15,img.original_img.size().height - 5),
+    putText(img_with_text, "ID: " + to_string(img.id),                         //" (" + img.file_name + ")"
+            cvPoint(45,img.original_img.size().height - 5),
             CV_FONT_NORMAL, 0.37, cvScalar(255,10,0), 1, CV_AA);
     return img_with_text;
 }

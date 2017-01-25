@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
             LOGGER->Info(CONFIG->configurationDump());
 
             preprocess(train, test);
-            std::multimap<unsigned int, unsigned int> kek;
+            /*std::multimap<unsigned int, unsigned int> kek;
 
             int i = 0;
             for(auto a : train){
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
             for(auto const &x : kek){
                 Gabor_editor(train[x.second].working_img);
-            }
+            }*/
 
             extract(train, test);
             classificate(train, test);
