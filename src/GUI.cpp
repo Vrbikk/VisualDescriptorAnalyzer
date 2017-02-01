@@ -100,12 +100,12 @@ void convert_CV32SC1_to_CV8U(Mat &src, Mat &dst) {
 
 string gabor_editor = "Gabor filter editor";
 int kernel_size=13;
-int pos_sigma= 5;
-int pos_lambda = 44;
+int pos_sigma= 12;
+int pos_lambda = 41;
 int pos_theta = 20;
-int pos_gamma= 0;
+int pos_gamma= 2;
 int pos_psi = 104;
-int min_black_value = 350;
+int gabor_count = 64;
 
 Mat gabor_src;
 Mat dest;
@@ -131,8 +131,7 @@ void Process(int , void *)
 
     int counter = 0;
 
-
-    std::map<unsigned int, Point> points;
+    std::multimap<unsigned int, Point> points;
 
     for(int x = 20; x < black.cols - 23; x+=3){
         for(int y = 20; y < black.rows - 23; y+=3) {
@@ -144,24 +143,17 @@ void Process(int , void *)
                 }
             }
 
-            if(sum > 50){
-                points[sum] = Point(x+1, y+1);
+            if(sum > 25){
+                points.insert(make_pair(sum, Point(x+1, y+1)));
             }
-
-            /*if (sum > min_black_value) {
-                counter++;
-                black.at < unsigned char > (x + 1, y + 1) = 255;
-            }*/
-
         }
     }
 
-    std::map<unsigned int, Point>::reverse_iterator rit;
+    std::multimap<unsigned int, Point>::reverse_iterator rit;
 
     int i = 0;
 
-    for (rit=points.rbegin(); rit!=points.rend() && i++ < 64; ++rit){
-        //std::cout << rit->first << "\n";
+    for (rit=points.rbegin(); rit!=points.rend() && i++ < gabor_count; ++rit){
         black.at < unsigned char > (rit->second.x,rit->second.y) = 255;
     }
 
@@ -183,7 +175,7 @@ void Process(int , void *)
     hconcat(matrices, target);
     imshow(gabor_editor, target);
 
-    /*Mat Lkernel(kernel_size*10, kernel_size*10, CV_32F);
+    /*Mat Lkernel(TMPkernel_size*10, TMPkernel_size*10, CV_32F);
     resize(kernel, Lkernel, Lkernel.size());
     Lkernel /= 2.;
     Lkernel += 0.5;
@@ -200,7 +192,7 @@ void Gabor_editor(Mat &src) {
     cv::createTrackbar("Theta", gabor_editor, &pos_theta, 180, Process);
     cv::createTrackbar("Psi", gabor_editor, &pos_psi, 360, Process);
     cv::createTrackbar("Gamma", gabor_editor, &pos_gamma, 100, Process);
-    cv::createTrackbar("Min Black Value", gabor_editor, &min_black_value, 9*255, Process);
+    cv::createTrackbar("Points count", gabor_editor, &gabor_count, 256, Process);
 
     Process(0,0);
     waitKey(0);

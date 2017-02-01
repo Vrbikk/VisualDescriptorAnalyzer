@@ -28,7 +28,7 @@ struct _data_config{
     string train_folder;
 
     string print(){
-        return string("data_config:[test_folder:" + test_folder +", train_folder:" + train_folder + "]");
+        return string(data_path + ":[test_folder:" + test_folder +", train_folder:" + train_folder + "]");
     }
 };
 
@@ -42,14 +42,17 @@ struct _preprocessing_config{
 };
 
 struct _job{
+    bool gabor = false;
     __extraction_method method;
     _LBP_config lbp_conf;
     _LBPa_config lbpa_conf;
+    _Gabor_config gabor_conf;
 };
 
 class Configuration {
 private:
     string comparidon_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
+    string gabor_settings [3] = {"GABOR OFF", "GABOR ONLY", "+GABOR"};
 
     static Configuration *configuration_instance;
     Configuration();
@@ -66,6 +69,7 @@ private:
     bool job_mode;
     _LBP_config LBP_config;
     _LBPa_config LBPa_config;
+    _Gabor_config Gabor_config;
 
     void setExtractionMethod(string a);
     void setComparisonMethod(string a);
@@ -89,6 +93,12 @@ public:
     bool getJobMode();
     void setActualJob(_job job);
     string configurationDump();
+    int getGaborSetting();
+    int getGaborHistogramSize();
+    int getGaborPoints();
+    int getGaborBorderSize();
+
+    void printGaborConfiguration();
 
 };
 

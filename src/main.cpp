@@ -2,6 +2,7 @@
 #include "include/extraction.h"
 #include "include/classification.h"
 #include "include/preprocessing.h"
+#include "include/gabor.h"
 
 void cleanup(void){
     LOGGER->destroyInstance();
@@ -16,12 +17,17 @@ int main(int argc, char *argv[]) {
     if(argc == 3 && LOGGER->setUp(argv[1]) && CONFIG->setUp(argv[2]) && load_images(train, test)){
 
         if(CONFIG->getJobMode()) {
-            LOGGER->Info("Application started in [JOB MODE]");
+            LOGGER->Info("Application started in [JOB MODE] with " + to_string(CONFIG->getJobs().size()) + " jobs");
             LOGGER->Info(CONFIG->configurationDump());
 
             for(auto job : CONFIG->getJobs()){
                 CONFIG->setActualJob(job);
                 preprocess(train, test);
+
+                if(CONFIG->getGaborSetting() > 0){
+                    gabor(train, test);
+                }
+
                 extract(train, test);
                 classificate(train, test);
             }
@@ -31,6 +37,7 @@ int main(int argc, char *argv[]) {
             LOGGER->Info(CONFIG->configurationDump());
 
             preprocess(train, test);
+
             /*std::multimap<unsigned int, unsigned int> kek;
 
             int i = 0;
@@ -41,6 +48,10 @@ int main(int argc, char *argv[]) {
             for(auto const &x : kek){
                 Gabor_editor(train[x.second].working_img);
             }*/
+
+            if(CONFIG->getGaborSetting() > 0){
+                gabor(train, test);
+            }
 
             extract(train, test);
             classificate(train, test);

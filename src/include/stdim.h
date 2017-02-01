@@ -19,6 +19,11 @@ struct _image{
     Mat original_img;
     Mat working_img;
     vector<vector<int>> exctracted_vector;
+    vector<vector<int>> gabor_exctracted_vector;
+
+    vector<Point> points;
+    Mat gabor_filter;
+    Mat points_from_gabor;
 };
 
 struct _hist{
@@ -38,20 +43,22 @@ struct _LBP_params{
     int shape_safe_offset = 2;
 
     string print(){
-        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" + to_string(neighbour_shape)
-                      + " shape_evaluation:" + to_string(shape_evaluation));
+        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" +
+                              to_string(neighbour_shape));
     }
 };
 
-struct _LBPa_params{
+struct _LBPa_params {
     int center_size;
     int neighbour_shape;
     int range;
     int shape_evaluation = 1;
     int shape_safe_offset = 2;
-    string print(){
-        return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" + to_string(neighbour_shape) + " range:" +
-                              to_string(range) + " shape_evaluation:" + to_string(shape_evaluation));
+
+    string print() {
+        return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" +
+                      to_string(neighbour_shape) + " range:" +
+                      to_string(range));
     }
 };
 
@@ -71,6 +78,13 @@ struct _LBPa_config{
     string print(){
         return string("LBPa config - " + lbpa_params.print() + " " + hist.print());
     }
+};
+
+struct _Gabor_config{
+    int gabor_setting;
+    int gabor_points;
+    int gabor_histogram_size;
+    int gabor_border_size;
 };
 
 #endif //PLAYGROUND_STRUCTS_H

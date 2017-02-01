@@ -33,6 +33,12 @@ Configuration::Configuration() {
     preprocessing_config.equalize_hist = false;
     preprocessing_config.gaussian_blur = false;
     job_mode = false;
+
+    Gabor_config.gabor_setting = 2;
+    Gabor_config.gabor_border_size = 20;
+    Gabor_config.gabor_points = 64;
+    Gabor_config.gabor_histogram_size = 15;
+
 }
 
 bool Configuration::isCommentOrEmpty(string line) {
@@ -107,6 +113,12 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
 
+                    //Gabor
+                else if(!type.compare("gabor_setting")){ setIntegerValue(value, Gabor_config.gabor_setting, "gebor_setting");}
+                else if(!type.compare("gabor_points")){ setIntegerValue(value, Gabor_config.gabor_points, "gabor_points");}
+                else if(!type.compare("gabor_histogram_size")){ setIntegerValue(value, Gabor_config.gabor_histogram_size, "gabor_histogram_size");}
+                else if(!type.compare("gabor_border_size")){ setIntegerValue(value, Gabor_config.gabor_border_size, "gabor_border_size");}
+
                     //LBP
                 else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
                 else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
@@ -126,6 +138,7 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
                 else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
                 else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
+                else if(!type.compare("job")){addJob(value);}
                 else if(!type.compare("job")){addJob(value);}
             }
         }
@@ -215,6 +228,21 @@ void Configuration::addJob(string line_job) {
     setIntegerValue(items[0], method, "job_method");
     vector<string> params = split(items[1], ",");
 
+    if(method == 2){
+        _Gabor_config conf;
+        setIntegerValue(params[0], conf.gabor_setting, "job_gabor_setting");
+        setIntegerValue(params[1], conf.gabor_points, "job_gabor_points");
+        setIntegerValue(params[2], conf.gabor_histogram_size, "job_gabor_histogram_size");
+        setIntegerValue(params[3], conf.gabor_border_size, "job_gabor_border_size");
+
+        _job job;
+        job.gabor = true;
+        job.gabor_conf = conf;
+        jobs.push_back(job);
+
+        return;
+    }
+
     switch(method){
         case __LBP:{
             _LBP_config conf;
@@ -261,6 +289,15 @@ bool Configuration::getJobMode() {
 }
 
 void Configuration::setActualJob(_job job) {
+
+    if(job.gabor){
+        Gabor_config = job.gabor_conf;
+        LOGGER->Info("Updating Gabor settings\n");
+        return;
+    }
+
+
+
     switch (job.method){
         case __LBP:{
             extraction_method = __LBP;
@@ -288,4 +325,29 @@ string Configuration::configurationDump() {
                           "classification_threads:" + to_string(classification_threads) + space +
                           "comparison_method:" + comparidon_method_string[comparison_method] + "\n"
     );
+}
+
+int Configuration::getGaborSetting() {
+    return Gabor_config.gabor_setting;
+}
+
+int Configuration::getGaborHistogramSize() {
+    return Gabor_config.gabor_histogram_size;
+}
+
+int Configuration::getGaborPoints() {
+    return Gabor_config.gabor_points;
+}
+
+int Configuration::getGaborBorderSize() {
+    return Gabor_config.gabor_border_size;
+}
+
+void Configuration::printGaborConfiguration() {
+    if(Gabor_config.gabor_setting == 0){
+        LOGGER->Info("Gabor config - setting:" + gabor_settings[Gabor_config.gabor_setting]);
+    }else{
+        LOGGER->Info("Gabor config - setting:" + gabor_settings[Gabor_config.gabor_setting] + " points:" + to_string(Gabor_config.gabor_points) +
+                        " histogram_size:" + to_string(Gabor_config.gabor_histogram_size) + " border_size:" + to_string(Gabor_config.gabor_border_size));
+    }
 }

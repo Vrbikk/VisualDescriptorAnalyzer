@@ -17,8 +17,6 @@ protected:
     vector<unsigned int> uniform_table;
 
     vector<vector<double>> optimized_LBP;
-
-
     byte getShapeValue(Mat &src, int x, int y, int type, int shape_evaluation);
 
     bool bitAtPosition(unsigned num, unsigned pos);
@@ -28,8 +26,10 @@ protected:
     vector<vector<int>> globalHistogram(Mat &src, int grid_size, bool uniform);
     void extractLBPa(Mat &src, Mat &dst, _LBPa_config config);
     void extractLBP(Mat &src, Mat &dst, _LBP_config config);
-
     void optimize_LBP_pls(_LBP_config config);
+
+    void localGaborHistogram(Mat &src, Point &point, vector<int> &local_histogram, int size, bool uniform);
+    vector<vector<int>> extractGaborPointsHistograms(Mat &src, vector<Point> &points, int size, bool uniform);
 
 public:
     Method();

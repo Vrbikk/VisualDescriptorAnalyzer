@@ -56,7 +56,6 @@ double get_histogram_distance(vector<vector<int>> a, vector<vector<int>> b, __co
 
 
     switch(comparison_method){
-
         case __EUCLIDEAN:{
             return get_euclidean_distance(a, b);
         }
@@ -74,7 +73,6 @@ double get_histogram_distance(vector<vector<int>> a, vector<vector<int>> b, __co
 }
 
 double get_bhattacharyya_distance(vector<vector<int>> a, vector<vector<int>> b){
-
 
     double coefficient = 0;
     double distance = 0;
@@ -121,8 +119,29 @@ void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_imag
         _image *nearest_image = NULL;
 
         for(int j = 0; j < train.size(); j++){
-            double distance = get_histogram_distance(
-                    test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
+            double distance;
+
+                switch(CONFIG->getGaborSetting()){
+                    case 0:{
+                        distance = get_histogram_distance(test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
+                        break;
+                    }
+                    case 1:{
+                        distance = get_gabor_distance(test[i], train[j]);
+                        break;
+                    }
+                    case 2:{
+                        double a = get_gabor_distance(test[i], train[j]);
+                        double b = get_histogram_distance(test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
+                        distance = a + b;
+                        break;
+                    }
+                    default:{
+                        LOGGER->Error("default branch called in semi_classificate method");
+                        break;
+                    }
+
+                }
 
             if(distance < min_distance){
                 min_distance = distance;
@@ -191,5 +210,58 @@ void classificate(vector<_image> &train, vector<_image> &test) {
     for_each(threads.begin(), threads.end(), [](thread &t){t.join();});
 
     result_calculation(test, candidates);
+}
+
+double get_gabor_distance(_image &a, _image &b) {
+
+    double distance = 0;
+    for(int i = 0; i < a.points.size(); i++){
+        double local_distance = 1;
+        int index = get_nearest_gabor_histogram_index(a.points[i], b.points, local_distance);
+        distance += local_distance * get_gabor_intersection_distance(a.gabor_exctracted_vector[i], b.gabor_exctracted_vector[index]);
+    }
+
+    return distance;
+}
+
+int get_nearest_gabor_histogram_index(Point &a, vector<Point> &points, double &local_distance) {
+    double min_distance = DBL_MAX;
+    int index = 0;
+    for(int i = 0; i < points.size(); i++){
+        double distance = sqrt((a.x - points[i].x)*(a.x - points[i].x) + (a.y - points[i].y)*(a.y - points[i].y));
+        if(distance < min_distance){
+            min_distance = distance;
+            index = i;
+        }
+    }
+
+    //local_distance += min_distance / 10;
+    return index;
+}
+
+double get_gabor_intersection_distance(vector<int> a, vector<int> b){
+    double distance = 0;
+        double sum = 0;
+        double sub_distance = 0;
+        for(int j = 0; j < a.size(); j++){
+            sum += a[j];
+            if(a[j] < b[j]){  //min
+                sub_distance += a[j];
+            }else{
+                sub_distance += b[j];
+            }
+        }
+    //return distance_a - distance;
+    return (sum - sub_distance);
+}
+
+double get_gabor_euclidean_distance(vector<int> a, vector<int> b) {
+
+    double distance = 0;
+    for(int j = 0; j < a.size(); j++){
+        distance += (a[j] - b[j]) * (a[j] - b[j]);
+    }
+
+    return sqrt(distance);
 }
 

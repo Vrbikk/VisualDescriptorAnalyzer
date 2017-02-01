@@ -3,6 +3,7 @@
 //
 
 #include "include/LBP.h"
+#include "include/Configuration.h"
 
 LBP::LBP() {
 
@@ -22,7 +23,26 @@ void LBP::Process(_image &img) {
 
    //show_image(lbp);
    //Making of histogram
-   img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
+
+   switch(CONFIG->getGaborSetting()){
+      case 0:{
+         img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
+         break;
+      }
+      case 1:{
+         img.gabor_exctracted_vector = extractGaborPointsHistograms(lbp, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
+         break;
+      }
+      case 2:{
+         img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
+         img.gabor_exctracted_vector = extractGaborPointsHistograms(lbp, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
+         break;
+      }
+      default:{
+         LOGGER->Error("default branch called in LBP");
+         break;
+      }
+   }
 }
 
 void LBP::setUp(void *_param) {
@@ -32,6 +52,7 @@ void LBP::setUp(void *_param) {
 
    LOGGER->Info(config.lbp_params.print());
    LOGGER->Info(config.hist.print());
+   CONFIG->printGaborConfiguration();
 }
 
 
