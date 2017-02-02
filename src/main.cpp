@@ -22,14 +22,16 @@ int main(int argc, char *argv[]) {
 
             for(auto job : CONFIG->getJobs()){
                 CONFIG->setActualJob(job);
-                preprocess(train, test);
+                if(!job.gabor) {
+                    preprocess(train, test);
 
-                if(CONFIG->getGaborSetting() > 0){
-                    gabor(train, test);
+                    if (CONFIG->getGaborSetting() > 0) {
+                        gabor(train, test);
+                    }
+
+                    extract(train, test);
+                    classificate(train, test);
                 }
-
-                extract(train, test);
-                classificate(train, test);
             }
 
         }else{
