@@ -49,6 +49,15 @@ struct _job{
     _Gabor_config gabor_conf;
 };
 
+struct _gabor_filter_setting{
+    int TMPkernel_size;
+    int TMPpos_sigma;
+    int TMPpos_lambda;
+    int TMPpos_theta;
+    int TMPpos_gamma;
+    int TMPpos_psi;
+};
+
 class Configuration {
 private:
     string comparidon_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
@@ -80,6 +89,7 @@ private:
     void addJob(string line_job);
 
 public:
+    _gabor_filter_setting GFS;
     void destroyInstance();
     static Configuration *getConfiguration();
     bool setUp(const string path);

@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
             preprocess(train, test);
 
-            /*std::multimap<unsigned int, unsigned int> kek;
+           /* std::multimap<unsigned int, unsigned int> kek;
 
             int i = 0;
             for(auto a : train){
@@ -51,10 +51,7 @@ int main(int argc, char *argv[]) {
                 Gabor_editor(train[x.second].working_img);
             }*/
 
-            if(CONFIG->getGaborSetting() > 0){
-                gabor(train, test);
-            }
-
+            gabor(train, test);
             extract(train, test);
             classificate(train, test);
         }
@@ -63,6 +60,18 @@ int main(int argc, char *argv[]) {
     LOGGER->Info("Application ended correctly...");
 
     atexit(cleanup);
+
+
+
+
+
+
+
+
+
+
+
+
 
     return 0;
 }

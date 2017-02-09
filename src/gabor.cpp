@@ -25,21 +25,12 @@ void gabor(vector<_image> &train, vector<_image> &test) {
 void assign_points(_image &img, int count, int border) {
 
     img.points.clear();
-
-    // initial filter configuration
-    int TMPkernel_size=13;
-    int TMPpos_sigma= 5;
-    int TMPpos_lambda = 44;
-    int TMPpos_theta = 15;
-    int TMPpos_gamma= 3;
-    int TMPpos_psi = 104;
-
-    Size KernalSize(TMPkernel_size,TMPkernel_size);
-    double Sigma = TMPpos_sigma;
-    double Lambda = 0.5 + TMPpos_lambda / 100.0;
-    double Theta = TMPpos_theta * CV_PI / 180;
-    double Psi = TMPpos_psi * CV_PI / 180;;
-    double Gamma = TMPpos_gamma;
+    Size KernalSize(CONFIG->GFS.TMPkernel_size,CONFIG->GFS.TMPkernel_size);
+    double Sigma = CONFIG->GFS.TMPpos_sigma;
+    double Lambda = 0.5 + CONFIG->GFS.TMPpos_lambda / 100.0;
+    double Theta = CONFIG->GFS.TMPpos_theta * CV_PI / 180;
+    double Psi = CONFIG->GFS.TMPpos_psi * CV_PI / 180;;
+    double Gamma = CONFIG->GFS.TMPpos_gamma;
 
     //Mat equalized;
     //equalizeHist(img.original_img , equalized);

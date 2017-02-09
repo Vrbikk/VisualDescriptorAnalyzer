@@ -100,12 +100,13 @@ void convert_CV32SC1_to_CV8U(Mat &src, Mat &dst) {
 
 string gabor_editor = "Gabor filter editor";
 int kernel_size=13;
-int pos_sigma= 12;
-int pos_lambda = 41;
-int pos_theta = 20;
-int pos_gamma= 2;
+int pos_sigma= 5;
+int pos_lambda = 44;
+int pos_theta = 15;
+int pos_gamma= 3;
 int pos_psi = 104;
-int gabor_count = 64;
+int gabor_count = 100;
+int border_size = 20;
 
 Mat gabor_src;
 Mat dest;
@@ -133,8 +134,8 @@ void Process(int , void *)
 
     std::multimap<unsigned int, Point> points;
 
-    for(int x = 20; x < black.cols - 23; x+=3){
-        for(int y = 20; y < black.rows - 23; y+=3) {
+    for(int x = border_size; x < black.cols - (border_size + 3); x+=3){
+        for(int y = border_size; y < black.rows - (border_size + 3); y+=3) {
 
             unsigned int sum = 0;
             for (int i = x; i < x + 3; i++) {
@@ -143,7 +144,7 @@ void Process(int , void *)
                 }
             }
 
-            if(sum > 25){
+            if(sum > 5){
                 points.insert(make_pair(sum, Point(x+1, y+1)));
             }
         }
@@ -193,6 +194,7 @@ void Gabor_editor(Mat &src) {
     cv::createTrackbar("Psi", gabor_editor, &pos_psi, 360, Process);
     cv::createTrackbar("Gamma", gabor_editor, &pos_gamma, 100, Process);
     cv::createTrackbar("Points count", gabor_editor, &gabor_count, 256, Process);
+    cv::createTrackbar("Border size", gabor_editor, &border_size, 50, Process);
 
     Process(0,0);
     waitKey(0);

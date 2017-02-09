@@ -222,7 +222,7 @@ byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluatio
             src.at<byte>(x + 1,y + 1) = 0;
             src.at<byte>(x + 1,y) = 0;
 
-            show__image(src);*/
+            show_image(src);*/
             break;
         }
 

@@ -39,6 +39,12 @@ Configuration::Configuration() {
     Gabor_config.gabor_points = 64;
     Gabor_config.gabor_histogram_size = 15;
 
+    GFS.TMPkernel_size = 13;
+    GFS.TMPpos_sigma = 5;
+    GFS.TMPpos_lambda = 44;
+    GFS.TMPpos_theta = 15;
+    GFS.TMPpos_gamma = 3;
+    GFS.TMPpos_psi = 104;
 }
 
 bool Configuration::isCommentOrEmpty(string line) {
@@ -317,13 +323,15 @@ void Configuration::setActualJob(_job job) {
 }
 
 string Configuration::configurationDump() {
-
     string space = "\n\t\t\t\t";
     return string(        "------ config ------\n" + space +
                           data_config.print() + space +
                           preprocessing_config.print() + space +
                           "classification_threads:" + to_string(classification_threads) + space +
-                          "comparison_method:" + comparidon_method_string[comparison_method] + "\n"
+                          "comparison_method:" + comparidon_method_string[comparison_method] + space +
+                          "gabor_filter_setting: [kernel_size:" + to_string(GFS.TMPkernel_size) + " Sigma:" +
+                          to_string(GFS.TMPpos_sigma) + " Lambda:" + to_string(GFS.TMPpos_lambda) + " Theta:" + to_string(GFS.TMPpos_theta) +
+                          " Gamma:"+ to_string(GFS.TMPpos_gamma) + " Psi:" + to_string(GFS.TMPpos_psi) + "]\n"
     );
 }
 
