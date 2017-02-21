@@ -158,12 +158,12 @@ void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
     for(int i = 0; i < test.size(); i++){
         if(test[i].id == (*candidates[i]).id){
             hits++;
-            if(CONFIG->getHoratioCaineMode()) {
+            if(CONFIG->getResultMode()) {
                 csi_show_two_images(test[i], *candidates[i], true);
                 waitKey(0);
             }
         }else{
-            if(CONFIG->getHoratioCaineMode()) {
+            if(CONFIG->getResultMode()) {
                 csi_show_two_images(test[i], *candidates[i], false);
                 waitKey(0);
             }

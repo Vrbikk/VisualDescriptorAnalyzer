@@ -40,18 +40,21 @@ int main(int argc, char *argv[]) {
 
             preprocess(train, test);
 
-           /* std::multimap<unsigned int, unsigned int> kek;
-
-            int i = 0;
-            for(auto a : train){
-                kek.insert(make_pair(a.id, i++));
+            if(CONFIG->getGaborEditorMode()) {
+                std::multimap<unsigned int, unsigned int> kek;
+                int i = 0;
+                for (auto a : train) {
+                    kek.insert(make_pair(a.id, i++));
+                }
+                for (auto const &x : kek) {
+                    Gabor_editor(train[x.second].working_img);
+                }
             }
 
-            for(auto const &x : kek){
-                Gabor_editor(train[x.second].working_img);
-            }*/
+            if (CONFIG->getGaborSetting() > 0) {
+                gabor(train, test);
+            }
 
-            gabor(train, test);
             extract(train, test);
             classificate(train, test);
         }
@@ -60,18 +63,5 @@ int main(int argc, char *argv[]) {
     LOGGER->Info("Application ended correctly...");
 
     atexit(cleanup);
-
-
-
-
-
-
-
-
-
-
-
-
-
     return 0;
 }

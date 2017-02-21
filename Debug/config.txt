@@ -11,8 +11,8 @@
 
 #UFI:
 data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-50/
-test_folder:test-50/
+train_folder:train/
+test_folder:test/
 
 #### preprocessing config
 equalize_hist:0
@@ -23,14 +23,15 @@ gaussian_blur:0
 #### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
-horatio_caine_mode:0
+result_mode:0
+gabor_editor_mode:0
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
 job_mode:0
 
-####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
+####[NORMAL MODE] choose method below - 0 = LBPb; 1 = LBPa
 extraction_method:0
 
 ###### LBP params ######
@@ -57,28 +58,27 @@ extraction_method:0
 #uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
 
 #Gabor [NORMAL MODE]
-gabor_setting:1
+gabor_setting:0
 gabor_points:250
 gabor_histogram_size:20
 gabor_border_size:20
 
-#LBP [NORMAL MODE]
-lbp_grid_size:8
-lbp_uniform:1
-lbp_range:5
-lbp_neighbours:10
-lbp_neighbour_shape:2
+#LBPb [NORMAL MODE]
+lbpb_grid_size:8
+lbpb_uniform:1
+lbpb_range:1
+lbpb_neighbours:8
+lbpb_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
 lbpa_grid_size:10
 lbpa_uniform:1
-lbpa_center_size:2
+lbpa_center_size:3
 lbpa_neighbour_shape:3
 lbpa_range:3
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
-
 
 #Gabor    setting      points      histogram_size     border_size
 job:2 -     1,          128,           8,               20

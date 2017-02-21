@@ -1,0 +1,515 @@
+		/home/tondav/ufi-cropped/:[test_folder:test/, train_folder:train/]
+		preprocessing_config:[equalize_hist:0, gaussina_blur:0]
+		classification_threads:8
+		comparison_method:INTERSECTION
+		gabor_filter_setting: [kernel_size:13 Sigma:5 Lambda:44 Theta:15 Gamma:3 Psi:104]
+
+14-02-2017 11:34:32:  INFO - Updating Gabor settings
+
+14-02-2017 11:34:36:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 11:34:36:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 11:34:36:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:16 border_size:20
+14-02-2017 11:49:45:  INFO - ↑ accuracy: <0.702479> ↑
+
+14-02-2017 11:49:50:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 11:49:50:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 11:49:50:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:16 border_size:20
+14-02-2017 12:12:52:  INFO - ↑ accuracy: <0.690909> ↑
+
+14-02-2017 12:12:56:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 12:12:56:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 12:12:56:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:16 border_size:20
+14-02-2017 12:36:24:  INFO - ↑ accuracy: <0.689256> ↑
+
+14-02-2017 12:36:24:  INFO - Updating Gabor settings
+
+14-02-2017 12:36:28:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 12:36:28:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 12:36:28:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:18 border_size:20
+14-02-2017 12:51:11:  INFO - ↑ accuracy: <0.694215> ↑
+
+14-02-2017 12:51:15:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 12:51:15:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 12:51:15:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:18 border_size:20
+14-02-2017 13:15:20:  INFO - ↑ accuracy: <0.692562> ↑
+
+14-02-2017 13:15:24:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 13:15:24:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 13:15:24:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:18 border_size:20
+14-02-2017 13:38:32:  INFO - ↑ accuracy: <0.697521> ↑
+
+14-02-2017 13:38:32:  INFO - Updating Gabor settings
+
+14-02-2017 13:38:36:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 13:38:36:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 13:38:36:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:20 border_size:20
+14-02-2017 13:53:30:  INFO - ↑ accuracy: <0.694215> ↑
+
+14-02-2017 13:53:34:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 13:53:34:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 13:53:34:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:20 border_size:20
+14-02-2017 14:16:53:  INFO - ↑ accuracy: <0.684298> ↑
+
+14-02-2017 14:16:58:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 14:16:58:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 14:16:58:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:20 border_size:20
+14-02-2017 14:40:47:  INFO - ↑ accuracy: <0.704132> ↑
+
+14-02-2017 14:40:47:  INFO - Updating Gabor settings
+
+14-02-2017 14:40:51:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 14:40:51:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 14:40:51:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:22 border_size:20
+14-02-2017 14:56:04:  INFO - ↑ accuracy: <0.689256> ↑
+
+14-02-2017 14:56:08:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 14:56:08:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 14:56:08:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:22 border_size:20
+14-02-2017 15:19:40:  INFO - ↑ accuracy: <0.680992> ↑
+
+14-02-2017 15:19:45:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 15:19:45:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 15:19:45:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:22 border_size:20
+14-02-2017 15:43:34:  INFO - ↑ accuracy: <0.697521> ↑
+
+14-02-2017 15:43:34:  INFO - Updating Gabor settings
+
+14-02-2017 15:43:38:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 15:43:38:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 15:43:38:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:24 border_size:20
+14-02-2017 15:58:57:  INFO - ↑ accuracy: <0.679339> ↑
+
+14-02-2017 15:59:01:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 15:59:01:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 15:59:01:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:24 border_size:20
+14-02-2017 16:22:52:  INFO - ↑ accuracy: <0.672727> ↑
+
+14-02-2017 16:22:56:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 16:22:56:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 16:22:56:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:24 border_size:20
+14-02-2017 16:46:55:  INFO - ↑ accuracy: <0.689256> ↑
+
+14-02-2017 16:46:55:  INFO - Updating Gabor settings
+
+14-02-2017 16:47:00:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 16:47:00:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 16:47:00:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:26 border_size:20
+14-02-2017 17:02:32:  INFO - ↑ accuracy: <0.677686> ↑
+
+14-02-2017 17:02:37:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 17:02:37:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 17:02:37:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:26 border_size:20
+14-02-2017 17:27:20:  INFO - ↑ accuracy: <0.667769> ↑
+
+14-02-2017 17:27:24:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 17:27:24:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 17:27:24:  INFO - Gabor config - setting:GABOR ONLY points:175 histogram_size:26 border_size:20
+14-02-2017 17:51:22:  INFO - ↑ accuracy: <0.682645> ↑
+
+14-02-2017 17:51:22:  INFO - Updating Gabor settings
+
+14-02-2017 17:51:26:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 17:51:26:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 17:51:26:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:16 border_size:20
+14-02-2017 18:08:51:  INFO - ↑ accuracy: <0.715702> ↑
+
+14-02-2017 18:08:55:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 18:08:55:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 18:08:55:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:16 border_size:20
+14-02-2017 18:36:24:  INFO - ↑ accuracy: <0.705785> ↑
+
+14-02-2017 18:36:28:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 18:36:28:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 18:36:28:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:16 border_size:20
+14-02-2017 19:04:00:  INFO - ↑ accuracy: <0.697521> ↑
+
+14-02-2017 19:04:00:  INFO - Updating Gabor settings
+
+14-02-2017 19:04:04:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 19:04:04:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 19:04:04:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:18 border_size:20
+14-02-2017 19:21:23:  INFO - ↑ accuracy: <0.704132> ↑
+
+14-02-2017 19:21:27:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 19:21:27:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 19:21:27:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:18 border_size:20
+14-02-2017 19:49:16:  INFO - ↑ accuracy: <0.705785> ↑
+
+14-02-2017 19:49:21:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 19:49:21:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 19:49:21:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:18 border_size:20
+14-02-2017 20:16:28:  INFO - ↑ accuracy: <0.702479> ↑
+
+14-02-2017 20:16:28:  INFO - Updating Gabor settings
+
+14-02-2017 20:16:32:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 20:16:32:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 20:16:32:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:20 border_size:20
+14-02-2017 20:34:07:  INFO - ↑ accuracy: <0.705785> ↑
+
+14-02-2017 20:34:11:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 20:34:11:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 20:34:11:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:20 border_size:20
+14-02-2017 21:02:14:  INFO - ↑ accuracy: <0.699174> ↑
+
+14-02-2017 21:02:19:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 21:02:19:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 21:02:19:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:20 border_size:20
+14-02-2017 21:30:07:  INFO - ↑ accuracy: <0.705785> ↑
+
+14-02-2017 21:30:07:  INFO - Updating Gabor settings
+
+14-02-2017 21:30:11:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 21:30:11:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 21:30:11:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:22 border_size:20
+14-02-2017 21:48:28:  INFO - ↑ accuracy: <0.695868> ↑
+
+14-02-2017 21:48:32:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 21:48:32:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 21:48:32:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:22 border_size:20
+14-02-2017 22:16:47:  INFO - ↑ accuracy: <0.692562> ↑
+
+14-02-2017 22:16:51:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 22:16:51:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 22:16:51:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:22 border_size:20
+14-02-2017 22:44:46:  INFO - ↑ accuracy: <0.700826> ↑
+
+14-02-2017 22:44:46:  INFO - Updating Gabor settings
+
+14-02-2017 22:44:50:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 22:44:50:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 22:44:50:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:24 border_size:20
+14-02-2017 23:02:52:  INFO - ↑ accuracy: <0.684298> ↑
+
+14-02-2017 23:02:57:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+14-02-2017 23:02:57:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 23:02:57:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:24 border_size:20
+14-02-2017 23:31:12:  INFO - ↑ accuracy: <0.689256> ↑
+
+14-02-2017 23:31:16:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+14-02-2017 23:31:16:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 23:31:16:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:24 border_size:20
+14-02-2017 23:59:34:  INFO - ↑ accuracy: <0.697521> ↑
+
+14-02-2017 23:59:34:  INFO - Updating Gabor settings
+
+14-02-2017 23:59:39:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+14-02-2017 23:59:39:  INFO - HIST config - grid_size:8 uniform:0
+14-02-2017 23:59:39:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:26 border_size:20
+15-02-2017 00:17:59:  INFO - ↑ accuracy: <0.680992> ↑
+
+15-02-2017 00:18:03:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 00:18:03:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 00:18:03:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:26 border_size:20
+15-02-2017 00:46:13:  INFO - ↑ accuracy: <0.669421> ↑
+
+15-02-2017 00:46:17:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 00:46:17:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 00:46:17:  INFO - Gabor config - setting:GABOR ONLY points:200 histogram_size:26 border_size:20
+15-02-2017 01:15:15:  INFO - ↑ accuracy: <0.685950> ↑
+
+15-02-2017 01:15:15:  INFO - Updating Gabor settings
+
+15-02-2017 01:15:19:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 01:15:19:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 01:15:19:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:16 border_size:20
+15-02-2017 01:35:30:  INFO - ↑ accuracy: <0.717355> ↑
+
+15-02-2017 01:35:34:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 01:35:34:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 01:35:34:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:16 border_size:20
+15-02-2017 02:06:51:  INFO - ↑ accuracy: <0.707438> ↑
+
+15-02-2017 02:06:55:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 02:06:55:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 02:06:55:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:16 border_size:20
+15-02-2017 02:38:30:  INFO - ↑ accuracy: <0.695868> ↑
+
+15-02-2017 02:38:30:  INFO - Updating Gabor settings
+
+15-02-2017 02:38:34:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 02:38:34:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 02:38:34:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:18 border_size:20
+15-02-2017 02:58:45:  INFO - ↑ accuracy: <0.720661> ↑
+
+15-02-2017 02:58:49:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 02:58:49:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 02:58:49:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:18 border_size:20
+15-02-2017 03:30:37:  INFO - ↑ accuracy: <0.704132> ↑
+
+15-02-2017 03:30:41:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 03:30:41:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 03:30:41:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:18 border_size:20
+15-02-2017 04:01:52:  INFO - ↑ accuracy: <0.710744> ↑
+
+15-02-2017 04:01:52:  INFO - Updating Gabor settings
+
+15-02-2017 04:01:57:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 04:01:57:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 04:01:57:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:20 border_size:20
+15-02-2017 04:22:24:  INFO - ↑ accuracy: <0.714050> ↑
+
+15-02-2017 04:22:28:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 04:22:28:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 04:22:28:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:20 border_size:20
+15-02-2017 04:54:45:  INFO - ↑ accuracy: <0.709091> ↑
+
+15-02-2017 04:54:49:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 04:54:49:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 04:54:49:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:20 border_size:20
+15-02-2017 05:26:51:  INFO - ↑ accuracy: <0.707438> ↑
+
+15-02-2017 05:26:51:  INFO - Updating Gabor settings
+
+15-02-2017 05:26:55:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 05:26:55:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 05:26:55:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:22 border_size:20
+15-02-2017 05:47:54:  INFO - ↑ accuracy: <0.705785> ↑
+
+15-02-2017 05:47:58:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 05:47:58:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 05:47:58:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:22 border_size:20
+15-02-2017 06:20:21:  INFO - ↑ accuracy: <0.697521> ↑
+
+15-02-2017 06:20:25:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 06:20:25:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 06:20:25:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:22 border_size:20
+15-02-2017 06:52:06:  INFO - ↑ accuracy: <0.704132> ↑
+
+15-02-2017 06:52:06:  INFO - Updating Gabor settings
+
+15-02-2017 06:52:10:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 06:52:10:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 06:52:10:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:24 border_size:20
+15-02-2017 07:13:30:  INFO - ↑ accuracy: <0.690909> ↑
+
+15-02-2017 07:13:35:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 07:13:35:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 07:13:35:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:24 border_size:20
+15-02-2017 07:46:31:  INFO - ↑ accuracy: <0.690909> ↑
+
+15-02-2017 07:46:35:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 07:46:35:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 07:46:35:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:24 border_size:20
+15-02-2017 08:18:52:  INFO - ↑ accuracy: <0.692562> ↑
+
+15-02-2017 08:18:52:  INFO - Updating Gabor settings
+
+15-02-2017 08:18:56:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 08:18:56:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 08:18:56:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:26 border_size:20
+15-02-2017 08:39:56:  INFO - ↑ accuracy: <0.682645> ↑
+
+15-02-2017 08:40:00:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 08:40:00:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 08:40:00:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:26 border_size:20
+15-02-2017 09:13:10:  INFO - ↑ accuracy: <0.682645> ↑
+
+15-02-2017 09:13:14:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 09:13:14:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 09:13:14:  INFO - Gabor config - setting:GABOR ONLY points:225 histogram_size:26 border_size:20
+15-02-2017 09:45:52:  INFO - ↑ accuracy: <0.692562> ↑
+
+15-02-2017 09:45:52:  INFO - Updating Gabor settings
+
+15-02-2017 09:45:56:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 09:45:56:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 09:45:56:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:16 border_size:20
+15-02-2017 10:09:24:  INFO - ↑ accuracy: <0.715702> ↑
+
+15-02-2017 10:09:28:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 10:09:28:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 10:09:28:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:16 border_size:20
+15-02-2017 10:45:21:  INFO - ↑ accuracy: <0.717355> ↑
+
+15-02-2017 10:45:25:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 10:45:25:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 10:45:25:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:16 border_size:20
+15-02-2017 11:21:58:  INFO - ↑ accuracy: <0.700826> ↑
+
+15-02-2017 11:21:58:  INFO - Updating Gabor settings
+
+15-02-2017 11:22:02:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 11:22:02:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 11:22:02:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:18 border_size:20
+15-02-2017 11:46:01:  INFO - ↑ accuracy: <0.709091> ↑
+
+15-02-2017 11:46:05:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 11:46:05:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 11:46:05:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:18 border_size:20
+15-02-2017 12:22:16:  INFO - ↑ accuracy: <0.710744> ↑
+
+15-02-2017 12:22:20:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 12:22:20:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 12:22:20:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:18 border_size:20
+15-02-2017 12:59:02:  INFO - ↑ accuracy: <0.704132> ↑
+
+15-02-2017 12:59:02:  INFO - Updating Gabor settings
+
+15-02-2017 12:59:06:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 12:59:06:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 12:59:06:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:20 border_size:20
+15-02-2017 13:23:12:  INFO - ↑ accuracy: <0.709091> ↑
+
+15-02-2017 13:23:17:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 13:23:17:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 13:23:17:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:20 border_size:20
+15-02-2017 14:00:17:  INFO - ↑ accuracy: <0.705785> ↑
+
+15-02-2017 14:00:21:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 14:00:21:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 14:00:21:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:20 border_size:20
+15-02-2017 14:36:35:  INFO - ↑ accuracy: <0.705785> ↑
+
+15-02-2017 14:36:35:  INFO - Updating Gabor settings
+
+15-02-2017 14:36:39:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 14:36:39:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 14:36:39:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:22 border_size:20
+15-02-2017 15:01:06:  INFO - ↑ accuracy: <0.704132> ↑
+
+15-02-2017 15:01:11:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 15:01:11:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 15:01:11:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:22 border_size:20
+15-02-2017 15:38:26:  INFO - ↑ accuracy: <0.690909> ↑
+
+15-02-2017 15:38:30:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 15:38:30:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 15:38:30:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:22 border_size:20
+15-02-2017 16:14:55:  INFO - ↑ accuracy: <0.694215> ↑
+
+15-02-2017 16:14:55:  INFO - Updating Gabor settings
+
+15-02-2017 16:14:59:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 16:14:59:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 16:14:59:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:24 border_size:20
+15-02-2017 16:39:20:  INFO - ↑ accuracy: <0.694215> ↑
+
+15-02-2017 16:39:24:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 16:39:24:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 16:39:24:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:24 border_size:20
+15-02-2017 17:16:16:  INFO - ↑ accuracy: <0.689256> ↑
+
+15-02-2017 17:16:20:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 17:16:20:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 17:16:20:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:24 border_size:20
+15-02-2017 17:53:06:  INFO - ↑ accuracy: <0.697521> ↑
+
+15-02-2017 17:53:06:  INFO - Updating Gabor settings
+
+15-02-2017 17:53:10:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 17:53:10:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 17:53:10:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:26 border_size:20
+15-02-2017 18:17:38:  INFO - ↑ accuracy: <0.692562> ↑
+
+15-02-2017 18:17:42:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 18:17:42:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 18:17:42:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:26 border_size:20
+15-02-2017 18:55:05:  INFO - ↑ accuracy: <0.672727> ↑
+
+15-02-2017 18:55:09:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 18:55:09:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 18:55:09:  INFO - Gabor config - setting:GABOR ONLY points:250 histogram_size:26 border_size:20
+15-02-2017 19:31:48:  INFO - ↑ accuracy: <0.695868> ↑
+
+15-02-2017 19:31:48:  INFO - Updating Gabor settings
+
+15-02-2017 19:31:52:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 19:31:52:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 19:31:52:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:16 border_size:20
+15-02-2017 19:58:31:  INFO - ↑ accuracy: <0.715702> ↑
+
+15-02-2017 19:58:35:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 19:58:35:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 19:58:35:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:16 border_size:20
+15-02-2017 20:39:01:  INFO - ↑ accuracy: <0.710744> ↑
+
+15-02-2017 20:39:05:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 20:39:05:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 20:39:05:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:16 border_size:20
+15-02-2017 21:19:57:  INFO - ↑ accuracy: <0.704132> ↑
+
+15-02-2017 21:19:57:  INFO - Updating Gabor settings
+
+15-02-2017 21:20:02:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 21:20:02:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 21:20:02:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:18 border_size:20
+15-02-2017 21:46:55:  INFO - ↑ accuracy: <0.707438> ↑
+
+15-02-2017 21:46:59:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 21:46:59:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 21:46:59:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:18 border_size:20
+15-02-2017 22:27:31:  INFO - ↑ accuracy: <0.699174> ↑
+
+15-02-2017 22:27:35:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+15-02-2017 22:27:35:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 22:27:35:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:18 border_size:20
+15-02-2017 23:08:08:  INFO - ↑ accuracy: <0.705785> ↑
+
+15-02-2017 23:08:08:  INFO - Updating Gabor settings
+
+15-02-2017 23:08:13:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+15-02-2017 23:08:13:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 23:08:13:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:20 border_size:20
+15-02-2017 23:35:46:  INFO - ↑ accuracy: <0.709091> ↑
+
+15-02-2017 23:35:50:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+15-02-2017 23:35:50:  INFO - HIST config - grid_size:8 uniform:0
+15-02-2017 23:35:50:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:20 border_size:20
+16-02-2017 00:17:16:  INFO - ↑ accuracy: <0.695868> ↑
+
+16-02-2017 00:17:20:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+16-02-2017 00:17:20:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 00:17:20:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:20 border_size:20
+16-02-2017 00:58:38:  INFO - ↑ accuracy: <0.709091> ↑
+
+16-02-2017 00:58:38:  INFO - Updating Gabor settings
+
+16-02-2017 00:58:43:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+16-02-2017 00:58:43:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 00:58:43:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:22 border_size:20
+16-02-2017 01:25:44:  INFO - ↑ accuracy: <0.697521> ↑
+
+16-02-2017 01:25:48:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+16-02-2017 01:25:48:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 01:25:48:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:22 border_size:20
+16-02-2017 02:08:02:  INFO - ↑ accuracy: <0.700826> ↑
+
+16-02-2017 02:08:06:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+16-02-2017 02:08:06:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 02:08:06:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:22 border_size:20
+16-02-2017 02:48:54:  INFO - ↑ accuracy: <0.704132> ↑
+
+16-02-2017 02:48:54:  INFO - Updating Gabor settings
+
+16-02-2017 02:48:59:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+16-02-2017 02:48:59:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 02:48:59:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:24 border_size:20
+16-02-2017 03:16:26:  INFO - ↑ accuracy: <0.690909> ↑
+
+16-02-2017 03:16:30:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+16-02-2017 03:16:30:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 03:16:30:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:24 border_size:20
+16-02-2017 03:57:46:  INFO - ↑ accuracy: <0.676033> ↑
+
+16-02-2017 03:57:50:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+16-02-2017 03:57:50:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 03:57:50:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:24 border_size:20
+16-02-2017 04:38:51:  INFO - ↑ accuracy: <0.697521> ↑
+
+16-02-2017 04:38:51:  INFO - Updating Gabor settings
+
+16-02-2017 04:38:56:  INFO - LBP config - range:3 neighbours:9 neighbour_shape:1
+16-02-2017 04:38:56:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 04:38:56:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:26 border_size:20
+16-02-2017 05:06:44:  INFO - ↑ accuracy: <0.685950> ↑
+
+16-02-2017 05:06:48:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:1
+16-02-2017 05:06:48:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 05:06:48:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:26 border_size:20
+16-02-2017 05:49:10:  INFO - ↑ accuracy: <0.672727> ↑
+
+16-02-2017 05:49:14:  INFO - LBP config - range:3 neighbours:10 neighbour_shape:4
+16-02-2017 05:49:14:  INFO - HIST config - grid_size:8 uniform:0
+16-02-2017 05:49:14:  INFO - Gabor config - setting:GABOR ONLY points:275 histogram_size:26 border_size:20
+16-02-2017 06:31:04:  INFO - ↑ accuracy: <0.695868> ↑

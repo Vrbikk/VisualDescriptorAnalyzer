@@ -121,7 +121,7 @@ void Process(int , void *)
     double Sigma = pos_sigma;
     double Lambda = 0.5 + pos_lambda / 100.0;
     double Theta = pos_theta * CV_PI / 180;
-    double Psi = pos_psi * CV_PI / 180;;
+    double Psi = pos_psi * CV_PI / 180;
     double Gamma = pos_gamma;
 
     Mat kernel = getGaborKernel(KernalSize, Sigma, Theta, Lambda, Gamma, Psi);
@@ -158,7 +158,7 @@ void Process(int , void *)
         black.at < unsigned char > (rit->second.x,rit->second.y) = 255;
     }
 
-    if(points.size() < 64){
+    if(points.size() < gabor_count){
         cout << points.size() << "!!\n";
     }else{
         cout << points.size() << "\n";
@@ -176,25 +176,25 @@ void Process(int , void *)
     hconcat(matrices, target);
     imshow(gabor_editor, target);
 
-    /*Mat Lkernel(TMPkernel_size*10, TMPkernel_size*10, CV_32F);
+    Mat Lkernel(kernel_size*10, kernel_size*10, CV_32F);
     resize(kernel, Lkernel, Lkernel.size());
     Lkernel /= 2.;
     Lkernel += 0.5;
-    imshow("Kernel", Lkernel);*/
+    imshow("Kernel", Lkernel);
 }
 
 void Gabor_editor(Mat &src) {
     gabor_src = src;
     cv::namedWindow(gabor_editor, 1);
 
-    cv::createTrackbar("Kernel size (def. 10)", gabor_editor, &kernel_size, 50, Process);
-    cv::createTrackbar("Sigma", gabor_editor, &pos_sigma, 50, Process);
-    cv::createTrackbar("Lambda", gabor_editor, &pos_lambda, 100, Process);
-    cv::createTrackbar("Theta", gabor_editor, &pos_theta, 180, Process);
-    cv::createTrackbar("Psi", gabor_editor, &pos_psi, 360, Process);
-    cv::createTrackbar("Gamma", gabor_editor, &pos_gamma, 100, Process);
-    cv::createTrackbar("Points count", gabor_editor, &gabor_count, 256, Process);
-    cv::createTrackbar("Border size", gabor_editor, &border_size, 50, Process);
+    cv::createTrackbar("Kernel size (1-50)", gabor_editor, &kernel_size, 50, Process);
+    cv::createTrackbar("Sigma (0-50)", gabor_editor, &pos_sigma, 50, Process);
+    cv::createTrackbar("Theta (0-180)", gabor_editor, &pos_theta, 180, Process);
+    cv::createTrackbar("Lambda (0-100)", gabor_editor, &pos_lambda, 100, Process);
+    cv::createTrackbar("Gamma (0-100)", gabor_editor, &pos_gamma, 100, Process);
+    cv::createTrackbar("Psi (0-360)", gabor_editor, &pos_psi, 360, Process);
+    cv::createTrackbar("Points (0-275)", gabor_editor, &gabor_count, 275, Process);
+    cv::createTrackbar("Border size (0-50)", gabor_editor, &border_size, 50, Process);
 
     Process(0,0);
     waitKey(0);

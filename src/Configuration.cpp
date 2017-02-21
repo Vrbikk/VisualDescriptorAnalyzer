@@ -29,7 +29,8 @@ Configuration::Configuration() {
 
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
-    horatio_caine_mode = false;
+    result_mode = false;
+    gabor_editor_mode = false;
     preprocessing_config.equalize_hist = false;
     preprocessing_config.gaussian_blur = false;
     job_mode = false;
@@ -120,17 +121,18 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
 
                     //Gabor
+                else if(!type.compare("gabor_editor_mode")){setBoolValue(value, gabor_editor_mode, "gabor_editor_mode");}
                 else if(!type.compare("gabor_setting")){ setIntegerValue(value, Gabor_config.gabor_setting, "gebor_setting");}
                 else if(!type.compare("gabor_points")){ setIntegerValue(value, Gabor_config.gabor_points, "gabor_points");}
                 else if(!type.compare("gabor_histogram_size")){ setIntegerValue(value, Gabor_config.gabor_histogram_size, "gabor_histogram_size");}
                 else if(!type.compare("gabor_border_size")){ setIntegerValue(value, Gabor_config.gabor_border_size, "gabor_border_size");}
 
-                    //LBP
-                else if(!type.compare("lbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
-                else if(!type.compare("lbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
-                else if(!type.compare("lbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
-                else if(!type.compare("lbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
-                else if(!type.compare("lbp_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
+                    //LBPb
+                else if(!type.compare("lbpb_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
+                else if(!type.compare("lbpb_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
+                else if(!type.compare("lbpb_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
+                else if(!type.compare("lbpb_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
+                else if(!type.compare("lbpb_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
                     //LBPa
                 else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
                 else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
@@ -140,7 +142,7 @@ bool Configuration::setUp(const string path) {
 
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
-                else if(!type.compare("horatio_caine_mode")){setBoolValue(value, horatio_caine_mode, "horatio_caine_mode");}
+                else if(!type.compare("result_mode")){setBoolValue(value, result_mode, "result_mode");}
                 else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
                 else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
                 else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
@@ -199,8 +201,8 @@ int Configuration::getClassificationThreads() {
     return classification_threads;
 }
 
-bool Configuration::getHoratioCaineMode() {
-    return horatio_caine_mode;
+bool Configuration::getResultMode() {
+    return result_mode;
 }
 
 void Configuration::setBoolValue(string a, bool &target, string target_name) {
@@ -358,4 +360,8 @@ void Configuration::printGaborConfiguration() {
         LOGGER->Info("Gabor config - setting:" + gabor_settings[Gabor_config.gabor_setting] + " points:" + to_string(Gabor_config.gabor_points) +
                         " histogram_size:" + to_string(Gabor_config.gabor_histogram_size) + " border_size:" + to_string(Gabor_config.gabor_border_size));
     }
+}
+
+bool Configuration::getGaborEditorMode() {
+    return gabor_editor_mode;
 }

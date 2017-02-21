@@ -13,6 +13,7 @@ void LBPa::Process(_image &img) {
     Mat lbpa = Mat(img.working_img.rows, img.working_img.cols, CV_32SC1);
     extractLBPa(cropped, lbpa, config);
 
+    //show_image(img.original_img);
     //show_image(lbpa);
 
     switch(CONFIG->getGaborSetting()){

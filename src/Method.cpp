@@ -201,8 +201,8 @@ byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluatio
         // X
         case 1: {
 
-            /*(src.at<byte>(x,y)) = 0;
-             show_image(src);*/
+            //(src.at<byte>(x,y)) = 0;
+             //show_image(src);
 
              return src.at<byte>(x, y);
         }

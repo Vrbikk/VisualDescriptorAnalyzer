@@ -73,7 +73,8 @@ private:
     __extraction_method extraction_method;
     __comparison_method comparison_method;
     int classification_threads;
-    bool horatio_caine_mode;
+    bool result_mode;
+    bool gabor_editor_mode;
     vector<_job> jobs;
     bool job_mode;
     _LBP_config LBP_config;
@@ -97,7 +98,8 @@ public:
     Method *getExtractionMethod();
     __comparison_method getComparisonMethod();
     int getClassificationThreads();
-    bool getHoratioCaineMode();
+    bool getResultMode();
+    bool getGaborEditorMode();
     _preprocessing_config getPreprocessingConfig();
     vector<_job> getJobs();
     bool getJobMode();
