@@ -80,25 +80,15 @@ lbpa_range:5
 #notation... job:method_number-params...
 
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
-job:0 -    4,            1,         1,           8,           1
-job:0 -    6,            1,         1,           8,           1
-job:0 -    8,            1,         1,           8,           1
-job:0 -    10,           1,         1,           8,           1
-job:0 -    12,           1,         1,           8,           1
-job:0 -    14,           1,         1,           8,           1
-job:0 -    16,           1,         1,           8,           1
-job:0 -    18,           1,         1,           8,           1
-job:0 -    20,           1,         1,           8,           1
-job:0 -    22,           1,         1,           8,           1
+job:0 -    24,           1,         1,           8,           1
+job:0 -    26,           1,         1,           8,           1
+job:0 -    28,           1,         1,           8,           1
+job:0 -    30,           1,         1,           8,           1
+job:0 -    32,           1,         1,           8,           1
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
-job:1 -    4,           1,            2,                2,             2
-job:1 -    6,           1,            2,                2,             2
-job:1 -    8,           1,            2,                2,             2
-job:1 -    10,           1,            2,                2,             2
-job:1 -    12,           1,            2,                2,             2
-job:1 -    14,           1,            2,                2,             2
-job:1 -    16,           1,            2,                2,             2
-job:1 -    18,           1,            2,                2,             2
-job:1 -    20,           1,            2,                2,             2
-job:1 -    22,           1,            2,                2,             2
+job:1 -    24,           1,            2,                2,             2
+job:1 -    26,           1,            2,                2,             2
+job:1 -    28,           1,            2,                2,             2
+job:1 -    30,           1,            2,                2,             2
+job:1 -    32,           1,            2,                2,             2

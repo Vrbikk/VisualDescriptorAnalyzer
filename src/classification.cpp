@@ -213,7 +213,6 @@ void classificate(vector<_image> &train, vector<_image> &test) {
 }
 
 double get_gabor_distance(_image &a, _image &b) {
-
     double distance = 0;
     for(int i = 0; i < a.points.size(); i++){
         double local_distance = 1;
