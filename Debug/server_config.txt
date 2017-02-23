@@ -21,7 +21,7 @@ gaussian_blur:0
 #### global config
 #### comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya)
 #### classification_threads: based on cpu cores
-comparison_method:0
+comparison_method:1
 classification_threads:8
 horatio_caine_mode:0
 
@@ -80,15 +80,40 @@ lbpa_range:5
 #notation... job:method_number-params...
 
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
-job:0 -    24,           1,         1,           8,           1
-job:0 -    26,           1,         1,           8,           1
-job:0 -    28,           1,         1,           8,           1
-job:0 -    30,           1,         1,           8,           1
-job:0 -    32,           1,         1,           8,           1
+job:0 -    12,           1,         1,           8,           1
+job:0 -    12,           1,         2,           8,           1
+job:0 -    12,           1,         3,           8,           1
+job:0 -    12,           1,         4,           8,           1
+job:0 -    12,           1,         5,           8,           1
+job:0 -    12,           1,         6,           8,           1
+job:0 -    12,           1,         7,           8,           1
+job:0 -    12,           1,         8,           8,           1
+job:0 -    12,           1,         9,           8,           1
+job:0 -    12,           1,         10,          8,           1
+
+job:0 -    12,           1,         1,           8,           6
+job:0 -    12,           1,         2,           8,           6
+job:0 -    12,           1,         3,           8,           6
+job:0 -    12,           1,         4,           8,           6
+job:0 -    12,           1,         5,           8,           6
+job:0 -    12,           1,         6,           8,           6
+job:0 -    12,           1,         7,           8,           6
+job:0 -    12,           1,         8,           8,           6
+job:0 -    12,           1,         9,           8,           6
+job:0 -    12,           1,         10,          8,           6
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
-job:1 -    24,           1,            2,                2,             2
-job:1 -    26,           1,            2,                2,             2
-job:1 -    28,           1,            2,                2,             2
-job:1 -    30,           1,            2,                2,             2
-job:1 -    32,           1,            2,                2,             2
+job:1 -    12,           1,            2,                2,             1
+job:1 -    12,           1,            2,                2,             2
+job:1 -    12,           1,            2,                2,             3
+job:1 -    12,           1,            2,                2,             4
+job:1 -    12,           1,            2,                2,             5
+job:1 -    12,           1,            2,                2,             6
+job:1 -    12,           1,            2,                2,             7
+job:1 -    12,           1,            2,                2,             8
+job:1 -    12,           1,            2,                2,             9
+job:1 -    12,           1,            2,                2,             10
+
+
+
+

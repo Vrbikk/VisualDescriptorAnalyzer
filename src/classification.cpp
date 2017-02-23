@@ -233,8 +233,7 @@ int get_nearest_gabor_histogram_index(Point &a, vector<Point> &points, double &l
             index = i;
         }
     }
-
-    //local_distance += min_distance / 10;
+    //local_distance += min_distance / 10; //experimental
     return index;
 }
 
