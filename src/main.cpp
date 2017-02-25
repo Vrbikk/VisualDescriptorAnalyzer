@@ -4,6 +4,9 @@
 #include "include/preprocessing.h"
 #include "include/gabor.h"
 
+/*
+ * Singleton classes removal
+ */
 void cleanup(void){
     LOGGER->destroyInstance();
     CONFIG->destroyInstance();
@@ -11,12 +14,16 @@ void cleanup(void){
 
 int main(int argc, char *argv[]) {
 
+    // initializing main data containers
     vector<_image> train = vector<_image>();
     vector<_image> test = vector<_image>();
 
     if(argc == 3 && LOGGER->setUp(argv[1]) && CONFIG->setUp(argv[2]) && load_images(train, test)){
 
         if(CONFIG->getJobMode()) {
+
+            // JOB mode for iterative run over all configurations
+
             LOGGER->Info("Application started in [JOB MODE] with " + to_string(CONFIG->getJobs().size()) + " jobs");
             LOGGER->Info(CONFIG->configurationDump());
 
@@ -35,6 +42,9 @@ int main(int argc, char *argv[]) {
             }
 
         }else{
+
+            // NORMAL mode for testing purposes and graphical features
+
             LOGGER->Info("Application started in [NORMAL MODE]");
             LOGGER->Info(CONFIG->configurationDump());
 
