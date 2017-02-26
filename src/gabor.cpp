@@ -32,9 +32,6 @@ void assign_points(_image &img, int count, int border) {
     double Psi = CONFIG->GFS.TMPpos_psi * CV_PI / 180;;
     double Gamma = CONFIG->GFS.TMPpos_gamma;
 
-    //Mat equalized;
-    //equalizeHist(img.original_img , equalized);
-
     Mat kernel = getGaborKernel(KernalSize, Sigma, Theta, Lambda, Gamma, Psi);
     filter2D(img.original_img, img.gabor_filter, CV_8U, kernel);
     img.points_from_gabor = Mat(img.gabor_filter.size(), CV_8U);
@@ -66,5 +63,4 @@ void assign_points(_image &img, int count, int border) {
     }
 
     //show_image(img.points_from_gabor);
-
 }
