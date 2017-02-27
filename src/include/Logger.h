@@ -16,7 +16,7 @@ class Logger {
 private:
     static Logger *logger_instance;
     Logger();
-    Logger(const Logger&); //protects copying
+    Logger(const Logger&);
     static ofstream log_stream;
     void Log(string log_message);
     string logging_file;

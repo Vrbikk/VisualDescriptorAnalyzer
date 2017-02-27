@@ -164,8 +164,6 @@ void Process(int , void *)
         cout << points.size() << "\n";
     }
 
-
-
     vector<Mat> matrices = {
             gabor_src,
             dest,
