@@ -249,7 +249,6 @@ double get_gabor_intersection_distance(vector<int> a, vector<int> b){
                 sub_distance += b[j];
             }
         }
-    //return distance_a - distance;
     return (sum - sub_distance);
 }
 
