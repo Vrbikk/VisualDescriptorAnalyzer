@@ -30,12 +30,12 @@ int main(int argc, char *argv[]) {
             for(auto job : CONFIG->getJobs()){
                 CONFIG->setActualJob(job);
                 if(!job.gabor) {
+
                     preprocess(train, test);
 
                     if (CONFIG->getGaborSetting() > 0) {
                         gabor(train, test);
                     }
-
                     extract(train, test);
                     classificate(train, test);
                 }
@@ -49,7 +49,6 @@ int main(int argc, char *argv[]) {
             LOGGER->Info(CONFIG->configurationDump());
 
             preprocess(train, test);
-
             if(CONFIG->getGaborEditorMode()) {
                 std::multimap<unsigned int, unsigned int> kek;
                 int i = 0;
