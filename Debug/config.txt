@@ -5,16 +5,16 @@
 #### data_config - must have "/"
 
 #FERET:
-data_path:/home/vrbik/Apps/gray_feret/
-train_folder:gallery/
-test_folder:fb/
+#data_path:/home/vrbik/Apps/gray_feret/
+#train_folder:gallery/
+#test_folder:fb/
 
 #UFI:
-#data_path:/home/vrbik/Apps/ufi-cropped/
-#train_folder:train/
-#test_folder:test/
+data_path:/home/vrbik/Apps/ufi-cropped/
+train_folder:train/
+test_folder:test/
 
-#### preprocessing config
+#### preprocessing config, just implemented not used
 equalize_hist:0
 gaussian_blur:0
 
@@ -29,7 +29,7 @@ gabor_editor_mode:0
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:0
+job_mode:1
 
 ####[NORMAL MODE] choose method below - 0 = LBPb; 1 = LBPa
 extraction_method:0
@@ -59,13 +59,13 @@ extraction_method:0
 
 #Gabor [NORMAL MODE]
 gabor_setting:1
-gabor_points:225
-gabor_histogram_size:18
+gabor_points:100
+gabor_histogram_size:30
 gabor_border_size:10
 
 #LBPb [NORMAL MODE]
 lbpb_grid_size:8
-lbpb_uniform:0
+lbpb_uniform:1
 lbpb_range:3
 lbpb_neighbours:9
 lbpb_neighbour_shape:1
@@ -80,19 +80,29 @@ lbpa_range:3
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
 
-job:0 -    12,           1,         5,           4,            1
-job:0 -    12,           1,         5,           5,            1
-job:0 -    12,           1,         5,           6,            1
-job:0 -    12,           1,         5,           7,            1
+#Gabor    setting      points      histogram_size     border_size
+job:2 -     1,          250,           2,               0
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         1,          8,          1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    8,            1,            2,                3,             4
+#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         5,          11,          6
 
+#Gabor    setting      points      histogram_size     border_size
+job:2 -     1,          250,           4,               0
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         1,          8,          1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    8,            1,            2,                3,             4
+#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         5,          11,          6
 
-job:0 -    12,           1,         5,           4,            2
-job:0 -    12,           1,         5,           5,            2
-job:0 -    12,           1,         5,           6,            2
-job:0 -    12,           1,         5,           7,            2
-
-
-job:0 -    12,           1,         5,           4,            6
-job:0 -    12,           1,         5,           5,            6
-job:0 -    12,           1,         5,           6,            6
-job:0 -    12,           1,         5,           7,            6
+#Gabor    setting      points      histogram_size     border_size
+job:2 -     1,          250,           6,               0
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         1,          8,          1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    8,            1,            2,                3,             4
+#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         5,          11,          6

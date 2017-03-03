@@ -353,13 +353,15 @@ vector<vector<int>> Method::extractGaborPointsHistograms(Mat &src, vector<Point>
     tmp_vector.resize(points.size());
 
     int i = 0;
-
+    //show_image(src);
     for(auto &a : points){
         vector<int> local_histogram;
         localGaborHistogram(src, a, local_histogram, size, uniform);
-        //show_image(src);
+
         tmp_vector[i++] = local_histogram;
     }
+
+    //show_image(src);
     return tmp_vector;
 }
 
@@ -378,7 +380,7 @@ void Method::localGaborHistogram(Mat &src, Point &point, vector<int> &local_hist
                 }else{
                     local_histogram[uniform_table[src.at<int>(local_x, local_y)]] += 1;
                 }
-                //src.at<int>(local_x, local_y) = 0;
+                //src.at<int>(local_x, local_y) = 255;
             }
         }
 
