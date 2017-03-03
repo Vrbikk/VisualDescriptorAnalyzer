@@ -18,6 +18,9 @@ enum __extraction_method{
     __LBP, __LBPa
 };
 
+/*
+ * Type of vector comparison, __BHATTACHARYYA is experimental and not used
+ */
 enum __comparison_method{
     __EUCLIDEAN, __INTERSECTION, __BHATTACHARYYA
 };

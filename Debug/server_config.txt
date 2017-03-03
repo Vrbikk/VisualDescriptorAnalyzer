@@ -80,7 +80,7 @@ lbpa_range:5
 #notation... job:method_number-params...
 
 #Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          25,           15,               0
+job:2 -     1,          325,           15,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -88,8 +88,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          50,           15,               0
+job:2 -     1,          350,           15,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -97,8 +96,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          75,           15,               0
+job:2 -     1,          250,           8,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -106,8 +104,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          100,           15,               0
+job:2 -     1,          250,           10,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -115,8 +112,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          125,           15,               0
+job:2 -     1,          250,           12,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -124,8 +120,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          150,           15,               0
+job:2 -     1,          250,           14,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -133,8 +128,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          175,           15,               0
+job:2 -     1,          250,           16,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -142,8 +136,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          200,           15,               0
+job:2 -     1,          250,           18,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -151,8 +144,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          225,           15,               0
+job:2 -     1,          250,           20,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -160,8 +152,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          250,           15,               0
+job:2 -     1,          250,           22,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -169,8 +160,7 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          275,           15,               0
+job:2 -     1,          250,           24,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -178,8 +168,23 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          300,           15,               0
+job:2 -     1,          250,           26,               0
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         1,          8,          1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    8,            1,            2,                3,             4
+#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         5,          11,          6
+
+job:2 -     1,          250,           28,               0
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         1,          8,          1
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -    8,            1,            2,                3,             4
+#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -    8,            1,         5,          11,          6
+
+job:2 -     1,          250,           30,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
