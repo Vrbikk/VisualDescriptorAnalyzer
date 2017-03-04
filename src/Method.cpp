@@ -84,9 +84,6 @@ vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool unifor
     for(int x = x_offset; x < grid_size * frame_width; x += frame_width){
         for(int y = y_offset; y < grid_size * frame_height; y += frame_height){
 
-            //int value = (int)round((-((x * x) / 26) + (4.9 * x) -37));
-
-            //if((y - frame_height / 2) < value) {
                 vector<int> local_histogram;
                 localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
                 global_histogram.push_back(local_histogram);
