@@ -134,8 +134,8 @@ void Process(int , void *)
 
     std::multimap<unsigned int, Point> points;
 
-    for(int x = border_size; x < black.cols - (border_size + 3); x+=3){
-        for(int y = border_size; y < black.rows - (border_size + 3); y+=3) {
+    for(int x = border_size; x < black.rows - (border_size + 3); x+=3){
+        for(int y = border_size; y < black.cols - (border_size + 3); y+=3) {
 
             unsigned int sum = 0;
             for (int i = x; i < x + 3; i++) {

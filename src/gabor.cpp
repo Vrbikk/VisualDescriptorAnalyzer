@@ -39,8 +39,8 @@ void assign_points(_image &img, int count, int border) {
 
     std::multimap<unsigned int, Point> points;
 
-    for(int x = border; x < img.gabor_filter.cols - (border + 3); x+=3){
-        for(int y = border; y < img.gabor_filter.rows - (border + 3); y+=3) {
+    for(int x = border; x < img.gabor_filter.rows - (border + 3); x+=3){
+        for(int y = border; y < img.gabor_filter.cols - (border + 3); y+=3) {
 
             unsigned int sum = 0;
             for (int i = x; i < x + 3; i++) {
