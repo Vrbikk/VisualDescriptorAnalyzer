@@ -24,7 +24,7 @@ gaussian_blur:0
 comparison_method:1
 classification_threads:4
 result_mode:0
-gabor_editor_mode:0
+gabor_editor_mode:1
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
