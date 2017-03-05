@@ -24,7 +24,7 @@ gaussian_blur:0
 comparison_method:1
 classification_threads:4
 result_mode:0
-gabor_editor_mode:1
+gabor_editor_mode:0
 
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
@@ -58,10 +58,10 @@ extraction_method:0
 #uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
 
 #Gabor [NORMAL MODE]
-gabor_setting:0
-gabor_points:100
+gabor_setting:1
+gabor_points:300
 gabor_histogram_size:30
-gabor_border_size:10
+gabor_border_size:0
 
 #LBPb [NORMAL MODE]
 lbpb_grid_size:10

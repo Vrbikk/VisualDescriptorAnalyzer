@@ -61,6 +61,5 @@ void assign_points(_image &img, int count, int border) {
         img.points_from_gabor.at < unsigned char > (rit->second.x,rit->second.y) = 255;
         img.points.push_back(rit->second);
     }
-
     //show_image(img.points_from_gabor);
 }
