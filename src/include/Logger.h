@@ -12,6 +12,10 @@
 
 using namespace std;
 
+/*
+ * Singleton Logger class
+ */
+
 class Logger {
 private:
     static Logger *logger_instance;
@@ -24,8 +28,13 @@ private:
 public:
     void destroyInstance();
     bool setUp(string path);
+
+    /*
+     * Two types of logging messages
+     */
     void Info(string message);
     void Error(string message);
+
     static Logger *getLogger();
     string get_current_date_time();
 };

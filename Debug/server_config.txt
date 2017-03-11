@@ -5,14 +5,19 @@
 #### data_config - must have "/"
 
 #FERET:
-data_path:/home/tondav/gray_feret/
-train_folder:gallery/
-test_folder:fb/
+#data_path:/home/tondav/gray_feret/
+#train_folder:gallery/
+#test_folder:fb/
 
 #UFI:
 #data_path:/home/tondav/ufi-cropped/
 #train_folder:train/
 #test_folder:test/
+
+#faceScrub
+data_path:/home/tondav/faceScrub/sets/
+train_folder:train/
+test_folder:test/
 
 #### preprocessing config
 equalize_hist:0

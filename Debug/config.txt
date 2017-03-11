@@ -5,14 +5,19 @@
 #### data_config - must have "/"
 
 #FERET:
-data_path:/home/vrbik/Apps/gray_feret/
-train_folder:gallery/
-test_folder:fb/
+#data_path:/home/vrbik/Apps/gray_feret/
+#train_folder:gallery/
+#test_folder:fb/
 
 #UFI:
 #data_path:/home/vrbik/Apps/ufi-cropped/
-#train_folder:train/
-#test_folder:test/
+#train_folder:train-50/
+#test_folder:test-50/
+
+#faceScrub
+data_path:/home/vrbik/Apps/faceScrub/
+train_folder:train/
+test_folder:test/
 
 #### preprocessing config, just implemented not used
 equalize_hist:0
@@ -58,16 +63,16 @@ extraction_method:0
 #uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
 
 #Gabor [NORMAL MODE]
-gabor_setting:1
-gabor_points:300
-gabor_histogram_size:30
-gabor_border_size:0
+gabor_setting:0
+gabor_points:225
+gabor_histogram_size:25
+gabor_border_size:10
 
 #LBPb [NORMAL MODE]
-lbpb_grid_size:10
+lbpb_grid_size:8
 lbpb_uniform:1
-lbpb_range:3
-lbpb_neighbours:9
+lbpb_range:1
+lbpb_neighbours:8
 lbpb_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
