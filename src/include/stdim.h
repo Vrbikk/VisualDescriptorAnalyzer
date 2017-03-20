@@ -13,13 +13,14 @@ using namespace std;
 using namespace cv;
 
 struct _image{
-    int id;
+    int id = 0;
     string file_name;
     string path;
     Mat original_img;
     Mat working_img;
     vector<vector<int>> exctracted_vector;
     vector<vector<int>> gabor_exctracted_vector;
+    string texture_class = "";
 
     vector<Point> points;
     Mat gabor_filter;

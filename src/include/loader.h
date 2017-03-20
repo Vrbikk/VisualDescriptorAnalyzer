@@ -19,6 +19,9 @@ using namespace cv;
 int get_files(string path, vector<string> &files);
 bool load_images(vector<_image> &train, vector<_image> &test);
 void file_miner(string path, vector<_image> &images);
+void texture_miner(string label_path, string texture_path, vector<_image> &images);
+void load_textures(vector<_image> &train, vector<_image> &test, int set);
+
 
 
 #endif //PLAYGROUND_LOADER_H

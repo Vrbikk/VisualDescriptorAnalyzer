@@ -33,4 +33,21 @@ void preprocess(vector<_image> &train, vector<_image> &test) {
     iterate_preprocess(test, "Testing data preprocessing");
 }
 
+void preprocess_textures(vector<_image> &train, vector<_image> &test) {
+
+    if(!CONFIG->getJobMode()){
+        LOGGER->Info("Preprocessing textures");
+    }
+    texture_scaling(train);
+    texture_scaling(test);
+
+}
+
+void texture_scaling(vector<_image> &images) {
+    for(auto &a : images){
+        Size size = Size(494,450);
+        resize(a.original_img, a.working_img, size);
+    }
+}
+
 

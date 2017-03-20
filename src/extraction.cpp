@@ -17,7 +17,7 @@ void extract(vector<_image> &train, vector<_image> &test) {
 
     Method *selectedMethod = CONFIG->getExtractionMethod();
 
-    if(!CONFIG->getJobMode()) {
+    if(!CONFIG->getJobMode() && !CONFIG->isTexture_mode()) {
         LOGGER->Info("Extracting vectors");
     }
 

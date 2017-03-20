@@ -83,6 +83,7 @@ private:
     _LBP_config LBP_config;
     _LBPa_config LBPa_config;
     _Gabor_config Gabor_config;
+    bool texture_mode;
 
     void setExtractionMethod(string a);
     void setComparisonMethod(string a);
@@ -114,6 +115,10 @@ public:
     int getGaborBorderSize();
 
     void printGaborConfiguration();
+
+    bool isTexture_mode() const;
+
+    void setTexture_mode(bool texture_mode);
 
 };
 

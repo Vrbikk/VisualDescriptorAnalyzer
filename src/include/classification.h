@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void classificate(vector<_image> &train, vector<_image> &test);
+double classificate(vector<_image> &train, vector<_image> &test);
 double get_gabor_intersection_distance(vector<int> a, vector<int> b);
 double get_gabor_euclidean_distance(vector<int> a, vector<int> b);
 int get_nearest_gabor_histogram_index(Point &a, vector<Point> &points, double &local_distance);
@@ -23,6 +23,6 @@ double get_intersection_distance(vector<vector<int>> a, vector<vector<int>> b);
 double get_bhattacharyya_distance(vector<vector<int>> a, vector<vector<int>> b);
 void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_image*> &candidates, int from, int to);
 void progression();
-void result_calculation(vector<_image> &test, vector<_image*> &candidates);
+double result_calculation(vector<_image> &test, vector<_image *> &candidates);
 
 #endif //PLAYGROUND_CLASSIFICATION_H

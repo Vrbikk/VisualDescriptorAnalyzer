@@ -153,10 +153,10 @@ void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_imag
     }
 }
 
-void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
+double result_calculation(vector<_image> &test, vector<_image *> &candidates) {
     int hits = 0;
     for(int i = 0; i < test.size(); i++){
-        if(test[i].id == (*candidates[i]).id){
+        if(test[i].id == (*candidates[i]).id && !test[i].texture_class.compare((*candidates[i]).texture_class)){
             hits++;
             if(CONFIG->getResultMode()) {
                 csi_show_two_images(test[i], *candidates[i], true);
@@ -171,10 +171,13 @@ void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
     }
 
     double accuracy = hits/(test.size() * 1.0);
-    LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑\n");
+
+    if(!CONFIG->isTexture_mode()) LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑\n");
+
+    return accuracy;
 }
 
-void classificate(vector<_image> &train, vector<_image> &test) {
+double classificate(vector<_image> &train, vector<_image> &test) {
     if(!CONFIG->getJobMode()) {
         LOGGER->Info("Classification started");
     }
@@ -209,7 +212,7 @@ void classificate(vector<_image> &train, vector<_image> &test) {
 
     for_each(threads.begin(), threads.end(), [](thread &t){t.join();});
 
-    result_calculation(test, candidates);
+    return result_calculation(test, candidates);
 }
 
 double get_gabor_distance(_image &a, _image &b) {

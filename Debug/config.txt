@@ -15,9 +15,13 @@
 #test_folder:test-50/
 
 #faceScrub
-data_path:/home/vrbik/Apps/faceScrub/
-train_folder:train/
-test_folder:test/
+#data_path:/home/vrbik/Apps/faceScrub/
+#train_folder:train/
+#test_folder:test/
+
+#textures
+data_path:/home/vrbik/Apps/dtd/
+texture_mode:1
 
 #### preprocessing config, just implemented not used
 equalize_hist:0
@@ -34,7 +38,7 @@ gabor_editor_mode:0
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:0
+job_mode:1
 
 ####[NORMAL MODE] choose method below - 0 = LBPb; 1 = LBPa
 extraction_method:0
@@ -85,8 +89,6 @@ lbpa_range:3
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          250,           2,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -94,8 +96,6 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          250,           4,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
@@ -103,8 +103,6 @@ job:1 -    8,            1,            2,                3,             4
 #LBPb    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#Gabor    setting      points      histogram_size     border_size
-job:2 -     1,          250,           6,               0
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range

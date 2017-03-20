@@ -58,7 +58,9 @@ void Method::localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector
         local_histogram.assign(number_of_uniform_patterns + 1, 0);
         for(int local_x = x; local_x < x + xsize; local_x++){
             for(int local_y = y; local_y < y + ysize; local_y++) {
-                local_histogram[uniform_table[src.at<int>(local_x, local_y)]] += 1;
+                local_histogram[uniform_table[src.at<int>(local_y, local_x)]] += 1;
+                //src.at<int>(local_y, local_x) = 0;
+                //show_image(src);
             }
         }
 
@@ -66,7 +68,7 @@ void Method::localHistogram(int x, int y, int xsize, int ysize, Mat &src, vector
         local_histogram.assign(number_of_all_patterns, 0);
         for(int local_x = x; local_x < x + xsize; local_x++){
             for(int local_y = y; local_y < y + ysize; local_y++) {
-                local_histogram[src.at<int>(local_x, local_y)] += 1;
+                local_histogram[src.at<int>(local_y, local_x)] += 1;
             }
         }
     }
@@ -84,13 +86,13 @@ vector<vector<int>> Method::globalHistogram(Mat &src, int grid_size, bool unifor
     for(int x = x_offset; x < grid_size * frame_width; x += frame_width){
         for(int y = y_offset; y < grid_size * frame_height; y += frame_height){
 
+                /*rectangle(src, Point(x, y), Point(x + frame_width, y + frame_height), Scalar(255),
+                          1, 8, 0);
+                show_image(src);*/
+
                 vector<int> local_histogram;
                 localHistogram(x, y, frame_width, frame_height, src, local_histogram, uniform);
                 global_histogram.push_back(local_histogram);
-
-                /*rectangle(src, Point(x, y), Point(x + frame_width, y + frame_height), Scalar(255),
-                          2, 8, 0);
-                show_image(src);*/
         }
     }
     return global_histogram;

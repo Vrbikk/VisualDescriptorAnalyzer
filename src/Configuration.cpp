@@ -46,6 +46,8 @@ Configuration::Configuration() {
     GFS.TMPpos_theta = 15;
     GFS.TMPpos_gamma = 3;
     GFS.TMPpos_psi = 104;
+
+    texture_mode = false;
 }
 
 bool Configuration::isCommentOrEmpty(string line) {
@@ -147,7 +149,8 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
                 else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
                 else if(!type.compare("job")){addJob(value);}
-                else if(!type.compare("job")){addJob(value);}
+
+                else if(!type.compare("texture_mode")){setBoolValue(value, texture_mode, "texture_mode");}
             }
         }
         return true;
@@ -365,3 +368,8 @@ void Configuration::printGaborConfiguration() {
 bool Configuration::getGaborEditorMode() {
     return gabor_editor_mode;
 }
+
+bool Configuration::isTexture_mode() const {
+    return texture_mode;
+}
+
