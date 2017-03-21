@@ -94,6 +94,7 @@ private:
     void addJob(string line_job);
 
 public:
+    bool print_config = true;
     _gabor_filter_setting GFS;
     void destroyInstance();
     static Configuration *getConfiguration();

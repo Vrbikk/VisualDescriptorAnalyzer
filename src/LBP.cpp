@@ -50,9 +50,11 @@ void LBP::setUp(void *_param) {
    initUniformTable(config.lbp_params.neighbours);
    optimize_LBP_pls(config);
 
-   LOGGER->Info(config.lbp_params.print());
-   LOGGER->Info(config.hist.print());
-   CONFIG->printGaborConfiguration();
+    if(CONFIG->print_config){
+        LOGGER->Info(config.lbp_params.print());
+        LOGGER->Info(config.hist.print());
+        CONFIG->printGaborConfiguration();
+    }
 }
 
 

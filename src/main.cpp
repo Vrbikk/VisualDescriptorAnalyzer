@@ -15,7 +15,9 @@ void cleanup(void){
 int main(int argc, char *argv[]) {
 
     if(CONFIG->setUp(argv[2])){
-        if(CONFIG->isTexture_mode()){
+
+        // TEXTURE MODE
+        if(CONFIG->isTexture_mode() && LOGGER->setUp(argv[1])){
 
             vector<_image> train;
             vector<_image> test;
@@ -39,7 +41,10 @@ int main(int argc, char *argv[]) {
                             preprocess_textures(train, test);
                             extract(train, test);
                             results.push_back(classificate(train, test));
+                            if(i == 1) CONFIG->print_config = false;
                         }
+
+                        CONFIG->print_config = true;
 
                         int i = 1;
                         double sum = 0;

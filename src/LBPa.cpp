@@ -41,9 +41,12 @@ void LBPa::setUp(void *_param) {
     config = *(struct _LBPa_config*)_param;
     initUniformTable(8);
 
-    LOGGER->Info(config.lbpa_params.print());
-    LOGGER->Info(config.hist.print());
-    CONFIG->printGaborConfiguration();
+    if(CONFIG->print_config){
+        LOGGER->Info(config.lbpa_params.print());
+        LOGGER->Info(config.hist.print());
+        CONFIG->printGaborConfiguration();
+    }
+
 }
 
 LBPa::LBPa() {
