@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
     if(CONFIG->setUp(argv[2])){
 
-        // TEXTURE MODE
+        // JOB TEXTURE MODE
         if(CONFIG->isTexture_mode() && LOGGER->setUp(argv[1])){
 
             vector<_image> train;
@@ -58,6 +58,8 @@ int main(int argc, char *argv[]) {
                 }
 
             }else{
+
+
 
                 LOGGER->Info("Application started in [NORMAL TEXTURE MODE]");
                 LOGGER->Info(CONFIG->configurationDump());

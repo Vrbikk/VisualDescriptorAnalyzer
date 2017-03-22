@@ -89,6 +89,7 @@ lbpa_range:5
 #notation... job:method_number-params...
 
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -     1,           1,         1,           8,           1
 job:0 -     2,           1,         1,           8,           1
 job:0 -     4,           1,         1,           8,           1
 job:0 -     6,           1,         1,           8,           1
@@ -99,13 +100,10 @@ job:0 -    14,           1,         1,           8,           1
 job:0 -    16,           1,         1,           8,           1
 job:0 -    18,           1,         1,           8,           1
 job:0 -    20,           1,         1,           8,           1
-job:0 -    22,           1,         1,           8,           1
-job:0 -    24,           1,         1,           8,           1
-job:0 -    26,           1,         1,           8,           1
-job:0 -    28,           1,         1,           8,           1
-job:0 -    30,           1,         1,           8,           1
+
 
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -     1,           0,         1,           8,           1
 job:0 -     2,           0,         1,           8,           1
 job:0 -     4,           0,         1,           8,           1
 job:0 -     6,           0,         1,           8,           1
@@ -116,14 +114,10 @@ job:0 -    14,           0,         1,           8,           1
 job:0 -    16,           0,         1,           8,           1
 job:0 -    18,           0,         1,           8,           1
 job:0 -    20,           0,         1,           8,           1
-job:0 -    22,           0,         1,           8,           1
-job:0 -    24,           0,         1,           8,           1
-job:0 -    26,           0,         1,           8,           1
-job:0 -    28,           0,         1,           8,           1
-job:0 -    30,           0,         1,           8,           1
 
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     1,           1,            2,                2,             2
 job:1 -     2,           1,            2,                2,             2
 job:1 -     4,           1,            2,                2,             2
 job:1 -     6,           1,            2,                2,             2
@@ -134,13 +128,9 @@ job:1 -    14,           1,            2,                2,             2
 job:1 -    16,           1,            2,                2,             2
 job:1 -    18,           1,            2,                2,             2
 job:1 -    20,           1,            2,                2,             2
-job:1 -    22,           1,            2,                2,             2
-job:1 -    24,           1,            2,                2,             2
-job:1 -    26,           1,            2,                2,             2
-job:1 -    28,           1,            2,                2,             2
-job:1 -    30,           1,            2,                2,             2
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     1,           0,            2,                2,             2
 job:1 -     2,           0,            2,                2,             2
 job:1 -     4,           0,            2,                2,             2
 job:1 -     6,           0,            2,                2,             2
@@ -151,13 +141,9 @@ job:1 -    14,           0,            2,                2,             2
 job:1 -    16,           0,            2,                2,             2
 job:1 -    18,           0,            2,                2,             2
 job:1 -    20,           0,            2,                2,             2
-job:1 -    22,           0,            2,                2,             2
-job:1 -    24,           0,            2,                2,             2
-job:1 -    26,           0,            2,                2,             2
-job:1 -    28,           0,            2,                2,             2
-job:1 -    30,           0,            2,                2,             2
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     1,           1,            3,                3,             3
 job:1 -     2,           1,            3,                3,             3
 job:1 -     4,           1,            3,                3,             3
 job:1 -     6,           1,            3,                3,             3
@@ -168,13 +154,9 @@ job:1 -    14,           1,            3,                3,             3
 job:1 -    16,           1,            3,                3,             3
 job:1 -    18,           1,            3,                3,             3
 job:1 -    20,           1,            3,                3,             3
-job:1 -    22,           1,            3,                3,             3
-job:1 -    24,           1,            3,                3,             3
-job:1 -    26,           1,            3,                3,             3
-job:1 -    28,           1,            3,                3,             3
-job:1 -    30,           1,            3,                3,             3
 
 #LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     1,           0,            3,                3,             3
 job:1 -     2,           0,            3,                3,             3
 job:1 -     4,           0,            3,                3,             3
 job:1 -     6,           0,            3,                3,             3
@@ -184,9 +166,3 @@ job:1 -    12,           0,            3,                3,             3
 job:1 -    14,           0,            3,                3,             3
 job:1 -    16,           0,            3,                3,             3
 job:1 -    18,           0,            3,                3,             3
-job:1 -    20,           0,            3,                3,             3
-job:1 -    22,           0,            3,                3,             3
-job:1 -    24,           0,            3,                3,             3
-job:1 -    26,           0,            3,                3,             3
-job:1 -    28,           0,            3,                3,             3
-job:1 -    30,           0,            3,                3,             3
