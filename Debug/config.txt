@@ -38,10 +38,10 @@ gabor_editor_mode:0
 ##### run in JOB MODE (1) / NORMAL MODE (0)
 #### NORMAL MODE... is for testing actual parameters below, runs only once
 #### JOB MODE... runs every job in section JOB
-job_mode:1
+job_mode:0
 
 ####[NORMAL MODE] choose method below - 0 = LBPb; 1 = LBPa
-extraction_method:0
+extraction_method:1
 
 ###### LBP params ######
 #lbp_grid_size... n * n subhistograms [1-16]
@@ -80,11 +80,11 @@ lbpb_neighbours:8
 lbpb_neighbour_shape:1
 
 #LBPa [NORMAL MODE]
-lbpa_grid_size:10
+lbpa_grid_size:2
 lbpa_uniform:1
-lbpa_center_size:3
-lbpa_neighbour_shape:3
-lbpa_range:3
+lbpa_center_size:5
+lbpa_neighbour_shape:5
+lbpa_range:5
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...

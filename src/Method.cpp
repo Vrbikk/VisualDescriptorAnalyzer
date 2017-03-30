@@ -192,7 +192,7 @@ void Method::optimize_LBP_pls(_LBP_config config) {
 
 byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluation) {
 
-    byte arr[10];
+    byte arr [25];
     byte count;
 
     switch(type){
@@ -259,18 +259,21 @@ byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluatio
             break;
         }
 
-            //  O
-            // OXO
-            //  O
+            // 00000
+            // 00000
+            // 00500
+            // 00000
+            // 00000
         case 5: {
 
-            count = 5;
-
-            arr[0] = (src.at<byte>(x, y));
-            arr[1] = (src.at<byte>(x - 1, y));
-            arr[2] = (src.at<byte>(x + 1, y));
-            arr[3] = (src.at<byte>(x, y - 1));
-            arr[4] = (src.at<byte>(x, y + 1));
+            count = 25;
+            byte index = 0;
+            for(int x_ = x; x_ < x + 5; x_++){
+                for(int y_ = y; y_ < y + 5; y_++){
+                    arr[index++] = src.at<byte>(x_, y_);
+                    //src.at<byte>(x_, y_) = 0;
+                }
+            }
 
             /*(src.at<byte>(x,y)) = 0;
             (src.at<byte>(x - 1,y)) = 0;
