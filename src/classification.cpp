@@ -106,6 +106,10 @@ mutex mu;
 int progress;
 int test_size;
 
+/**
+ * Progression status
+ */
+
 void progression(){
     lock_guard<mutex> lock(mu);
     draw_progress_to_console("Classification",  progress++ + 1, test_size);

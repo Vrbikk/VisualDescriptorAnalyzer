@@ -93,6 +93,8 @@ job:1 -     2,           0,            2,                2,             1
 job:1 -     2,           0,            3,                3,             1
 job:1 -     2,           0,            3,                3,             2
 
+job:1 -     20,           0,            3,                3,             3
+
 #LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -     1,           0,         1,           8,           6
 job:0 -     2,           0,         1,           8,           6
