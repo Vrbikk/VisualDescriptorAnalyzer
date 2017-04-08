@@ -575,7 +575,7 @@
 24-03-2017 13:18:03:  INFO - set 8: <0.175000>
 24-03-2017 13:18:03:  INFO - set 9: <0.175000>
 24-03-2017 13:18:03:  INFO - set 10: <0.165957>
-24-03-2017 13:18:03:  INFO - ↑ accuracy: <0.165585> ↑
+24-03-2017 13:18:03:  INFO - ↑ accuracy: <0.1651585> ↑
 
 24-03-2017 13:18:08:  INFO - LBPa config - center_size:2 neighbour_shape:2 range:2
 24-03-2017 13:18:08:  INFO - HIST config - grid_size:10 uniform:0

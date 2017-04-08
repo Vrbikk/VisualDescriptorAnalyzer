@@ -1,0 +1,48 @@
+#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+job:0 -     2,           0,         1,           8,           1
+job:0 -     2,           0,         2,           8,           1
+job:0 -     2,           0,         3,           8,           1
+job:0 -     2,           0,         4,           8,           1
+job:0 -     2,           0,         5,           8,           1
+job:0 -     2,           0,         6,           8,           1
+job:0 -     2,           0,         7,           8,           1
+job:0 -     2,           0,         8,           8,           1
+job:0 -     2,           0,         9,           8,           1
+job:0 -     2,           0,         10,           8,          1
+
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     2,           0,            2,                2,             2
+job:1 -     2,           0,            2,                2,             3
+job:1 -     2,           0,            2,                2,             4
+job:1 -     2,           0,            2,                2,             5
+job:1 -     2,           0,            2,                2,             6
+job:1 -     2,           0,            2,                2,             7
+job:1 -     2,           0,            2,                2,             8
+job:1 -     2,           0,            2,                2,             9
+job:1 -     2,           0,            2,                2,             10
+
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     2,           0,            3,                3,             3
+job:1 -     2,           0,            3,                3,             4
+job:1 -     2,           0,            3,                3,             5
+job:1 -     2,           0,            3,                3,             6
+job:1 -     2,           0,            3,                3,             7
+job:1 -     2,           0,            3,                3,             8
+job:1 -     2,           0,            3,                3,             9
+job:1 -     2,           0,            3,                3,             10
+
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     2,           0,            3,                5,             5
+job:1 -     2,           0,            3,                5,             6
+job:1 -     2,           0,            3,                5,             7
+job:1 -     2,           0,            3,                5,             8
+job:1 -     2,           0,            3,                5,             9
+job:1 -     2,           0,            3,                5,             10
+
+#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+job:1 -     2,           0,            5,                5,             5
+job:1 -     2,           0,            5,                5,             6
+job:1 -     2,           0,            5,                5,             7
+job:1 -     2,           0,            5,                5,             8
+job:1 -     2,           0,            5,                5,             9
+job:1 -     2,           0,            5,                5,             10
