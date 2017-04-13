@@ -119,26 +119,24 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("train_folder")){data_config.train_folder = value;}
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
-
                     //Gabor
                 else if(!type.compare("gabor_editor_mode")){setBoolValue(value, gabor_editor_mode, "gabor_editor_mode");}
                 else if(!type.compare("gabor_setting")){ setIntegerValue(value, Gabor_config.gabor_setting, "gebor_setting");}
                 else if(!type.compare("gabor_points")){ setIntegerValue(value, Gabor_config.gabor_points, "gabor_points");}
                 else if(!type.compare("gabor_histogram_size")){ setIntegerValue(value, Gabor_config.gabor_histogram_size, "gabor_histogram_size");}
                 else if(!type.compare("gabor_border_size")){ setIntegerValue(value, Gabor_config.gabor_border_size, "gabor_border_size");}
-
-                    //LBPb
-                else if(!type.compare("lbpb_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
-                else if(!type.compare("lbpb_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
-                else if(!type.compare("lbpb_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
-                else if(!type.compare("lbpb_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
-                else if(!type.compare("lbpb_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
-                    //LBPa
-                else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
-                else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
-                else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
-                else if(!type.compare("lbpa_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
-                else if(!type.compare("lbpa_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
+                    //LBPb implementation name | S-LBP final name of method
+                else if(!type.compare("slbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
+                else if(!type.compare("slbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
+                else if(!type.compare("slbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
+                else if(!type.compare("slbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
+                else if(!type.compare("slbp_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
+                    //LBPa implementation name | E-LBP final name of method
+                else if(!type.compare("elbp_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
+                else if(!type.compare("elbp_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
+                else if(!type.compare("elbp_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
+                else if(!type.compare("elbp_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
+                else if(!type.compare("elbp_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
 
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
@@ -146,7 +144,6 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
                 else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
                 else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
-                else if(!type.compare("job")){addJob(value);}
                 else if(!type.compare("job")){addJob(value);}
             }
         }

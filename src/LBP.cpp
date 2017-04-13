@@ -21,7 +21,7 @@ void LBP::Process(_image &img) {
    Mat lbp = Mat::zeros(img.working_img.rows, img.working_img.cols, CV_32SC1);
    extractLBP(cropped, lbp, config);
 
-   //show_image(lbp);
+   //show_image(img.original_img);
    //Making of histogram
 
    switch(CONFIG->getGaborSetting()){
