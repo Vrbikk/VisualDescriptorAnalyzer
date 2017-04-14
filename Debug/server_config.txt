@@ -1,8 +1,4 @@
-#version 1.4
-
-#config file...
-
-#### data_config - must have "/"
+#version 1.5
 
 #FERET:
 #data_path:/home/tondav/gray_feret/
@@ -23,43 +19,13 @@ test_folder:test/
 equalize_hist:0
 gaussian_blur:0
 
-#### global config
-#### comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya)
-#### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:8
 horatio_caine_mode:0
-
-##### run in JOB MODE (1) / NORMAL MODE (0)
-#### NORMAL MODE... is for testing actual parameters below, runs only once
-#### JOB MODE... runs every job in section JOB
 job_mode:1
 
-####[NORMAL MODE] choose method below - 0 = LBP; 1 = LBPa
+####[NORMAL MODE] choose method below - 0 = SLBP; 1 = ELBP
 extraction_method:0
-
-###### LBP params ######
-#lbp_grid_size... n * n subhistograms [1-16]
-#lbp_uniform... uniform or not uniform patterns [1|0]
-#lbp_range... distance between center point and circle interpolated neighbours [1-3]
-            # setting range to 1 means standard LBP
-#lbp_neighbours... number of neighbours, for uniform patterns [8-16]
-            # !!! for not uniform patterns should be lower than 12 (histograms are too big) !!!
-#lbp_neighbour_shape... shape of neighbour pixel group see "shapes.txt" [1-5]
-            # set 1 for default one pixel version
-
-###### LBPa params ######
-#lbpa_center_size... defines n*n size of center [1-3]
-#lbpa_neighbour_shape... same as in LBP but there should be values [2|3] but works with any other shape
-#lbpa_range... range between center and shapes
-
-###### Gabor params ######
-#gabor_setting...[0-off, 1-only gabor, 2-+gabor]
-#gabor_points... maximum number of points in image, could be lower depending on filter specification [1-300]
-    #center of histograms
-#gabor_histogram_size... pixel size of histogram NxN [2-30]
-#gabor_border_size... pixel border from each side of an image which not contains any points [0-30]
-#uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
 
 #Gabor [NORMAL MODE]
 gabor_setting:0
@@ -81,10 +47,7 @@ lbpa_center_size:2
 lbpa_neighbour_shape:3
 lbpa_range:5
 
-#[JOB MODE] if job mode is enabled, application will proceed this jobs:
-#notation... job:method_number-params...
-
-
+#[JOB MODE]
 
 #Gabor    setting      points      histogram_size     border_size
 job:2 -     1,          225,           18,               0
