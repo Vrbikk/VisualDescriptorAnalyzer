@@ -20,5 +20,4 @@ int get_files(string path, vector<string> &files);
 bool load_images(vector<_image> &train, vector<_image> &test);
 void file_miner(string path, vector<_image> &images);
 
-
-#endif //PLAYGROUND_LOADER_H
+#endif

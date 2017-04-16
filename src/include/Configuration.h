@@ -14,12 +14,15 @@
 #include <fstream>
 #include "LBP.h"
 
+/*
+ * LBP stands for LBP and S-LBP, LBPa stands for S-LBP
+ */
 enum __extraction_method{
     __LBP, __LBPa
 };
 
 /*
- * Type of vector comparison, __BHATTACHARYYA is experimental and not used
+ * Type of vector comparison, BHATTACHARYYA is experimental and not used
  */
 enum __comparison_method{
     __EUCLIDEAN, __INTERSECTION, __BHATTACHARYYA
@@ -63,7 +66,7 @@ struct _gabor_filter_setting{
 
 class Configuration {
 private:
-    string comparidon_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
+    string comparison_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
     string gabor_settings [3] = {"GABOR OFF", "GABOR ONLY", "+GABOR"};
 
     static Configuration *configuration_instance;
@@ -117,4 +120,4 @@ public:
 
 };
 
-#endif //PLAYGROUND_CONFIGURATION_H
+#endif

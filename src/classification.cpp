@@ -159,12 +159,12 @@ void result_calculation(vector<_image> &test, vector<_image*> &candidates) {
         if(test[i].id == (*candidates[i]).id){
             hits++;
             if(CONFIG->getResultMode()) {
-                csi_show_two_images(test[i], *candidates[i], true);
+                result_mode_show_two_images(test[i], *candidates[i], true);
                 waitKey(0);
             }
         }else{
             if(CONFIG->getResultMode()) {
-                csi_show_two_images(test[i], *candidates[i], false);
+                result_mode_show_two_images(test[i], *candidates[i], false);
                 waitKey(0);
             }
         }

@@ -6,7 +6,7 @@
 Mat create_img_with_text(_image img){
     Mat img_with_text;
     cvtColor(img.original_img, img_with_text, CV_GRAY2BGR);
-    putText(img_with_text, "ID: " + to_string(img.id),                         //" (" + img.file_name + ")"
+    putText(img_with_text, "ID: " + to_string(img.id),
             cvPoint(45,img.original_img.size().height - 5),
             CV_FONT_NORMAL, 0.37, cvScalar(255,10,0), 1, CV_AA);
     return img_with_text;
@@ -66,7 +66,7 @@ void draw_progress_to_console(string name, int actual, int size) {
     }
 }
 
-void csi_add_text(Mat &dst, bool success){
+void result_mode_add_text(Mat &dst, bool success){
     if(success){
         putText(dst, "SUCCESS", cvPoint(dst.size().width / 2 - 20, 10),
                 CV_FONT_NORMAL, 0.3, cvScalar(0,255,0), 1, CV_AA);
@@ -76,11 +76,11 @@ void csi_add_text(Mat &dst, bool success){
     }
 }
 
-void csi_show_two_images(_image im_a, _image im_b, bool success){
+void result_mode_show_two_images(_image im_a, _image im_b, bool success){
     Mat a = create_img_with_text(im_a);
     Mat b = create_img_with_text(im_b);
     Mat dst; hconcat(a, b, dst);
-    csi_add_text(dst, success);
+    result_mode_add_text(dst, success);
 
     namedWindow("Result mode", WINDOW_NORMAL);
     resizeWindow("Result mode", 2 * dst.size().width, 2 * dst.size().height);

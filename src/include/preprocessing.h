@@ -14,4 +14,4 @@ void preprocess(vector<_image> &train, vector<_image> &test);
 void iterate_preprocess(vector<_image> &images, string name_of_set);
 
 
-#endif //PLAYGROUND_PREPROCESSING_H
+#endif

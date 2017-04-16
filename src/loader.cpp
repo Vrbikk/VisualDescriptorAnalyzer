@@ -35,11 +35,6 @@ void file_miner(string path, vector<_image> &images){
 
             //loading picture
             loaded_image.original_img = imread(files_path + "/" + files[j], IMREAD_GRAYSCALE);
-
-            /*namedWindow( "Display window", WINDOW_AUTOSIZE );
-            imshow( "Display window", loaded_image.original_img);
-            waitKey(0);*/
-
             images.push_back(loaded_image);
         }
     }

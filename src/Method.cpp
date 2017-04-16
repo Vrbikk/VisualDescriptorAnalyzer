@@ -169,9 +169,7 @@ void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
     }
 }
 
-void Method::optimize_LBP_pls(_LBP_config config) {
-
-    // precalculating circular positions
+void Method::optimize_LBP(_LBP_config config) {
 
     double angle = 0;
     double step = (M_PI * 2) / config.lbp_params.neighbours;
@@ -185,7 +183,9 @@ void Method::optimize_LBP_pls(_LBP_config config) {
 }
 
 /*
+ * This function is calculating value of given shape in picture
  * shape_evaluation 0 = Min, 1 = Avg, 2 = Max
+ * AVG - default
  */
 
 byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluation) {

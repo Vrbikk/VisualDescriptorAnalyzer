@@ -24,12 +24,13 @@ void gabor(vector<_image> &train, vector<_image> &test) {
 
 void assign_points(_image &img, int count, int border) {
 
+    // applying filter
     img.points.clear();
     Size KernalSize(CONFIG->GFS.TMPkernel_size,CONFIG->GFS.TMPkernel_size);
     double Sigma = CONFIG->GFS.TMPpos_sigma;
     double Lambda = 0.5 + CONFIG->GFS.TMPpos_lambda / 100.0;
     double Theta = CONFIG->GFS.TMPpos_theta * CV_PI / 180;
-    double Psi = CONFIG->GFS.TMPpos_psi * CV_PI / 180;;
+    double Psi = CONFIG->GFS.TMPpos_psi * CV_PI / 180;
     double Gamma = CONFIG->GFS.TMPpos_gamma;
 
     Mat kernel = getGaborKernel(KernalSize, Sigma, Theta, Lambda, Gamma, Psi);
@@ -37,6 +38,7 @@ void assign_points(_image &img, int count, int border) {
     img.points_from_gabor = Mat(img.gabor_filter.size(), CV_8U);
     img.points_from_gabor = Scalar(0);
 
+    // getting points
     std::multimap<unsigned int, Point> points;
 
     for(int x = border; x < img.gabor_filter.rows - (border + 3); x+=3){
@@ -49,17 +51,19 @@ void assign_points(_image &img, int count, int border) {
                 }
             }
 
-            if(sum > 5){
+            if(sum > 5){ //minimal value for adding into set
                 points.insert(make_pair(sum, Point(x+1, y+1)));
             }
         }
     }
 
+    // collecting points
     std::multimap<unsigned int, Point>::reverse_iterator rit;
     int i = 0;
     for (rit=points.rbegin(); rit!=points.rend() && i++ < count; ++rit){
-        img.points_from_gabor.at < unsigned char > (rit->second.x,rit->second.y) = 255;
+        //img.points_from_gabor.at < unsigned char > (rit->second.x,rit->second.y) = 255; //for drawing purposes
         img.points.push_back(rit->second);
     }
-    //show_image(img.points_from_gabor);
+
+    // show_image(img.points_from_gabor);
 }

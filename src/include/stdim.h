@@ -12,6 +12,9 @@
 using namespace std;
 using namespace cv;
 
+/*
+ * Main data structure
+ */
 struct _image{
     int id;
     string file_name;
@@ -26,6 +29,9 @@ struct _image{
     Mat points_from_gabor;
 };
 
+/*
+ * histogram grid configuration
+ */
 struct _hist{
     int grid_size;
     bool uniform;
@@ -43,7 +49,7 @@ struct _LBP_params{
     int shape_safe_offset = 2;
 
     string print(){
-        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" +
+        return string("S-LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" +
                               to_string(neighbour_shape));
     }
 };
@@ -56,7 +62,7 @@ struct _LBPa_params {
     int shape_safe_offset = 2;
 
     string print() {
-        return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" +
+        return string("E-LBP config - center_size:" + to_string(center_size) + " neighbour_shape:" +
                       to_string(neighbour_shape) + " range:" +
                       to_string(range));
     }
@@ -76,7 +82,7 @@ struct _LBPa_config{
     _hist hist;
 
     string print(){
-        return string("LBPa config - " + lbpa_params.print() + " " + hist.print());
+        return string(lbpa_params.print() + " " + hist.print());
     }
 };
 
@@ -87,4 +93,4 @@ struct _Gabor_config{
     int gabor_border_size;
 };
 
-#endif //PLAYGROUND_STRUCTS_H
+#endif

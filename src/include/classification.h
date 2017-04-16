@@ -10,8 +10,6 @@
 #include <thread>
 #include <mutex>
 
-using namespace std;
-
 void classificate(vector<_image> &train, vector<_image> &test);
 double get_gabor_intersection_distance(vector<int> a, vector<int> b);
 double get_gabor_euclidean_distance(vector<int> a, vector<int> b);
@@ -25,4 +23,4 @@ void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_imag
 void progression();
 void result_calculation(vector<_image> &test, vector<_image*> &candidates);
 
-#endif //PLAYGROUND_CLASSIFICATION_H
+#endif

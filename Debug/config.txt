@@ -16,11 +16,6 @@ data_path:/home/vrbik/Apps/ufi-cropped/
 train_folder:train-50/
 test_folder:test-50/
 
-#faceScrub
-#data_path:/home/vrbik/Apps/faceScrub/
-#train_folder:train/
-#test_folder:test/
-
 #### preprocessing config, just implemented not used
 equalize_hist:0
 gaussian_blur:0
@@ -38,15 +33,15 @@ gabor_editor_mode:0
 #### JOB MODE... runs every job in section JOB
 job_mode:0
 
-####[NORMAL MODE] choose method below - 0 = SLBP; 1 = ELBP for standard LBP just use SLBP with shape 1
-extraction_method:0
+####[NORMAL MODE] choose method below - 0 = S-LBP; 1 = E-LBP for standard LBP just use SLBP with shape 1
+extraction_method:1
 
 ###### Gabor params ######
-#gabor_setting...[0-off, 1-only gabor, 2-+gabor]
-#gabor_points... maximum number of points in image, could be lower depending on filter specification [1-256]
+#gabor_setting...[0-off, 1-only gabor]
+#gabor_points... maximum number of points in image, could be lower depending on filter specification
     #center of histograms
-#gabor_histogram_size... pixel size of histogram NxN [2-30]
-#gabor_border_size... pixel border from each side of an image which not contains any points [0-30]
+#gabor_histogram_size... pixel size of histogram n x n
+#gabor_border_size... pixel border from each side of an image which not contains any points
 #uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
 
 ###### S-LBP params ######

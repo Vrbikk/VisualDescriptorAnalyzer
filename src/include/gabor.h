@@ -8,8 +8,9 @@
 #include "stdim.h"
 #include "Configuration.h"
 
+// searching for points in image
 void assign_points(_image &img, int count, int border);
 void gabor(vector<_image> &train, vector<_image> &test);
 
-#endif //PLAYGROUND_GABOR_H
+#endif
 

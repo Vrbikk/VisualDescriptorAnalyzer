@@ -9,6 +9,10 @@
 #include "GUI.h"
 #include "stdim.h"
 
+/**
+ * This class stands for LBP and S-LBP descriptors
+ */
+
 class LBP: public Method{
 private:
     _LBP_config config;
@@ -22,4 +26,4 @@ public:
 };
 
 
-#endif //PLAYGROUND_LBP_H
+#endif

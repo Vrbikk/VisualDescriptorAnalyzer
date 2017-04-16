@@ -125,7 +125,7 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("gabor_points")){ setIntegerValue(value, Gabor_config.gabor_points, "gabor_points");}
                 else if(!type.compare("gabor_histogram_size")){ setIntegerValue(value, Gabor_config.gabor_histogram_size, "gabor_histogram_size");}
                 else if(!type.compare("gabor_border_size")){ setIntegerValue(value, Gabor_config.gabor_border_size, "gabor_border_size");}
-                    //LBPb implementation name | S-LBP final name of method
+                    //LBPb implementation name | LBP, S-LBP is final name of method
                 else if(!type.compare("slbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
                 else if(!type.compare("slbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
                 else if(!type.compare("slbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
@@ -158,6 +158,9 @@ _data_config Configuration::getDataConfig() {
     return data_config;
 }
 
+/*
+ * This method return instance of configured descriptor class
+ */
 Method *Configuration::getExtractionMethod() {
 
     Method *SelectedMethod;
@@ -233,6 +236,7 @@ void Configuration::addJob(string line_job) {
     setIntegerValue(items[0], method, "job_method");
     vector<string> params = split(items[1], ",");
 
+    // Gabor section
     if(method == 2){
         _Gabor_config conf;
         setIntegerValue(params[0], conf.gabor_setting, "job_gabor_setting");
@@ -245,6 +249,7 @@ void Configuration::addJob(string line_job) {
         job.gabor_conf = conf;
         jobs.push_back(job);
 
+        // end of function
         return;
     }
 
@@ -327,7 +332,7 @@ string Configuration::configurationDump() {
                           data_config.print() + space +
                           preprocessing_config.print() + space +
                           "classification_threads:" + to_string(classification_threads) + space +
-                          "comparison_method:" + comparidon_method_string[comparison_method] + space +
+                          "comparison_method:" + comparison_method_string[comparison_method] + space +
                           "gabor_filter_setting: [kernel_size:" + to_string(GFS.TMPkernel_size) + " Sigma:" +
                           to_string(GFS.TMPpos_sigma) + " Lambda:" + to_string(GFS.TMPpos_lambda) + " Theta:" + to_string(GFS.TMPpos_theta) +
                           " Gamma:"+ to_string(GFS.TMPpos_gamma) + " Psi:" + to_string(GFS.TMPpos_psi) + "]\n"

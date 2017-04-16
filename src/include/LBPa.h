@@ -9,6 +9,9 @@
 #include "GUI.h"
 #include "stdim.h"
 
+/**
+ * This class stands for E-LBP descriptor
+ */
 class LBPa : public Method{
 private:
     _LBPa_config config;
@@ -21,4 +24,4 @@ public:
 };
 
 
-#endif //PLAYGROUND_LBPA_H
+#endif
