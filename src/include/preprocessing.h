@@ -16,4 +16,4 @@ void texture_scaling(vector<_image> &images);
 void preprocess_textures(vector<_image> &train, vector<_image> &test);
 
 
-#endif //PLAYGROUND_PREPROCESSING_H
+#endif

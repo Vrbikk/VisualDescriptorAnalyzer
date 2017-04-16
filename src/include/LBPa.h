@@ -9,10 +9,13 @@
 #include "GUI.h"
 #include "stdim.h"
 
+/**
+ * Tato třída reprezentuje deskriptor E-LBP
+ */
+
 class LBPa : public Method{
 private:
     _LBPa_config config;
-
 public:
     LBPa();
     ~LBPa();
@@ -21,4 +24,4 @@ public:
 };
 
 
-#endif //PLAYGROUND_LBPA_H
+#endif

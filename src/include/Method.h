@@ -39,4 +39,4 @@ public:
     virtual void Process(_image &img){};
 };
 
-#endif //PLAYGROUND_METHOD_H
+#endif

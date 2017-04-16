@@ -39,4 +39,4 @@ public:
     string get_current_date_time();
 };
 
-#endif //PLAYGROUND_LOGGER_H
+#endif

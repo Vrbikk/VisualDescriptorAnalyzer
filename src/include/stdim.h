@@ -88,4 +88,4 @@ struct _Gabor_config{
     int gabor_border_size;
 };
 
-#endif //PLAYGROUND_STRUCTS_H
+#endif

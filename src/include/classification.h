@@ -25,4 +25,4 @@ void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_imag
 void progression();
 double result_calculation(vector<_image> &test, vector<_image *> &candidates);
 
-#endif //PLAYGROUND_CLASSIFICATION_H
+#endif

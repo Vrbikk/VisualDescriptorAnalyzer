@@ -16,4 +16,4 @@ void clear_string(string &str);
 string get_vector_view(vector<vector<int>> vec);
 bool is_number(const string &s);
 std::vector<std::string> split(std::string message, std::string delim);
-#endif //PLAYGROUND_TOOLS_H
+#endif
