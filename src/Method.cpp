@@ -44,12 +44,11 @@ void Method::initUniformTable(int neighbours) {
     //LOGGER->Info("number of uniform patterns:" + to_string(number_of_uniform_patterns));
 }
 
-//false on 0, true on 1
 bool Method::bitAtPosition(unsigned int num, unsigned int pos) {
     return ((num & (1 << pos)) != 0);
 }
 
-void Method::croppedImage(Mat src, Mat &dst, int crop_size) {
+void Method::borderedImage(Mat src, Mat &dst, int crop_size) {
     copyMakeBorder(src, dst, crop_size, crop_size, crop_size, crop_size, BORDER_DEFAULT);
 }
 

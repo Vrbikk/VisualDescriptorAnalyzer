@@ -5,7 +5,6 @@
 #include "include/gabor.h"
 
 void gabor(vector<_image> &train, vector<_image> &test) {
-
     if(!CONFIG->getJobMode()){
         LOGGER->Info("Applying gabor filters");
     }
@@ -38,9 +37,10 @@ void assign_points(_image &img, int count, int border) {
     img.points_from_gabor = Mat(img.gabor_filter.size(), CV_8U);
     img.points_from_gabor = Scalar(0);
 
-    // getting points
+
     std::multimap<unsigned int, Point> points;
 
+    // getting points from image with value
     for(int x = border; x < img.gabor_filter.rows - (border + 3); x+=3){
         for(int y = border; y < img.gabor_filter.cols - (border + 3); y+=3) {
 
@@ -57,7 +57,7 @@ void assign_points(_image &img, int count, int border) {
         }
     }
 
-    // collecting points
+    // collecting exact number of points
     std::multimap<unsigned int, Point>::reverse_iterator rit;
     int i = 0;
     for (rit=points.rbegin(); rit!=points.rend() && i++ < count; ++rit){

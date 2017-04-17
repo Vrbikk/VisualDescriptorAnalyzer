@@ -207,6 +207,7 @@ void classificate(vector<_image> &train, vector<_image> &test) {
                                position, position + thread_data_portion + overload);
     }
 
+    // waiting for threads to finish their work
     for_each(threads.begin(), threads.end(), [](thread &t){t.join();});
 
     result_calculation(test, candidates);
