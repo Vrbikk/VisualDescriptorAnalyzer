@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 21.9.16.
+// Created by Antonín Vrba on 21.9.2016
 //
 
 #ifndef PLAYGROUND_GUI_H

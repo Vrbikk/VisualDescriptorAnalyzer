@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 27.9.16.
+// Created by Antonín Vrba on 27.9.2016
 //
 
 #ifndef PLAYGROUND_LBP_H
@@ -9,7 +9,7 @@
 #include "GUI.h"
 #include "stdim.h"
 
-/**
+/*
  * This class stands for LBP and S-LBP descriptors
  */
 
@@ -21,6 +21,7 @@ public:
     LBP();
     ~LBP();
 
+    // overrided methods
     virtual void setUp(void *_param) override;
     virtual void Process(_image &img) override;
 };

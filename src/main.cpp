@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 24.9.16.
+// Created by Antonín Vrba on 24.9.2016
 //
 
 #include "include/loader.h"
@@ -53,13 +53,18 @@ int main(int argc, char *argv[]) {
             LOGGER->Info(CONFIG->configurationDump());
 
             preprocess(train, test);
+
+            // GABOR EDITOR MODE
             if(CONFIG->getGaborEditorMode()) {
-                std::multimap<unsigned int, unsigned int> kek;
+                // multimap for sorting images by person id
+                std::multimap<unsigned int, unsigned int> sorted_images;
                 int i = 0;
+
+                // adding training set
                 for (auto a : train) {
-                    kek.insert(make_pair(a.id, i++));
+                    sorted_images.insert(make_pair(a.id, i++));
                 }
-                for (auto const &x : kek) {
+                for (auto const &x : sorted_images) {
                     Gabor_editor(train[x.second].working_img);
                 }
             }

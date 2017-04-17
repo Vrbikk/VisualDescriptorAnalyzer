@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 20.10.16.
+// Created by Antonín Vrba on 20.10.2016
 //
 
 #include "include/LBPa.h"

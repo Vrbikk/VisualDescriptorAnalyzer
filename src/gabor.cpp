@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 23.1.17.
+// Created by Antonín Vrba on 23.1.2017
 //
 
 #include "include/gabor.h"

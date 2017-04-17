@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 24.9.16.
+// Created by Antonín Vrba on 24.9.2016
 //
 
 #include "include/Logger.h"

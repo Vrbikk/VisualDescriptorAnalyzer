@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 1.10.16.
+// Created by Antonín Vrba on 1.10.2016
 //
 
 #ifndef PLAYGROUND_STRUCTS_H
@@ -16,21 +16,37 @@ using namespace cv;
  * Main data structure
  */
 struct _image{
+    // id for every person
     int id;
+
+    // variables that can be used for tracking invalid picture in DB
     string file_name;
     string path;
+
+    // this image is never modified once is loaded
     Mat original_img;
+
+    // to this image are saved all preprocessing features and is used as source for everything
     Mat working_img;
+
+    // vector of vector for storing grid histograms
     vector<vector<int>> exctracted_vector;
+
+    // vector of individualy positioned histograms
     vector<vector<int>> gabor_exctracted_vector;
 
+    // vector of gabor points
     vector<Point> points;
+
+    // this image contains filtered image after applying gabor filters
     Mat gabor_filter;
+
+    // debugging image for gabors
     Mat points_from_gabor;
 };
 
 /*
- * histogram grid configuration
+ * universal histogram grid configuration
  */
 struct _hist{
     int grid_size;
@@ -41,6 +57,7 @@ struct _hist{
     }
 };
 
+// S-LBP, LBP params
 struct _LBP_params{
     int range;
     int neighbours;
@@ -54,6 +71,7 @@ struct _LBP_params{
     }
 };
 
+// E-LBP params
 struct _LBPa_params {
     int center_size;
     int neighbour_shape;
@@ -86,6 +104,7 @@ struct _LBPa_config{
     }
 };
 
+// gabor settings
 struct _Gabor_config{
     int gabor_setting;
     int gabor_points;

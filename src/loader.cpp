@@ -1,3 +1,7 @@
+//
+// Created by Antonín Vrba on 21.9.2016
+//
+
 #include "include/loader.h"
 
 int get_files(string path, vector<string> &files) {

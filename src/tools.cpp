@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 22.9.16.
+// Created by Antonín Vrba on 22.9.2016
 //
 
 #include <cstring>

@@ -1,5 +1,5 @@
 //
-// Created by vrbik on 24.9.16.
+// Created by Antonín Vrba on 24.9.2016
 //
 
 #ifndef PLAYGROUND_LOGGER_H
@@ -29,9 +29,7 @@ public:
     void destroyInstance();
     bool setUp(string path);
 
-    /*
-     * Two types of logging messages
-     */
+    // two types of logging messages
     void Info(string message);
     void Error(string message);
 
