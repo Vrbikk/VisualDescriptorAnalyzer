@@ -10,7 +10,7 @@ texture_mode:1
 comparison_method:1
 classification_threads:4
 result_mode:0
-job_mode:1
+job_mode:0
 
 ####[NORMAL MODE] choose method below - 0 = S-LBP; 1 = E-LBP
 extraction_method:1
