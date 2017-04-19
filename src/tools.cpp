@@ -14,26 +14,6 @@ void clear_string(string &str) {
     str.erase(std::remove(str.begin(),str.end(),' '),str.end());
 }
 
-string get_vector_view(vector<vector<int>> vec) {
-    string content = "";
-    int size_a = vec.size();
-    int size_b = vec[0].size();
-
-    content.append("global_size: " + to_string(size_a) + "\n");
-    content.append("local_size: " + to_string(size_b) + "\n");
-
-    for(int i = 0; i < size_a; i++){
-
-        content.append("hist_" + to_string(i) + ": (");
-        for(int j = 0; j < size_b; j++){
-            content.append(to_string(vec[i][j]) + ", ");
-        }
-        content.append(")\n");
-    }
-
-    return content;
-}
-
 bool is_number(const string &s) {
     return !s.empty() && find_if(s.begin(), s.end(), [](char c) { return !isdigit(c); }) == s.end();
 }

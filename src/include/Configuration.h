@@ -1,6 +1,4 @@
-//
-// Created by vrbik on 22.9.16.
-//
+
 
 #ifndef PLAYGROUND_CONFIGURATION_H
 #define PLAYGROUND_CONFIGURATION_H
@@ -49,7 +47,6 @@ struct _job{
     __extraction_method method;
     _LBP_config lbp_conf;
     _LBPa_config lbpa_conf;
-    _Gabor_config gabor_conf;
 };
 
 struct _gabor_filter_setting{
@@ -64,7 +61,6 @@ struct _gabor_filter_setting{
 class Configuration {
 private:
     string comparidon_method_string [3] = {"EUCLIDEAN", "INTERSECTION", "BHATTACHARYYA"};
-    string gabor_settings [3] = {"GABOR OFF", "GABOR ONLY", "+GABOR"};
 
     static Configuration *configuration_instance;
     Configuration();
@@ -82,7 +78,6 @@ private:
     bool job_mode;
     _LBP_config LBP_config;
     _LBPa_config LBPa_config;
-    _Gabor_config Gabor_config;
     bool texture_mode;
 
     void setExtractionMethod(string a);
@@ -104,23 +99,11 @@ public:
     __comparison_method getComparisonMethod();
     int getClassificationThreads();
     bool getResultMode();
-    bool getGaborEditorMode();
     _preprocessing_config getPreprocessingConfig();
     vector<_job> getJobs();
     bool getJobMode();
     void setActualJob(_job job);
     string configurationDump();
-    int getGaborSetting();
-    int getGaborHistogramSize();
-    int getGaborPoints();
-    int getGaborBorderSize();
-
-    void printGaborConfiguration();
-
-    bool isTexture_mode() const;
-
-    void setTexture_mode(bool texture_mode);
-
 };
 
 #endif

@@ -1,106 +1,54 @@
-#version 1.4
+#version 1.4 (texture only)
 
 #config file...
-
-#### data_config - must have "/"
-
-#FERET:
-#data_path:/home/vrbik/Apps/gray_feret/
-#train_folder:gallery/
-#test_folder:fb/
-
-#UFI:
-data_path:/home/vrbik/Apps/ufi-cropped/
-train_folder:train-50/
-test_folder:test-50/
 
 #textures
 data_path:/home/vrbik/Apps/dtd/
 texture_mode:1
 
-#### preprocessing config, just implemented not used
-equalize_hist:0
-gaussian_blur:0
-
-#### global config
 #### comparison_method:(0 - Euclidean, 1 - Intersection, 2 - Bhattacharyya)
-#### classification_threads: based on cpu cores
 comparison_method:1
 classification_threads:4
 result_mode:0
-gabor_editor_mode:0
+job_mode:1
 
-##### run in JOB MODE (1) / NORMAL MODE (0)
-#### NORMAL MODE... is for testing actual parameters below, runs only once
-#### JOB MODE... runs every job in section JOB
-job_mode:0
-
-####[NORMAL MODE] choose method below - 0 = LBPb; 1 = LBPa
+####[NORMAL MODE] choose method below - 0 = S-LBP; 1 = E-LBP
 extraction_method:1
 
-###### LBP params ######
-#lbp_grid_size... n * n subhistograms [1-16]
-#lbp_uniform... uniform or not uniform patterns [1|0]
-#lbp_range... distance between center point and circle interpolated neighbours [1-3]
-            # setting range to 1 means standard LBP
-#lbp_neighbours... number of neighbours, for uniform patterns [8-16]
-            # !!! for not uniform patterns should be lower than 12 (histograms are too big) !!!
-#lbp_neighbour_shape... shape of neighbour pixel group see "shapes.txt" [1-5]
-            # set 1 for default one pixel version
+#S-LBP [NORMAL MODE]
+slbp_grid_size:1
+slbp_uniform:1
+slbp_range:1
+slbp_neighbours:8
+slbp_neighbour_shape:1
 
-###### LBPa params ######
-#lbpa_center_size... defines n*n size of center [1-3]
-#lbpa_neighbour_shape... same as in LBP but there should be values [2|3] but works with any other shape
-#lbpa_range... range between center and shapes
-
-###### Gabor params ######
-#gabor_setting...[0-off, 1-only gabor, 2-+gabor]
-#gabor_points... maximum number of points in image, could be lower depending on filter specification [1-256]
-    #center of histograms
-#gabor_histogram_size... pixel size of histogram NxN [2-30]
-#gabor_border_size... pixel border from each side of an image which not contains any points [0-30]
-#uniformity is taken from LBP or LBPa settings, when is gabor set to "only gabor" then grid size has no meaning
-
-#Gabor [NORMAL MODE]
-gabor_setting:0
-gabor_points:225
-gabor_histogram_size:25
-gabor_border_size:10
-
-#LBPb [NORMAL MODE]
-lbpb_grid_size:8
-lbpb_uniform:1
-lbpb_range:1
-lbpb_neighbours:8
-lbpb_neighbour_shape:1
-
-#LBPa [NORMAL MODE]
-lbpa_grid_size:2
-lbpa_uniform:1
-lbpa_center_size:5
-lbpa_neighbour_shape:5
-lbpa_range:5
+#E-LBP [NORMAL MODE]
+elbp_grid_size:1
+elbp_uniform:1
+elbp_center_size:2
+elbp_neighbour_shape:2
+elbp_range:2
 
 #[JOB MODE] if job mode is enabled, application will proceed this jobs:
 #notation... job:method_number-params...
 
-#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+#E-LBP   grid_size     uniform     center_size     neighbour_shape     range
 job:1 -    8,            1,            2,                3,             4
-#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+#E-LBP   grid_size     uniform     center_size     neighbour_shape     range
 job:1 -    8,            1,            2,                3,             4
-#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6
 
-#LBP    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         1,          8,          1
-#LBPa   grid_size     uniform     center_size     neighbour_shape     range
+#E-LBP   grid_size     uniform     center_size     neighbour_shape     range
 job:1 -    8,            1,            2,                3,             4
-#LBPb    grid_size     uniform     range     neighbours   neighbour_shape
+#S-LBP    grid_size     uniform     range     neighbours   neighbour_shape
 job:0 -    8,            1,         5,          11,          6

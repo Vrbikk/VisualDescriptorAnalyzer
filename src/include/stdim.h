@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 1.10.16.
-//
 
 #ifndef PLAYGROUND_STRUCTS_H
 #define PLAYGROUND_STRUCTS_H
@@ -14,17 +11,11 @@ using namespace cv;
 
 struct _image{
     int id = 0;
-    string file_name;
-    string path;
     Mat original_img;
     Mat working_img;
     vector<vector<int>> exctracted_vector;
     vector<vector<int>> gabor_exctracted_vector;
     string texture_class = "";
-
-    vector<Point> points;
-    Mat gabor_filter;
-    Mat points_from_gabor;
 };
 
 struct _hist{
@@ -44,7 +35,7 @@ struct _LBP_params{
     int shape_safe_offset = 2;
 
     string print(){
-        return string("LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" +
+        return string("S-LBP config - range:" + to_string(range) + " neighbours:" + to_string(neighbours) + " neighbour_shape:" +
                               to_string(neighbour_shape));
     }
 };
@@ -57,7 +48,7 @@ struct _LBPa_params {
     int shape_safe_offset = 2;
 
     string print() {
-        return string("LBPa config - center_size:" + to_string(center_size) + " neighbour_shape:" +
+        return string("E-LBP config - center_size:" + to_string(center_size) + " neighbour_shape:" +
                       to_string(neighbour_shape) + " range:" +
                       to_string(range));
     }
@@ -77,15 +68,8 @@ struct _LBPa_config{
     _hist hist;
 
     string print(){
-        return string("LBPa config - " + lbpa_params.print() + " " + hist.print());
+        return string(lbpa_params.print() + " " + hist.print());
     }
-};
-
-struct _Gabor_config{
-    int gabor_setting;
-    int gabor_points;
-    int gabor_histogram_size;
-    int gabor_border_size;
 };
 
 #endif

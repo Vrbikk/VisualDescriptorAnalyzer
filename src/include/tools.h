@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 22.9.16.
-//
 
 #ifndef PLAYGROUND_TOOLS_H
 #define PLAYGROUND_TOOLS_H

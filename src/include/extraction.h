@@ -1,6 +1,4 @@
-//
-// Created by vrbik on 27.9.16.
-//
+
 
 #ifndef PLAYGROUND_EXTRACTION_H
 #define PLAYGROUND_EXTRACTION_H

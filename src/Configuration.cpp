@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 22.9.16.
-//
 
 #include "include/Configuration.h"
 #include "include/LBPa.h"
@@ -30,24 +27,9 @@ Configuration::Configuration() {
     comparison_method = __EUCLIDEAN;
     classification_threads = 1;
     result_mode = false;
-    gabor_editor_mode = false;
     preprocessing_config.equalize_hist = false;
     preprocessing_config.gaussian_blur = false;
     job_mode = false;
-
-    Gabor_config.gabor_setting = 2;
-    Gabor_config.gabor_border_size = 20;
-    Gabor_config.gabor_points = 64;
-    Gabor_config.gabor_histogram_size = 15;
-
-    GFS.TMPkernel_size = 13;
-    GFS.TMPpos_sigma = 5;
-    GFS.TMPpos_lambda = 44;
-    GFS.TMPpos_theta = 15;
-    GFS.TMPpos_gamma = 3;
-    GFS.TMPpos_psi = 104;
-
-    texture_mode = false;
 }
 
 bool Configuration::isCommentOrEmpty(string line) {
@@ -121,36 +103,23 @@ bool Configuration::setUp(const string path) {
                 else if(!type.compare("train_folder")){data_config.train_folder = value;}
                 else if(!type.compare("test_folder")){data_config.test_folder = value;}
                 else if(!type.compare("extraction_method")){ setExtractionMethod(value);}
-
-                    //Gabor
-                else if(!type.compare("gabor_editor_mode")){setBoolValue(value, gabor_editor_mode, "gabor_editor_mode");}
-                else if(!type.compare("gabor_setting")){ setIntegerValue(value, Gabor_config.gabor_setting, "gebor_setting");}
-                else if(!type.compare("gabor_points")){ setIntegerValue(value, Gabor_config.gabor_points, "gabor_points");}
-                else if(!type.compare("gabor_histogram_size")){ setIntegerValue(value, Gabor_config.gabor_histogram_size, "gabor_histogram_size");}
-                else if(!type.compare("gabor_border_size")){ setIntegerValue(value, Gabor_config.gabor_border_size, "gabor_border_size");}
-
-                    //LBPb
-                else if(!type.compare("lbpb_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
-                else if(!type.compare("lbpb_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
-                else if(!type.compare("lbpb_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
-                else if(!type.compare("lbpb_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
-                else if(!type.compare("lbpb_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
-                    //LBPa
-                else if(!type.compare("lbpa_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
-                else if(!type.compare("lbpa_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
-                else if(!type.compare("lbpa_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
-                else if(!type.compare("lbpa_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
-                else if(!type.compare("lbpa_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
+                    //S-LBP
+                else if(!type.compare("slbp_grid_size")){setIntegerValue(value, LBP_config.hist.grid_size, "lbp_grid_size");}
+                else if(!type.compare("slbp_uniform")){ setBoolValue(value, LBP_config.hist.uniform, "lbp_uniform");}
+                else if(!type.compare("slbp_range")){ setIntegerValue(value, LBP_config.lbp_params.range, "lbp_range");}
+                else if(!type.compare("slbp_neighbours")){ setIntegerValue(value, LBP_config.lbp_params.neighbours, "lbp_neighbours");}
+                else if(!type.compare("slbp_neighbour_shape")){ setIntegerValue(value, LBP_config.lbp_params.neighbour_shape, "lbp_neighbour_shape");}
+                    //E-LBP
+                else if(!type.compare("elbp_grid_size")){setIntegerValue(value, LBPa_config.hist.grid_size, "lbpa_grid_size");}
+                else if(!type.compare("elbp_uniform")){ setBoolValue(value, LBPa_config.hist.uniform, "lbpa_uniform");}
+                else if(!type.compare("elbp_center_size")){ setIntegerValue(value, LBPa_config.lbpa_params.center_size, "lbpa_center_size");}
+                else if(!type.compare("elbp_neighbour_shape")){ setIntegerValue(value, LBPa_config.lbpa_params.neighbour_shape, "lbpa_neighbour_shape");}
+                else if(!type.compare("elbp_range")){ setIntegerValue(value, LBPa_config.lbpa_params.range, "lbpa_range");}
 
                 else if(!type.compare("comparison_method")){setComparisonMethod(value);}
                 else if(!type.compare("classification_threads")){setIntegerValue(value, classification_threads, "classification_threads");}
-                else if(!type.compare("result_mode")){setBoolValue(value, result_mode, "result_mode");}
-                else if(!type.compare("equalize_hist")){setBoolValue(value, preprocessing_config.equalize_hist, "equalize_hist");}
-                else if(!type.compare("gaussian_blur")){setBoolValue(value, preprocessing_config.gaussian_blur, "gaussian_blur");}
                 else if(!type.compare("job_mode")){setBoolValue(value, job_mode, "job_mode");}
                 else if(!type.compare("job")){addJob(value);}
-
-                else if(!type.compare("texture_mode")){setBoolValue(value, texture_mode, "texture_mode");}
             }
         }
         return true;
@@ -238,22 +207,6 @@ void Configuration::addJob(string line_job) {
     int method;
     setIntegerValue(items[0], method, "job_method");
     vector<string> params = split(items[1], ",");
-
-    if(method == 2){
-        _Gabor_config conf;
-        setIntegerValue(params[0], conf.gabor_setting, "job_gabor_setting");
-        setIntegerValue(params[1], conf.gabor_points, "job_gabor_points");
-        setIntegerValue(params[2], conf.gabor_histogram_size, "job_gabor_histogram_size");
-        setIntegerValue(params[3], conf.gabor_border_size, "job_gabor_border_size");
-
-        _job job;
-        job.gabor = true;
-        job.gabor_conf = conf;
-        jobs.push_back(job);
-
-        return;
-    }
-
     switch(method){
         case __LBP:{
             _LBP_config conf;
@@ -300,15 +253,6 @@ bool Configuration::getJobMode() {
 }
 
 void Configuration::setActualJob(_job job) {
-
-    if(job.gabor){
-        Gabor_config = job.gabor_conf;
-        LOGGER->Info("Updating Gabor settings\n");
-        return;
-    }
-
-
-
     switch (job.method){
         case __LBP:{
             extraction_method = __LBP;
@@ -333,43 +277,7 @@ string Configuration::configurationDump() {
                           data_config.print() + space +
                           preprocessing_config.print() + space +
                           "classification_threads:" + to_string(classification_threads) + space +
-                          "comparison_method:" + comparidon_method_string[comparison_method] + space +
-                          "gabor_filter_setting: [kernel_size:" + to_string(GFS.TMPkernel_size) + " Sigma:" +
-                          to_string(GFS.TMPpos_sigma) + " Lambda:" + to_string(GFS.TMPpos_lambda) + " Theta:" + to_string(GFS.TMPpos_theta) +
-                          " Gamma:"+ to_string(GFS.TMPpos_gamma) + " Psi:" + to_string(GFS.TMPpos_psi) + "]\n"
+                          "comparison_method:" + comparidon_method_string[comparison_method] + "\n"
     );
-}
-
-int Configuration::getGaborSetting() {
-    return Gabor_config.gabor_setting;
-}
-
-int Configuration::getGaborHistogramSize() {
-    return Gabor_config.gabor_histogram_size;
-}
-
-int Configuration::getGaborPoints() {
-    return Gabor_config.gabor_points;
-}
-
-int Configuration::getGaborBorderSize() {
-    return Gabor_config.gabor_border_size;
-}
-
-void Configuration::printGaborConfiguration() {
-    if(Gabor_config.gabor_setting == 0){
-        LOGGER->Info("Gabor config - setting:" + gabor_settings[Gabor_config.gabor_setting]);
-    }else{
-        LOGGER->Info("Gabor config - setting:" + gabor_settings[Gabor_config.gabor_setting] + " points:" + to_string(Gabor_config.gabor_points) +
-                        " histogram_size:" + to_string(Gabor_config.gabor_histogram_size) + " border_size:" + to_string(Gabor_config.gabor_border_size));
-    }
-}
-
-bool Configuration::getGaborEditorMode() {
-    return gabor_editor_mode;
-}
-
-bool Configuration::isTexture_mode() const {
-    return texture_mode;
 }
 

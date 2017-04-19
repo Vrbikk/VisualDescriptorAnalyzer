@@ -2,11 +2,7 @@
 #include "include/extraction.h"
 #include "include/classification.h"
 #include "include/preprocessing.h"
-#include "include/gabor.h"
 
-/*
- * Singleton classes removal
- */
 void cleanup(void){
     LOGGER->destroyInstance();
     CONFIG->destroyInstance();
@@ -14,10 +10,7 @@ void cleanup(void){
 
 int main(int argc, char *argv[]) {
 
-    if(CONFIG->setUp(argv[2])){
-
-        // JOB TEXTURE MODE
-        if(CONFIG->isTexture_mode() && LOGGER->setUp(argv[1])){
+    if(CONFIG->setUp(argv[2]) && LOGGER->setUp(argv[1])){
 
             vector<_image> train;
             vector<_image> test;
@@ -59,8 +52,6 @@ int main(int argc, char *argv[]) {
 
             }else{
 
-
-
                 LOGGER->Info("Application started in [NORMAL TEXTURE MODE]");
                 LOGGER->Info(CONFIG->configurationDump());
 
@@ -87,66 +78,7 @@ int main(int argc, char *argv[]) {
                 }
                 LOGGER->Info("↑ accuracy: <" + to_string(sum/10) + "> ↑\n");
             }
-        }else{
-            vector<_image> train = vector<_image>();
-            vector<_image> test = vector<_image>();
-
-            if(argc == 3 && LOGGER->setUp(argv[1]) && load_images(train, test)){
-
-                if(CONFIG->getJobMode()) {
-
-                    // JOB mode for iterative run over all configurations
-
-                    LOGGER->Info("Application started in [JOB MODE] with " + to_string(CONFIG->getJobs().size()) + " jobs");
-                    LOGGER->Info(CONFIG->configurationDump());
-
-                    for(auto job : CONFIG->getJobs()){
-                        CONFIG->setActualJob(job);
-                        if(!job.gabor) {
-
-                            preprocess(train, test);
-
-                            if (CONFIG->getGaborSetting() > 0) {
-                                gabor(train, test);
-                            }
-                            extract(train, test);
-                            classificate(train, test);
-                        }
-                    }
-
-                }else{
-
-                    // NORMAL mode for testing purposes and graphical features
-
-                    LOGGER->Info("Application started in [NORMAL MODE]");
-                    LOGGER->Info(CONFIG->configurationDump());
-
-                    preprocess(train, test);
-                    if(CONFIG->getGaborEditorMode()) {
-                        std::multimap<unsigned int, unsigned int> kek;
-                        int i = 0;
-                        for (auto a : train) {
-                            kek.insert(make_pair(a.id, i++));
-                        }
-                        for (auto const &x : kek) {
-                            Gabor_editor(train[x.second].working_img);
-                        }
-                    }
-
-                    if (CONFIG->getGaborSetting() > 0) {
-                        gabor(train, test);
-                    }
-
-                    extract(train, test);
-                    classificate(train, test);
-                }
-            }
         }
-    }
-
-
-    // initializing main data containers
-
 
     LOGGER->Info("Application ended correctly...");
 

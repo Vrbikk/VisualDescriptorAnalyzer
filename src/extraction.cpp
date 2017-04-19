@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 27.9.16.
-//
 
 #include "include/extraction.h"
 
@@ -16,11 +13,6 @@ void iterate_extract(Method &selectedMethod, vector<_image> &images, string name
 void extract(vector<_image> &train, vector<_image> &test) {
 
     Method *selectedMethod = CONFIG->getExtractionMethod();
-
-    if(!CONFIG->getJobMode() && !CONFIG->isTexture_mode()) {
-        LOGGER->Info("Extracting vectors");
-    }
-
     iterate_extract(*selectedMethod, train, "Training data extraction");
     iterate_extract(*selectedMethod, test, "Testing data extraction");
 

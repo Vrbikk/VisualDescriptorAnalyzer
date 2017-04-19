@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 1.10.16.
-//
 
 #include "include/classification.h"
 
@@ -124,29 +121,7 @@ void semi_classificate(vector<_image> &train, vector<_image> &test, vector<_imag
 
         for(int j = 0; j < train.size(); j++){
             double distance;
-
-                switch(CONFIG->getGaborSetting()){
-                    case 0:{
-                        distance = get_histogram_distance(test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
-                        break;
-                    }
-                    case 1:{
-                        distance = get_gabor_distance(test[i], train[j]);
-                        break;
-                    }
-                    case 2:{
-                        double a = get_gabor_distance(test[i], train[j]);
-                        double b = get_histogram_distance(test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
-                        distance = a + b;
-                        break;
-                    }
-                    default:{
-                        LOGGER->Error("default branch called in semi_classificate method");
-                        break;
-                    }
-
-                }
-
+            distance = get_histogram_distance(test[i].exctracted_vector, train[j].exctracted_vector, CONFIG->getComparisonMethod());
             if(distance < min_distance){
                 min_distance = distance;
                 nearest_image = &train[j];
@@ -175,16 +150,10 @@ double result_calculation(vector<_image> &test, vector<_image *> &candidates) {
     }
 
     double accuracy = hits/(test.size() * 1.0);
-
-    if(!CONFIG->isTexture_mode()) LOGGER->Info("↑ accuracy: <" + to_string(accuracy) + "> ↑\n");
-
     return accuracy;
 }
 
 double classificate(vector<_image> &train, vector<_image> &test) {
-    if(!CONFIG->getJobMode()) {
-        LOGGER->Info("Classification started");
-    }
 
     test_size = (int)test.size();
     progress = 0;
@@ -218,54 +187,3 @@ double classificate(vector<_image> &train, vector<_image> &test) {
 
     return result_calculation(test, candidates);
 }
-
-double get_gabor_distance(_image &a, _image &b) {
-    double distance = 0;
-    for(int i = 0; i < a.points.size(); i++){
-        double local_distance = 1;
-        int index = get_nearest_gabor_histogram_index(a.points[i], b.points, local_distance);
-        distance += local_distance * get_gabor_intersection_distance(a.gabor_exctracted_vector[i], b.gabor_exctracted_vector[index]);
-    }
-
-    return distance;
-}
-
-int get_nearest_gabor_histogram_index(Point &a, vector<Point> &points, double &local_distance) {
-    double min_distance = DBL_MAX;
-    int index = 0;
-    for(int i = 0; i < points.size(); i++){
-        double distance = sqrt((a.x - points[i].x)*(a.x - points[i].x) + (a.y - points[i].y)*(a.y - points[i].y));
-        if(distance < min_distance){
-            min_distance = distance;
-            index = i;
-        }
-    }
-    //local_distance += min_distance / 10; //experimental
-    return index;
-}
-
-double get_gabor_intersection_distance(vector<int> a, vector<int> b){
-    double distance = 0;
-        double sum = 0;
-        double sub_distance = 0;
-        for(int j = 0; j < a.size(); j++){
-            sum += a[j];
-            if(a[j] < b[j]){  //min
-                sub_distance += a[j];
-            }else{
-                sub_distance += b[j];
-            }
-        }
-    return (sum - sub_distance);
-}
-
-double get_gabor_euclidean_distance(vector<int> a, vector<int> b) {
-
-    double distance = 0;
-    for(int j = 0; j < a.size(); j++){
-        distance += (a[j] - b[j]) * (a[j] - b[j]);
-    }
-
-    return sqrt(distance);
-}
-

@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 27.9.16.
-//
 
 #include "include/Method.h"
 #include "include/GUI.h"
@@ -349,54 +346,3 @@ byte Method::getShapeValue(Mat &src, int x, int y, int type, int shape_evaluatio
         }
     }
 }
-
-vector<vector<int>> Method::extractGaborPointsHistograms(Mat &src, vector<Point> &points, int size, bool uniform) {
-    vector<vector<int>> tmp_vector;
-    tmp_vector.resize(points.size());
-
-    int i = 0;
-    //show_image(src);
-    for(auto &a : points){
-        vector<int> local_histogram;
-        localGaborHistogram(src, a, local_histogram, size, uniform);
-
-        tmp_vector[i++] = local_histogram;
-    }
-
-    //show_image(src);
-    return tmp_vector;
-}
-
-void Method::localGaborHistogram(Mat &src, Point &point, vector<int> &local_histogram, int size, bool uniform) {
-
-    int x = (point.x - size/2);
-    int y = (point.y - size/2);
-
-    if(uniform){
-        local_histogram.assign(number_of_uniform_patterns + 1, 0);
-        for(int local_x = x; local_x < x + size; local_x++){
-            for(int local_y = y; local_y < y + size; local_y++) {
-
-                if(local_x < 0 || local_y < 0 || local_x >= src.cols || local_y >= src.rows){
-                    //out of image
-                }else{
-                    local_histogram[uniform_table[src.at<int>(local_x, local_y)]] += 1;
-                }
-                //src.at<int>(local_x, local_y) = 255;
-            }
-        }
-
-    }else{
-        local_histogram.assign(number_of_all_patterns, 0);
-        for(int local_x = x; local_x < x + size; local_x++){
-            for(int local_y = y; local_y < y + size; local_y++) {
-                if(local_x < 0 || local_y < 0 || local_x >= src.cols || local_y >= src.rows){
-                    //out of image
-                }else{
-                    local_histogram[src.at<int>(local_x, local_y)] += 1;
-                }
-            }
-        }
-    }
-}
-

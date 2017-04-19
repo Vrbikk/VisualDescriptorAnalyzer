@@ -1,10 +1,7 @@
-//
-// Created by vrbik on 27.9.16.
-//
+
 
 #ifndef PLAYGROUND_METHOD_H
 #define PLAYGROUND_METHOD_H
-
 
 #include "stdim.h"
 
@@ -27,9 +24,6 @@ protected:
     void extractLBPa(Mat &src, Mat &dst, _LBPa_config config);
     void extractLBP(Mat &src, Mat &dst, _LBP_config config);
     void optimize_LBP_pls(_LBP_config config);
-
-    void localGaborHistogram(Mat &src, Point &point, vector<int> &local_histogram, int size, bool uniform);
-    vector<vector<int>> extractGaborPointsHistograms(Mat &src, vector<Point> &points, int size, bool uniform);
 
 public:
     Method();

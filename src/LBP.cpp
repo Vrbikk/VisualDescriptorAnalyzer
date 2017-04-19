@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 27.9.16.
-//
 
 #include "include/LBP.h"
 #include "include/Configuration.h"
@@ -14,47 +11,18 @@ LBP::~LBP() {
 }
 
 void LBP::Process(_image &img) {
-
-   //Extraction phase
    Mat cropped;
    croppedImage(img.working_img, cropped, config.lbp_params.range + config.lbp_params.shape_safe_offset);
    Mat lbp = Mat::zeros(img.working_img.rows, img.working_img.cols, CV_32SC1);
    extractLBP(cropped, lbp, config);
+   img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
 
-   //show_image(lbp);
-   //Making of histogram
-
-   switch(CONFIG->getGaborSetting()){
-      case 0:{
-         img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
-         break;
-      }
-      case 1:{
-         img.gabor_exctracted_vector = extractGaborPointsHistograms(lbp, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
-         break;
-      }
-      case 2:{
-         img.exctracted_vector = globalHistogram(lbp, config.hist.grid_size, config.hist.uniform);
-         img.gabor_exctracted_vector = extractGaborPointsHistograms(lbp, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
-         break;
-      }
-      default:{
-         LOGGER->Error("default branch called in LBP");
-         break;
-      }
-   }
 }
 
 void LBP::setUp(void *_param) {
    config = *(struct _LBP_config*)_param;
    initUniformTable(config.lbp_params.neighbours);
    optimize_LBP_pls(config);
-
-    if(CONFIG->print_config){
-        LOGGER->Info(config.lbp_params.print());
-        LOGGER->Info(config.hist.print());
-        CONFIG->printGaborConfiguration();
-    }
 }
 
 

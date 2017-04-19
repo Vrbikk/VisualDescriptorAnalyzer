@@ -1,17 +1,8 @@
-//
-// Created by vrbik on 21.9.16.
-//
 
 #ifndef PLAYGROUND_GUI_H
 #define PLAYGROUND_GUI_H
 
 #include "stdim.h"
-
-/**
- * Funkce z tohoto souboru jsou používány při režimech RESULT_MODE a GABOR_EDITOR
- * dále jsou zde pomocné-ladící funkce pro zobrazení obrázku
- */
-
 Mat create_img_with_text(_image img);
 void convert_CV32F_to_CV8U(Mat &src, Mat &dst);
 void convert_CV32SC1_to_CV8U(Mat &src, Mat &dst);

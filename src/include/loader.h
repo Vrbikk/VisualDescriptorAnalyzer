@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 21.9.16.
-//
 
 #ifndef PLAYGROUND_LOADER_H
 #define PLAYGROUND_LOADER_H

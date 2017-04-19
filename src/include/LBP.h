@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 27.9.16.
-//
 
 #ifndef PLAYGROUND_LBP_H
 #define PLAYGROUND_LBP_H

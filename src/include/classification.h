@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 1.10.16.
-//
 
 #ifndef PLAYGROUND_CLASSIFICATION_H
 #define PLAYGROUND_CLASSIFICATION_H

@@ -13,40 +13,13 @@ void LBPa::Process(_image &img) {
     Mat lbpa = Mat(img.working_img.rows, img.working_img.cols, CV_32SC1);
     extractLBPa(cropped, lbpa, config);
 
-    //show_image(img.original_img);
-    //show_image(lbpa);
+    img.exctracted_vector = globalHistogram(lbpa, config.hist.grid_size, config.hist.uniform);
 
-    switch(CONFIG->getGaborSetting()){
-        case 0:{
-            img.exctracted_vector = globalHistogram(lbpa, config.hist.grid_size, config.hist.uniform);
-            break;
-        }
-        case 1:{
-            img.gabor_exctracted_vector = extractGaborPointsHistograms(lbpa, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
-            break;
-        }
-        case 2:{
-            img.exctracted_vector = globalHistogram(lbpa, config.hist.grid_size, config.hist.uniform);
-            img.gabor_exctracted_vector = extractGaborPointsHistograms(lbpa, img.points, CONFIG->getGaborHistogramSize(), config.hist.uniform);
-            break;
-        }
-        default:{
-            LOGGER->Error("default branch called in LBPa");
-            break;
-        }
-    }
 }
 
 void LBPa::setUp(void *_param) {
     config = *(struct _LBPa_config*)_param;
     initUniformTable(8);
-
-    if(CONFIG->print_config){
-        LOGGER->Info(config.lbpa_params.print());
-        LOGGER->Info(config.hist.print());
-        CONFIG->printGaborConfiguration();
-    }
-
 }
 
 LBPa::LBPa() {

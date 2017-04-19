@@ -1,6 +1,3 @@
-//
-// Created by vrbik on 24.9.16.
-//
 
 #ifndef PLAYGROUND_LOGGER_H
 #define PLAYGROUND_LOGGER_H
@@ -11,10 +8,6 @@
 #include <iostream>
 
 using namespace std;
-
-/*
- * Singleton Logger class
- */
 
 class Logger {
 private:
