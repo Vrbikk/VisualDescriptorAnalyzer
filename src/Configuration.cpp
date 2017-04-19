@@ -141,6 +141,7 @@ Method *Configuration::getExtractionMethod() {
         case __LBP:{
             SelectedMethod = new LBP();
             SelectedMethod->setUp(&LBP_config);
+
             break;
         }
         case __LBPa:{
@@ -191,10 +192,6 @@ void Configuration::setIntegerValue(string a, int &target, string target_name) {
     }else{
         LOGGER->Error("configuration file corrupted - " + target_name);
     }
-}
-
-_preprocessing_config Configuration::getPreprocessingConfig() {
-    return preprocessing_config;
 }
 
 void Configuration::destroyInstance() {
@@ -257,11 +254,13 @@ void Configuration::setActualJob(_job job) {
         case __LBP:{
             extraction_method = __LBP;
             LBP_config = job.lbp_conf;
+            LOGGER->Info(LBP_config.print());
             break;
         }
         case __LBPa:{
             extraction_method = __LBPa;
             LBPa_config = job.lbpa_conf;
+            LOGGER->Info(LBPa_config.print());
             break;
         }
         default:{
@@ -279,5 +278,16 @@ string Configuration::configurationDump() {
                           "classification_threads:" + to_string(classification_threads) + space +
                           "comparison_method:" + comparidon_method_string[comparison_method] + "\n"
     );
+}
+
+string Configuration::printNormalConfig() {
+    switch(extraction_method){
+        case __LBP:{
+            return LBP_config.print();
+        }
+        case __LBPa:{
+            return LBPa_config.print();
+        }
+    }
 }
 

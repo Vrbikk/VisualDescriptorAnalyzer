@@ -168,7 +168,7 @@ void Method::extractLBP(Mat &src, Mat &dst, _LBP_config config) {
     }
 }
 
-void Method::optimize_LBP_pls(_LBP_config config) {
+void Method::optimize_LBP(_LBP_config config) {
 
     // precalculating circular positions
 

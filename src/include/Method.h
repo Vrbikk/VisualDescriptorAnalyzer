@@ -23,7 +23,7 @@ protected:
     vector<vector<int>> globalHistogram(Mat &src, int grid_size, bool uniform);
     void extractLBPa(Mat &src, Mat &dst, _LBPa_config config);
     void extractLBP(Mat &src, Mat &dst, _LBP_config config);
-    void optimize_LBP_pls(_LBP_config config);
+    void optimize_LBP(_LBP_config config);
 
 public:
     Method();

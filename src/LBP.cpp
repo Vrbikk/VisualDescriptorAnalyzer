@@ -22,7 +22,7 @@ void LBP::Process(_image &img) {
 void LBP::setUp(void *_param) {
    config = *(struct _LBP_config*)_param;
    initUniformTable(config.lbp_params.neighbours);
-   optimize_LBP_pls(config);
+   optimize_LBP(config);
 }
 
 

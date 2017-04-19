@@ -43,19 +43,9 @@ struct _preprocessing_config{
 };
 
 struct _job{
-    bool gabor = false;
     __extraction_method method;
     _LBP_config lbp_conf;
     _LBPa_config lbpa_conf;
-};
-
-struct _gabor_filter_setting{
-    int TMPkernel_size;
-    int TMPpos_sigma;
-    int TMPpos_lambda;
-    int TMPpos_theta;
-    int TMPpos_gamma;
-    int TMPpos_psi;
 };
 
 class Configuration {
@@ -73,12 +63,10 @@ private:
     __comparison_method comparison_method;
     int classification_threads;
     bool result_mode;
-    bool gabor_editor_mode;
     vector<_job> jobs;
     bool job_mode;
     _LBP_config LBP_config;
     _LBPa_config LBPa_config;
-    bool texture_mode;
 
     void setExtractionMethod(string a);
     void setComparisonMethod(string a);
@@ -89,8 +77,6 @@ private:
     void addJob(string line_job);
 
 public:
-    bool print_config = true;
-    _gabor_filter_setting GFS;
     void destroyInstance();
     static Configuration *getConfiguration();
     bool setUp(const string path);
@@ -99,11 +85,11 @@ public:
     __comparison_method getComparisonMethod();
     int getClassificationThreads();
     bool getResultMode();
-    _preprocessing_config getPreprocessingConfig();
     vector<_job> getJobs();
     bool getJobMode();
     void setActualJob(_job job);
     string configurationDump();
+    string printNormalConfig();
 };
 
 #endif

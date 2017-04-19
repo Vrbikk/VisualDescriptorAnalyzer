@@ -21,7 +21,6 @@ int main(int argc, char *argv[]) {
 
                 for(auto job : CONFIG->getJobs()){
                     CONFIG->setActualJob(job);
-                    if(!job.gabor) {
                         train = vector<_image>();
                         test = vector<_image>();
 
@@ -34,10 +33,7 @@ int main(int argc, char *argv[]) {
                             preprocess_textures(train, test);
                             extract(train, test);
                             results.push_back(classificate(train, test));
-                            if(i == 1) CONFIG->print_config = false;
                         }
-
-                        CONFIG->print_config = true;
 
                         int i = 1;
                         double sum = 0;
@@ -46,14 +42,15 @@ int main(int argc, char *argv[]) {
                             sum += a;
                             LOGGER->Info("set " + to_string(i++) + ": <" + to_string(a) + ">");
                         }
+
                         LOGGER->Info("↑ accuracy: <" + to_string(sum/10) + "> ↑\n");
-                    }
                 }
 
             }else{
 
                 LOGGER->Info("Application started in [NORMAL TEXTURE MODE]");
                 LOGGER->Info(CONFIG->configurationDump());
+                LOGGER->Info(CONFIG->printNormalConfig());
 
                 train = vector<_image>();
                 test = vector<_image>();
